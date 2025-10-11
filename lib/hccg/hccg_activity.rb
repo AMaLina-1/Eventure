@@ -23,14 +23,16 @@ module Eventure
     ].freeze
 
     # output
-    def self.run(top: 100, out_path: File.expand_path('../../spec/fixtures/result.yml', __dir__))
-      res = HttpRequest.get_hccg_activity(top: top)
+    def run(top: 100, out_path: File.expand_path('../../spec/fixtures/result.yml', __dir__))
+      res = HttpRequest.new.get_hccg_activity(top: top)
       FileUtils.mkdir_p(File.dirname(out_path)) unless Dir.exist?(File.dirname(out_path))
-      JsonToYaml.write_selected(res.to_s, out_path, FIELDS)
+      JsonToYaml.new.write_selected(res.to_s, out_path, FIELDS)
+
+      JSON.parse(res.to_s)
     end
   end
 end
 
-if $PROGRAM_NAME == __FILE__
-  Eventure::ActivityExport.run(top: 100)
-end
+# if $PROGRAM_NAME == __FILE__
+#   Eventure::ActivityExport.run(top: 100)
+# end

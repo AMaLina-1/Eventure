@@ -6,7 +6,7 @@ module Eventure
     BASE = 'https://webopenapi.hccg.gov.tw'.freeze
 
     # 取得活動資料，回傳：HTTP::Response
-    def self.get_hccg_activity(top: 100)
+    def get_hccg_activity(top: 100)
       url = "#{BASE}/v1/Activity?top=#{top}"
 
       res = HTTP.headers('Accept' => 'application/json',
