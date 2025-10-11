@@ -15,12 +15,11 @@ module HccgEventure
 
     # 取得活動清單
   # 回傳：Array<HccgEventure::Activity>
-    def activities(top: 100, page: nil, query: nil)
+    def activities(top: 100, query: nil)
       raise ArgumentError, 'top must be positive' unless top.to_i.positive?
 
       path   = '/v1/Activity'
       params = { top: top }
-      params[:page]  = page  if page
       params[:query] = query if query
 
       json = get_json(path, params)

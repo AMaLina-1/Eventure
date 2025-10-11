@@ -65,12 +65,11 @@ module HccgEventure
                   .headers('Accept' => 'application/json', 'User-Agent' => USER_AGENT)
     end
 
-    def activities(top: 100, page: nil, query: nil)
+    def activities(top: 100, query: nil)
       raise ArgumentError, 'top must be positive' unless top.to_i.positive?
 
       path = '/v1/Activity'
       params = { top: top }
-      params[:page] = page if page
       params[:query] = query if query
 
       json = get_json(path, params: params)
@@ -84,17 +83,9 @@ module HccgEventure
       end
     end
 
-    def activities_all(top: 100, query: nil)
-      page = 1
-      all = []
-      loop do
-        batch = activities(top: top, page: page, query: query)
-        break if batch.empty?
-        all.concat(batch)
-        break if batch.length < top
-        page += 1
-      end
-      all
+    # Convenience: call activities once (no pagination)
+    def activities_all(top: 50, query: nil)
+      activities(top: top, query: query)
     end
 
     private
