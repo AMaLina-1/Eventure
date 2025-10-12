@@ -31,7 +31,9 @@ module Eventure
       @client = client
     end
 
-    def run(top: 100, out_path: nil, object_class: nil)
+    # By default return domain objects (Eventure::Activity) so callers can
+    # call methods like `pubunitname` directly on each item.
+    def run(top: 100, out_path: nil, object_class: Activity)
       json_str = fetch_json(top)
 
       # allow per-call override of out_path while keeping instance state
@@ -50,7 +52,7 @@ module Eventure
 
     def parse_rows(json_str, object_class)
       data = JSON.parse(json_str)
-      Array(data).map { |row| object_class ? object_class.new(row) : row }
+      Array(data).map { |row| object_class.new(row) }
     end
 
     def fetch_json(top)
