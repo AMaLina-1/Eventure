@@ -1,14 +1,24 @@
 # frozen_string_literal: true
 
-require 'minitest/autorun'
-require 'minitest/rg'
-require 'yaml'
+require_relative 'spec_helper'
 require_relative '../lib/hccg/hccg_activity'
 
-TOP = 10
-CORRECT = YAML.safe_load_file('spec/fixtures/results.yml')
-
 describe 'Tests hccg activity API library' do
+  VCR.configure do |c|
+    c.cassette_library_dir = CASSETTES_FOLDER
+    c.hook_into :webmock
+  end
+
+  before do
+    VCR.insert_cassette CASSETTE_FILE,
+                        record: :new_episodes,
+                        match_requests_on: %i[method uri headers]
+  end
+
+  after do
+    VCR.eject_cassette
+  end
+
   describe 'Error raising' do
     it 'SAD: should raise exception on invalid top argument' do
       error = _(proc { @data = Eventure::ActivityExport.new.run(top: 101) }).must_raise RuntimeError
