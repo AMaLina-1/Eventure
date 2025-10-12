@@ -29,7 +29,7 @@ module Eventure
       client = HttpClient.new
       writer = JsonToYaml.new
       res = client.get_hccg_activity(top: top)
-      FileUtils.mkdir_p(File.dirname(out_path)) unless Dir.exist?(File.dirname(out_path))
+      FileUtils.mkdir_p(File.dirname(out_path))
       writer.write_selected(res.to_s, out_path, FIELDS)
       # 解析回傳 JSON，產生物件陣列或回傳 Hash 陣列
       data = JSON.parse(res.to_s)

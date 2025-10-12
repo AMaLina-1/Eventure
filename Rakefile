@@ -4,8 +4,9 @@ require 'rake/testtask'
 require 'fileutils'
 
 CODE = 'lib/'
+CASSETTE_DIR = 'spec/fixtures/cassettes'
 
-task :default do 
+task :default do
   puts 'rake -T'
 end
 
@@ -15,15 +16,13 @@ task :spec do
 end
 
 namespace :vcr do
-  CASSETTE_DIR = 'spec/fixtures/cassettes'
-
   desc 'Delete all VCR cassette files'
   task :wipe do
     if Dir.exist?(CASSETTE_DIR)
       files = Dir.glob("#{CASSETTE_DIR}/*.yml")
       if files.empty?
         puts 'No cassettes found'
-      else 
+      else
         FileUtils.rm_rf(files)
         puts 'Cassettes deleted'
       end

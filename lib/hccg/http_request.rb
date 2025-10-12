@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require 'http'
 
 module Eventure
+  # Handles HTTP requests
   class HttpClient
-    BASE = 'https://webopenapi.hccg.gov.tw'.freeze
+    BASE = 'https://webopenapi.hccg.gov.tw'
 
     def initialize(base: BASE, user_agent: 'Eventure/0.1', http: HTTP)
       @base = base
@@ -17,6 +20,7 @@ module Eventure
 
       res = @http.headers('Accept' => 'application/json', 'User-Agent' => @user_agent).get(url)
       raise 'Request Failed' unless res.status.success?
+
       res
     end
   end
