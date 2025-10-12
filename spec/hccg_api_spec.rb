@@ -6,7 +6,7 @@ require 'yaml'
 require_relative '../lib/hccg/hccg_activity'
 
 TOP = 10
-CORRECT = YAML.safe_load_file('spec/fixtures/result.yml')
+CORRECT = YAML.safe_load_file('spec/fixtures/results.yml')
 
 describe 'Tests hccg activity API library' do
   describe 'Error raising' do
