@@ -25,7 +25,11 @@ module Eventure
       activityplace
     ].freeze
 
-    def initialize(writer: JsonToYaml.new, out_path: File.expand_path('../../spec/fixtures/results.yml', __dir__), client: HttpClient.new)
+    def initialize(
+      writer: JsonToYaml.new,
+      out_path: File.expand_path('../../spec/fixtures/results.yml', __dir__),
+      client: HttpClient.new
+    )
       @writer = writer
       @out_path = out_path
       @client = client
