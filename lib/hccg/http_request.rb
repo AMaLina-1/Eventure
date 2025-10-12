@@ -3,7 +3,12 @@
 require 'http'
 
 module Eventure
-  # Handles HTTP requests
+  # Simple HTTP client for HCCG API.
+  #
+  # Responsibilities:
+  # - build the request URL
+  # - set default headers
+  # - return the HTTP response or raise on non-success
   class HttpClient
     BASE = 'https://webopenapi.hccg.gov.tw'
 
@@ -13,8 +18,6 @@ module Eventure
       @http = http
     end
 
-    # 取得活動資料（不支援 page 分頁）
-    # 回傳：HTTP::Response
     def get_hccg_activity(top: 100)
       url = "#{@base}/v1/Activity?top=#{top}"
 
