@@ -22,4 +22,4 @@ CONFIG = YAML.safe_load_file('config/secrets.yml') if File.exist?('config/secret
 CORRECT = YAML.safe_load_file('spec/fixtures/results.yml')
 
 CASSESTTES_FOLDER = 'spec/fixtures/cassettes'
-CASSETE_FILE = 'hccg_api'
+CASSETTE_FILE = 'hccg_api'
