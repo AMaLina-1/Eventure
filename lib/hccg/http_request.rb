@@ -1,16 +1,21 @@
 require 'http'
 
 module Eventure
-  # 純 HTTP 請求
-  class HttpRequest
+  class HttpClient
     BASE = 'https://webopenapi.hccg.gov.tw'.freeze
 
-    # 取得活動資料，回傳：HTTP::Response
-    def self.get_hccg_activity(top: 100)
-      url = "#{BASE}/v1/Activity?top=#{top}"
+    def initialize(base: BASE, user_agent: 'Eventure/0.1', http: HTTP)
+      @base = base
+      @user_agent = user_agent
+      @http = http
+    end
 
-      res = HTTP.headers('Accept' => 'application/json',
-                         'User-Agent' => 'Eventure/0.1').get(url)
+    # 取得活動資料（不支援 page 分頁）
+    # 回傳：HTTP::Response
+    def get_hccg_activity(top: 100)
+      url = "#{@base}/v1/Activity?top=#{top}"
+
+      res = @http.headers('Accept' => 'application/json', 'User-Agent' => @user_agent).get(url)
       raise 'Request Failed' unless res.status.success?
       res
     end
