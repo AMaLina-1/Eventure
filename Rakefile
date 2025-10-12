@@ -6,7 +6,7 @@ require 'fileutils'
 CODE = 'lib/'
 
 task :default do 
-  puts `rake -T`
+  puts 'rake -T'
 end
 
 desc 'Run all tests'
