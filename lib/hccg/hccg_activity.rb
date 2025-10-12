@@ -26,15 +26,30 @@ module Eventure
 
     # output
     def run(top: 100, out_path: File.expand_path('../../spec/fixtures/results.yml', __dir__), object_class: Eventure::Activity)
-      client = HttpClient.new
-      writer = JsonToYaml.new
-      res = client.get_hccg_activity(top: top)
-      FileUtils.mkdir_p(File.dirname(out_path))
-      writer.write_selected(res.to_s, out_path, FIELDS)
-      # 解析回傳 JSON，產生物件陣列或回傳 Hash 陣列
-      data = JSON.parse(res.to_s)
+      self_class = self.class
+      response_body = self_class.fetch_data(top)
+      self_class.write_output(response_body, out_path)
+      build_objects(response_body, object_class)
+    end
+
+    private
+
+    def build_objects(json_str, object_class)
+      data = JSON.parse(json_str)
       Array(data).map do |row|
         object_class ? object_class.new(row) : row
+      end
+    end
+
+    # Class-level utility functions
+    class << self
+      def fetch_data(top)
+        HttpClient.new.get_hccg_activity(top: top).to_s
+      end
+
+      def write_output(json_str, out_path)
+        FileUtils.mkdir_p(File.dirname(out_path))
+        JsonToYaml.new.write_selected(json_str, out_path, FIELDS)
       end
     end
   end
