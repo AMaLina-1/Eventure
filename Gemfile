@@ -21,3 +21,8 @@ gem 'rubocop'
 
 # Utilities
 gem 'rake'
+
+ # Web Application
+ gem 'puma', '~> 5.0'
+ gem 'roda', '~> 3.0'
+ gem 'slim', '~> 4.0'
