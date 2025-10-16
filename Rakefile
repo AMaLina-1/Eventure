@@ -18,7 +18,7 @@ end
 desc 'Run web app'
 task :run do 
   sh 'bundle exec puma'
-end 
+end
 
 namespace :vcr do
   desc 'Delete all VCR cassette files'
