@@ -15,6 +15,11 @@ task :spec do
   sh 'ruby spec/hccg_api_spec.rb'
 end
 
+desc 'Run web app'
+task :run do 
+  sh 'bundle exec puma'
+end 
+
 namespace :vcr do
   desc 'Delete all VCR cassette files'
   task :wipe do
