@@ -15,9 +15,19 @@ task :spec do
   sh 'ruby spec/hccg_api_spec.rb'
 end
 
+desc 'Keep rerunning tests when files change'
+task :respec do
+  sh "rerun -c 'rake spec' --ignore 'coverage/*'"
+end
+
 desc 'Run web app'
 task :run do 
   sh 'bundle exec puma'
+end
+
+desc 'Keep rerunning web app when files change'
+task :rerun do
+  sh "rerun -c --ignore 'coverage/*' -- bundle exec puma"
 end
 
 namespace :vcr do
