@@ -2,7 +2,6 @@
 
 require'roda'
 require 'yaml'
-require_relative '../require_app'
 
 module Eventure 
   class App < Roda 
