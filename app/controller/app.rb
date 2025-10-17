@@ -18,7 +18,7 @@ module Eventure
         view 'home'
       end 
 
-      routing.on 'hccg' do
+      routing.on 'project' do
         routing.is do 
           routing.post do 
             # will edit this later on 
@@ -31,10 +31,25 @@ module Eventure
         routing.on String, String do |category, id|
           routing.get do 
             # will edit this later on 
-            api_url = "https://www.hccg.gov.tw/example/#{category}/#{id}"
-            response = Net::HTTP.get(api_url)
-            card_data = JSON.parse(response)
-            view 'hccg_card', locals: { card: card_data }
+            project = Hccg::Repository::For [Hccg::Entity::Project].find_id(category: category, id: id)
+            members = Hccg::Repository::For [Hccg::Entity::Member].find_project_id(category: category, id: id)
+
+            project ||= OpenStruct.new(
+              subject: '新竹市「114年度勞動三法宣導會」，自即日起開放報名!',
+              detail: 'something about the project',
+              subject_class: [],
+              service_class: [],
+              place: '',
+              start_time: '',
+              end_time: '',
+            )
+
+            members ||=[
+              OpenStruct.new(name: ''),
+              OpenStruct.new(name: '')
+            ]
+
+            view 'project', locals: { project: project, members: members }
           end
         end
       end 
