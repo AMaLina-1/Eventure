@@ -22,6 +22,10 @@ gem 'rubocop'
 # Utilities
 gem 'rake'
 
+# Validation
+gem 'dry-struct',
+gem 'dry-types,'
+
  # Web Application
  gem 'puma', '~> 5.0'
  gem 'roda', '~> 3.0'
