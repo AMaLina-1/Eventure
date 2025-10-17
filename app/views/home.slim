@@ -1,0 +1,37 @@
+//- Two Bootstrap cards: one normal, one placeholder (skeleton)
+
+.row
+		- Array(@cards).each do |c|
+			.col-md-4.mb-4
+				== render('components/card', locals: { card: c }, layout: nil)
+
+/loading中的樣式
+	.col-md-6
+		.card aria-hidden="true"
+			img.card-img-top src="#" alt="..."
+			.card-body
+				h5.card-title.placeholder-glow
+					span.placeholder.col-6
+				p.card-text.placeholder-glow
+					span.placeholder.col-7
+					span.placeholder.col-4
+					span.placeholder.col-4
+					span.placeholder.col-6
+					span.placeholder.col-8
+				a.btn.btn-primary.disabled.placeholder.col-6 aria-disabled="true"
+
+.d-flex.justify-content-center.mt-4
+	nav aria-label="Page navigation example"
+		ul.pagination
+			li.page-item
+				a.page-link href="#" aria-label="Previous"
+					span aria-hidden="true" &laquo;
+			li.page-item
+				a.page-link href="#" 1
+			li.page-item
+				a.page-link href="#" 2
+			li.page-item
+				a.page-link href="#" 3
+			li.page-item
+				a.page-link href="#" aria-label="Next"
+					span aria-hidden="true" &raquo;
