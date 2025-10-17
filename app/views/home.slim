@@ -20,18 +20,22 @@
 					span.placeholder.col-8
 				a.btn.btn-primary.disabled.placeholder.col-6 aria-disabled="true"
 
-.d-flex.justify-content-center.mt-4
-	nav aria-label="Page navigation example"
-		ul.pagination
-			li.page-item
-				a.page-link href="#" aria-label="Previous"
-					span aria-hidden="true" &laquo;
-			li.page-item
-				a.page-link href="#" 1
-			li.page-item
-				a.page-link href="#" 2
-			li.page-item
-				a.page-link href="#" 3
-			li.page-item
-				a.page-link href="#" aria-label="Next"
-					span aria-hidden="true" &raquo;
+/- 動態分頁（只有在 total_pages > 1 時顯示）
+- if defined?(@total_pages) && @total_pages && @total_pages > 1
+  .d-flex.justify-content-center.mt-4
+    nav aria-label="Page navigation"
+      ul.pagination
+        - prev_page = @current_page.to_i - 1
+        - prev_disabled = @current_page.to_i <= 1
+        li.page-item class=("disabled" if prev_disabled)
+          a.page-link href="?page=#{[prev_page, 1].max}" aria-label="Previous"
+            span aria-hidden="true" &laquo;
+
+        - (1..@total_pages).each do |p|
+          - active = (p == @current_page.to_i)
+          li.page-item class=("active" if active)
+            a.page-link href="?page=#{p}" = p
+
+        - next_page = @current_page.to_i + 1
+        - next_disabled = @current_page.to_i >= @total_pages
+        li.page-item class=("disabled" if next_disabled)
