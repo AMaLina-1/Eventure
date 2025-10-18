@@ -3,4 +3,4 @@
   .card-body
     h5.card-title = card[:name] || card['name'] || '未命名'
     p.card-text = card[:description] || card['description'] || ''
-    a.btn.btn-primary href="#" 詳細
+    == render('components/btn_card', locals: { card: card }, layout: nil)
