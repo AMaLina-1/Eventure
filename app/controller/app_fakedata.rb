@@ -31,10 +31,11 @@ module Eventure
         @current_city = r.params['city']
 
         # seed fake data for development / UI testing
-        all_cards = (1..200).map do |i|
+        all_cards = (1..2000).map do |i|
           {
             name: "活動名稱 #{i}",
             description: "這是第 #{i} 個活動的描述。",
+            long_description: "這是第 #{i} 個活動的詳細描述。內容非常豐富，可以包含多段文字、圖片，甚至是嵌入影片等多媒體元素。",
             link: '#',
             id: i,
             city: CITIES.sample,
