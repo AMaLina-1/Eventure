@@ -21,3 +21,6 @@ gem 'rubocop'
 
 # Utilities
 gem 'rake'
+
+gem 'dry-types'
+gem 'dry-struct'

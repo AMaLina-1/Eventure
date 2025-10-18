@@ -14,7 +14,12 @@ require 'minitest/rg'
 require 'vcr'
 require 'webmock'
 
-require_relative '../lib/hccg/http_request'
+# require_relative '../lib/hccg/http_request'
+# start
+require_relative '../lib/hccg/entities/activity'
+require_relative '../lib/hccg/gateways/hccg_api'
+require_relative '../lib/hccg/mappers/activity_mapper'
+# end
 
 TOP = 10
 CONFIG = YAML.safe_load_file('config/secrets.yml') if File.exist?('config/secrets.yml')
