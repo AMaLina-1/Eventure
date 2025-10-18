@@ -1,0 +1,6 @@
+//- Component: card
+.card.h-100
+  .card-body
+    h5.card-title = card[:name] || card['name'] || '未命名'
+    p.card-text = card[:description] || card['description'] || ''
+    == render('components/btn_card', locals: { card: card }, layout: nil)
