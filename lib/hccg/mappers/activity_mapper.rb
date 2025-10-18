@@ -4,16 +4,20 @@ module Eventure
   module Hccg
     # data mapper: hccg api response -> Activity entity
     class ActivityMapper
-      def initialize(top, gateway_class = Hccg::Api)
-        @top = top
+      def initialize(gateway_class = Hccg::Api)
         @gateway_class = gateway_class
-        @gateway = @gateway_class.new(@top)
+        @gateway = @gateway_class.new
+        @parsed_data = nil
       end
 
       # transfer parsed json object into ActicityMapper object
+      def find(top)
+        @parsed_data = @gateway.parsed_json(top)
+        build_entity
+      end
+
       def build_entity
-        data = @gateway.parsed_json
-        data.map { |line| DataMapper.new(line) }
+        @parsed_data.map { |line| DataMapper.new(line) }
       end
 
       # Extracts entity elements from data structure

@@ -21,12 +21,11 @@ describe 'Tests hccg activity API library' do
 
   describe 'Error raising' do
     it 'SAD: should raise exception on invalid top argument' do
-      # error = _(proc { @data = Eventure::ActivityExport.new.run(top: 101) }).must_raise RuntimeError
       error = _(
         proc {
           @data = Eventure::Hccg::ActivityMapper
-                 .new(101, Eventure::Hccg::Api)
-                 .build_entity
+                 .new(Eventure::Hccg::Api)
+                 .find(101)
         }
       ).must_raise RuntimeError
       _(error.message).must_equal 'Request Failed'
@@ -35,8 +34,7 @@ describe 'Tests hccg activity API library' do
 
   describe 'Data content and structure' do
     before do
-      # @data = Eventure::ActivityExport.new.run(top: TOP)
-      @data = Eventure::Hccg::ActivityMapper.new(TOP, Eventure::Hccg::Api).build_entity
+      @data = Eventure::Hccg::ActivityMapper.new(Eventure::Hccg::Api).find(TOP)
     end
 
     it 'HAPPY: should provide correct pubunitname' do
