@@ -1,4 +1,63 @@
 ---
+- serno: '202510170001'
+  pubunitdn: OU=7200,OU=hsinchu,DC=hccg,DC=local
+  pubunitname: 家庭教育中心
+  subject: "【2025】線上講座~親職教育系列～11/18數位教養新思維、11/19和Z世代對話～開放報名中！"
+  detailcontent: "<div class=\"zbox\">\n<div class=\"main-a_13\" style=\"padding:5px\"><img
+    alt=\"【2025】#線上親職教育講座系列-11月\" src=\"/userfiles/7204/images/1118%E5%AE%B9%E8%A5%84_0.png\"
+    style=\"width: 100%; height: auto; padding: 3px;\" title=\"【2025】#線上親職教育講座系列-11月\"
+    /><br />\n<img alt=\"【2025】#線上親職教育講座系列-11月\" src=\"/userfiles/7204/images/1119%E8%87%B4%E8%8A%AC%E8%80%81%E5%B8%AB_0.png\"
+    style=\"width: 100%; height: auto; padding: 3px;\" title=\"【2025】#線上親職教育講座系列-11月\"
+    />【2025】#線上親職教育講座系列-11月<br />\n\\✨第一場次～/<br />\n&loz;主題：數位教養新思維~家長該跟上腳步的事<br />\n&loz;講師：劉容襄
+    助理教授<br />\n&loz;時間：11/18(二) 上午10:00~12:00<br />\n[\U0001F517] 報名連結：<a href=\"https://forms.gle/vxV1td4Xv4gCbuED9\"
+    title=\"https://forms.gle/vxV1td4Xv4gCbuED9\">https://forms.gle/vxV1td4Xv4gCbuED9</a><br
+    />\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br />\n\\✨第二場次～/<br />\n&loz;主題：和Z世代對話：在不同語言裡找到愛與連結<br
+    />\n&loz;講師：葉致芬 諮商心理師<br />\n&loz;時間：11/19(三) 上午10:00~12:00<br />\n[\U0001F517]
+    報名連結：<a href=\"https://forms.gle/redU63Ws4R4fkcjJA\" title=\"https://forms.gle/redU63Ws4R4fkcjJA\">https://forms.gle/redU63Ws4R4fkcjJA</a><br
+    />\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br />\n【講座小叮嚀▸google meet會議代碼於課程前一日寄送至報名時所提供的email】<br
+    />\n\U0001F4DE若有疑問歡迎來電洽詢03-5325885#9<br />\n&nbsp;</div>\n</div>\n"
+  posterdate: '20251017'
+  closedate: '20251119'
+  startusing: '0'
+  liaisonper: ''
+  liaisontel: ''
+  liaisonfax: ''
+  liaisonemail: ''
+  readnumber: '10'
+  subjectid: '38'
+  subjectclass: "[410]教育"
+  administationid: '849'
+  administationclass: "[553]家庭教育"
+  serviceid: '58'
+  serviceclass: "[7Z0]其他"
+  languagetype: chinese
+  copyright: ''
+  voice: "【2025】線上親職教育講座系列～11/18數位教養新思維、11/19和Z世代對話～開放報名中！"
+  hostunit: ''
+  jointunit: ''
+  invite: ''
+  activitysdate: '202511180000'
+  activityedate: '202511190000'
+  activityplace: 線上講座
+  activitydateremark: ''
+  posterdatalist:
+  - serno: '202510170001'
+    detailno: 1
+    mserno: '201604260001'
+    msernoname: 活動訊息
+    websitedn: ou=family,ou=ap_root,o=hccg,c=tw
+    websitename: 家庭教育中心
+    websiteexam: "Y"
+    websiteexamdate: ''
+    websiteexamname: ''
+    istop: "Y"
+    topdate: '2025-11-19'
+    datasort: 9999999
+    examineemail: '0'
+    examineexplain: ''
+  filedatalist: []
+  resourcedatalist: []
+  mapdatalist: []
 - serno: '202507150003'
   pubunitdn: OU=5000,OU=hsinchu,DC=hccg,DC=local
   pubunitname: 文化局
@@ -20,7 +79,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1003'
+  readnumber: '1007'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -96,7 +155,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '581'
+  readnumber: '602'
   subjectid: '9'
   subjectclass: "[900]綜合行政"
   administationid: '13'
@@ -167,7 +226,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '429'
+  readnumber: '436'
   subjectid: '9'
   subjectclass: "[900]綜合行政"
   administationid: '13'
@@ -233,7 +292,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '19'
+  readnumber: '20'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -297,7 +356,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '23'
+  readnumber: '27'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -367,7 +426,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '29'
+  readnumber: '42'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -432,7 +491,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '31'
+  readnumber: '39'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -499,7 +558,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '43'
+  readnumber: '49'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -571,7 +630,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '33'
+  readnumber: '52'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -665,7 +724,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '40'
+  readnumber: '53'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -729,7 +788,7 @@
   liaisontel: '03-5324900 分機114 '
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '19'
+  readnumber: '20'
   subjectid: '87'
   subjectclass: "[8Z0]其他"
   administationid: '1178'
@@ -798,7 +857,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '287'
+  readnumber: '303'
   subjectid: '8'
   subjectclass: "[800]衛生福利勞動"
   administationid: '226'
@@ -849,7 +908,7 @@
     relateurl: https://reurl.cc/Rkylon
     relatename: 宣導會線上報名連結
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202510090001'
@@ -859,57 +918,15 @@
   detailcontent: |
     <div class="zbox">
     <div class="main-a_01">
-    <div class="main-a_03">在白盒子裡，讓模糊的逐漸清晰、沉默的被釋放開來，試問：「沉默如何顯影?」<br />
-    &nbsp;<br />
-    本展覽意圖翻轉觀眾習以為常的視覺經驗，探索並觸發美術館空間中多元感知的可能。在靜態的展示中搭建一座動態操演的舞台，以低限線條勾勒空間的紋理，於看似尋常的描繪裡，滲入藝術家對客體內在世界的哲思。空白與模糊，成為鬆動白盒子疆界的縫隙，開啟無限想像的通道。<br />
-    「現身/獻聲」試圖以個體的輪廓，映照出藝文工作者當下的集體處境， 回返空間中那些潛伏卻關鍵的關係網絡。圖像與文字看似無所指涉，實則揭示了當中的環境感知、科層體制、勞動行為與權力結構，也潛藏有戲劇性與互文的張力。<br />
-    五位藝術家分別通過低限素描、文字書寫、觀念攝影、紀錄片、操演工作坊與民眾劇場等多重媒介，逐層揭露美術館中可見與不可見之間的拉鋸及流動。無聲的小劇場得以被召喚，原本靜默的展覽空間，在觀者的感知與參與中逐步發聲。</div>
-    </div>
-    </div>
-  subjectclass: "[400]教育文化"
-  serviceclass: "[900]休閒旅遊"
-  voice: "在白盒子裡，讓模糊的逐漸清晰、沉默的被釋放開來，試問：「沉默如何顯影?」\n \n本展覽意圖翻轉觀眾習以為常的視覺經驗，探索並觸發美術館空間中多元感知的可能。在靜態的展示中搭建一座動態操演的舞台，以低限線條勾勒空間的紋理，於看似尋常的描繪裡，滲入藝術家對客體內在世界的哲思。空白與模糊，成為鬆動白盒子疆界的縫隙，開啟無限想像的通道。\n「現身/獻聲」試圖以個體的輪廓，映照出藝文工作者當下的集體處境，
-    回返空間中那些潛伏卻關鍵的關係網絡。圖像與文字看似無所指涉，實則揭示了當中的環境感知、科層體制、勞動行為與權力結構，也潛藏有戲劇性與互文的張力。\n五位藝術家分別通過低限素描、文字書寫、觀念攝影、紀錄片、操演工作坊與民眾劇場等多重媒介，逐層揭露美術館中可見與不可見之間的拉鋸及流動。無聲的小劇場得以被召喚，原本靜默的展覽空間，在觀者的感知與參與中逐步發聲。"
-  hostunit: ''
-  activitysdate: '202508190900'
-  activityedate: '202510191700'
-  activityplace: ''
-- pubunitname: 文化局
-  subject: "[展覽][241藝術空間]2025新竹美展"
-  detailcontent: |
-    <div class="zbox">
-    <div class="main-a_01">
-    <div class="main-a_03">由新竹縣、市政府共同主辦的「2025新竹美展」得獎作品展，自10月1日至10月19日（星期日）於新竹241藝術空間及新竹縣政府文化局美術館同步展出。本屆共展出117件優秀作品，涵蓋西方媒材、影像暨數位內容科技媒體、立體暨造形藝術、東方媒材、書法篆刻、工藝設計等六大類，充分展現藝術創作的多元面貌。頒獎典禮將於10月4日上午10時在新竹縣政府文化局美術館105展廳舉行，誠摯邀請藝文愛好者踴躍參與。<br />
+    <div class="main-a_03"><br />
+    音樂會演出曲目精選浪漫至現代多位作曲家之作，涵蓋獨奏、重奏與聲樂曲目，展現長笛、長號、小提琴與聲樂的多元風貌。從高白爾與德布西的法式詩意，到聖桑與史特勞斯的戲劇張力，再至德佛札克的民族情懷，豐富曲目交織出細膩動人的音樂對話。長號－宋光清<br />
     <br />
-    「新竹美展」自創辦以來已邁入第24屆，每年吸引不同年齡層與領域的藝術創作者共襄盛舉。近年來，主辦單位積極推動跨媒材創作，鼓勵參賽者注入創新思維，為美展帶來更多元的形式與風貌。今年更擴大徵件範圍，凡出生或曾設籍、居住、就學、就業於新竹縣、市的藝術創作者皆可參與，期望促進藝術人才回流，讓曾在大新竹地區生活的藝術家們再次加入這項年度盛會。<br />
-    <br />
-    在縣、市政府與藝術界的共同努力下，「新竹美展」已成為整合大新竹文化資源的重要平台。本屆展覽共有111件得獎作品脫穎而出：其中，西方媒材、影像暨數位內容科技媒體、立體暨造形藝術三類作品於新竹縣政府文化局美術館展出；東方媒材、書法篆刻、工藝設計三類則於新竹市241藝術空間展出。為增添展覽亮點，主辦單位更特別邀請本屆評審委員及前三屆首獎得主共同展出作品，讓展場更具深度與風采。<br />
-    <br />
-    誠摯邀請各界藝術愛好者蒞臨參觀，近距離感受大新竹地區藝術能量與創作魅力。活動詳情請參閱：<br />
-    新竹市文化局官網：https://culture.hccg.gov.tw/<br />
-    <br />
-    新竹縣政府文化局官網：https://www.hchcc.gov.tw/<br />
-    <br />
-    洽詢專線：03-5337945 或 1999為民服務專線。</div>
-    </div>
-    </div>
-  subjectclass: "[900]綜合行政"
-  serviceclass: "[900]休閒旅遊,[950]藝術文化"
-  voice: |-
-    由新竹縣、市政府共同主辦的「2025新竹美展」得獎作品展，自10月1日至10月19日（星期日）於新竹241藝術空間及新竹縣政府文化局美術館同步展出。本屆共展出117件優秀作品，涵蓋西方媒材、影像暨數位內容科技媒體、立體暨造形藝術、東方媒材、書法篆刻、工藝設計等六大類，充分展現藝術創作的多元面貌。頒獎典禮將於10月4日上午10時在新竹縣政府文化局美術館105展廳舉行，誠摯邀請藝文愛好者踴躍參與。
+    <img alt="cover" src="/userfiles/5003/images/1021%E8%97%9D%E9%9F%BB%E6%B8%85%E8%8F%AF%E6%95%99%E5%B8%AB%E8%81%AF%E5%90%88%E9%9F%B3%E6%A8%82%E6%9C%83(%E5%B0%8F)(1).jpg" style="width: 99%; height: auto; padding: 3px;" title="cover" /><br />
+    &nbsp;</div>
 
-    在縣、市政府與藝術界的共同努力下，「新竹美展」已成為整合大新竹文化資源的重要平台。本屆展覽共有111件得獎作品脫穎而出：其中，西方媒材、影像暨數位內容科技媒體、立體暨造形藝術三類作品於新竹縣政府文化局美術館展出；東方媒材、書法篆刻、工藝設計三類則於新竹市241藝術空間展出。為增添展覽亮點，主辦單位更特別邀請本屆評審委員及前三屆首獎得主共同展出作品，讓展場更具深度與風采。
-  hostunit: 新竹市文化局
-  activitysdate: '202510011000'
-  activityedate: '202510191800'
-  activityplace: 新竹241藝術空間
-- pubunitname: 文化局
-  subject: "[展覽][文化藝廊]張茂欽螺鈿薪傳展"
-  detailcontent: |
-    <div class="zbox">
-    <div class="main-a_01">
-    <div class="main-a_03">第77檔竹塹薪傳展由本市無形文化資產「螺鈿工藝」保存者張茂欽帶來20餘件精選之螺鈿作品，包含「掐絲螺鈿」及「瓠瓜螺鈿鑲嵌」等精湛工藝表現。<br />
-    「掐絲螺鈿」技法，利用線狀的貝殼沿著圖樣輪廓包邊，形制類似金屬工藝的「掐絲琺瑯」，且注重圖樣上使用不同顏色的貝殼鑲嵌配色，使其作品層次更顯豐富；其廣為人知的「瓠瓜系列」創作，克服在弧形媒材上創作的困難，將繁複圖樣演繹其上，一舉榮獲國家「民族工藝獎」的肯定，兼具傳統與創新的做法在螺鈿產業中獨樹一格。</div>
+    <div class="main-a_03" style="text-align: center;">索票入場（<span style="color:#FF0000;"><strong>10/14</strong></span>起索票 數量有限索完為止）<br />
+    新竹市文化局演藝廳開館時間<br />
+    週二至週日 上午9:00-12:00、下午13:00-17:00</div>
 
     <div class="main-a_03">&nbsp;</div>
     </div>
@@ -921,7 +938,7 @@
   liaisontel: 03-5715131#73103
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '46'
+  readnumber: '55'
   subjectid: '4,41'
   subjectclass: "[400]教育文化,[440]文化藝術"
   administationid: '13,337,1536'
@@ -963,7 +980,7 @@
     relateurl: " https://www.facebook.com/dongda17/posts/pfbid02sgGd1h4Nj1wJnaFYxdsjBMBjFNaKHXTPH6mjGVv9vncKqfEBkkQGP9e3i93M9NaLl"
     relatename: "因目前新竹市文化局演藝廳周邊工程施作，進館動線和周邊停車資訊請詳見風城演藝公告。\t"
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202510070001'
@@ -973,7 +990,19 @@
   detailcontent: |
     <div class="zbox">
     <div class="main-a_01">
-    <div class="main-a_03">以新竹市美術館(前新竹市役所)的百年歷史為主軸，透過歷史回顧、文化反思與當代藝術的多元對話，探討以古蹟作為主體的美術館在城市與藝術發展中的意義。策展以遷徙、築徑、知識三組核心概念，建立跨領域的研究與創作架構，並透過田野調查、地景測繪、聲音與植物的檔案建構、口述歷史與教育協作，發展歷史建築、環境與當代藝術的創新對話。</div>
+    <div class="main-a_03"><br />
+    本次音樂會福爾摩沙合唱團與心築愛樂合唱團攜手，演唱國內外經典合唱曲目，展現在地聲音之美，透過合唱認識本土文化、深化語言感知與文化認同。<br />
+    藝術總監暨指揮：蘇慶俊<br />
+    鋼琴：蔡昱姍<br />
+    主辦：福爾摩沙合唱團<br />
+    聯演團體：心築愛樂合唱團<br />
+    <br />
+    <img alt="cover" src="/userfiles/5003/images/1019%E7%A6%8F%E7%88%BE%E6%91%A9%E6%B2%99%E5%90%88%E5%94%B1%E5%9C%98.png" style="width: 99%; height: auto; padding: 3px;" title="cover" /><br />
+    <br />
+    售票OPENTIX兩廳院文化生活400/600/800/1000元<br />
+    【優惠方案】<br />
+    身心障礙人士及陪同者1名5折(入場時應出示身心障礙手冊，陪同者與身障者需同時入場)；青年席位自由選座5折(須使用100點以上文化幣支付，並憑身份證或健保卡驗證入場)。<br />
+    &nbsp;</div>
     </div>
     </div>
   posterdate: '20251007'
@@ -983,7 +1012,7 @@
   liaisontel: '0975-586-483'
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '44'
+  readnumber: '59'
   subjectid: '4,41'
   subjectclass: "[400]教育文化,[440]文化藝術"
   administationid: '13,337,1536'
@@ -1025,14 +1054,14 @@
     relateurl: https://www.opentix.life/event/1966385494787158017
     relatename: 售票連結
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   - serno: '202510070001'
     detailno: 2
     relateurl: https://www.facebook.com/dongda17/posts/pfbid02sgGd1h4Nj1wJnaFYxdsjBMBjFNaKHXTPH6mjGVv9vncKqfEBkkQGP9e3i93M9NaLl
     relatename: "因目前新竹市文化局演藝廳周邊工程施作，進館動線和周邊停車資訊請詳見風城演藝公告。\t"
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202510020002'
@@ -1042,7 +1071,15 @@
   detailcontent: |
     <div class="zbox">
     <div class="main-a_01">
-    <div class="main-a_03">由新竹市文化局主辦的《114 年度新竹市小小策展人培力計畫》，以「生命故事」為主題，引導學童透過藝術創作與策展，與典藏作品建立連結，思考如何用展覽說出屬於自己的故事。今年共有五所學校、19 位學童參與，在暑期投入五天的策展培力營，學習策展流程、空間配置、創作發想與展覽行銷，並於秋季回到校園實踐策展成果。繼東園國小、關埔國小率先登場後，本週起由華德福實驗教育學校、清華大學附設實驗小學與北門國小接力展出，為校園注入滿滿創意與生命力。</div>
+    <div class="main-a_03"><br />
+    延續2024年的火熱口碑，狂美將以「開、懷、大、笑」為題，聯手最強「嚎哮排演」，準備在展演廳「大鬧一場」！生動的喜劇表演與振奮人心的主題曲樂音，復刻經典動畫名場面，讓您一次滿足所有想像！本次演出，狂美交響管樂團一口氣演繹《我推的孩子》《葬送的芙莉蓮》《間諜家家酒》《鬼滅之刃》《咒術迴戰》《精靈寶可夢》《航海王》《幽遊白書》《七龍珠》等多部時下大小觀眾最夯的卡通動畫主題曲，超陣容限定之作，相邀前來闔家歡，等你一起聲聲入魂、秒秒沸騰！<br />
+    <br />
+    <img alt="cover" src="/userfiles/5003/images/1018%E7%8B%82%E7%BE%8E%E3%80%8A%E5%8D%A1%E9%80%9A%E5%8B%95%E7%95%AB%E8%B7%A8%E4%B8%96%E4%BB%A3%E3%80%8B%E4%BA%A4%E9%9F%BF%E9%9F%B3%E6%A8%82%E6%9C%83-%E6%96%B0%E7%AB%B9%E5%B8%82_%E9%9B%BB%E5%AD%90%E7%9C%8B%E6%9D%BF_0828ctm.jpg" style="width: 99%; height: auto; padding: 3px;" title="cover" /><br />
+    <br />
+    售票OPENTIX兩廳院文化生活400/600/800/1000/1200/1500/1800/2200元<br />
+    【優惠方案】<br />
+    青年指定席優惠價300元；青年自由席、65歲以上長者、身障者及陪同者1人5折(入場時請出示有效證件)；教育推廣票75折(限18歲以下本人使用，加入狂美Line官方帳號取得優惠代碼<a href="https://line.me/R/ti/p/%40conbello2017">https://line.me/R/ti/p/%40conbello2017</a>)；新竹市文化局演藝廳會員9折，更多優惠請詳售票網。<br />
+    &nbsp;</div>
     </div>
     </div>
   posterdate: '20251002'
@@ -1052,7 +1089,7 @@
   liaisontel: 03-325-1180
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '106'
+  readnumber: '135'
   subjectid: '4,41'
   subjectclass: "[400]教育文化,[440]文化藝術"
   administationid: '13,337,1536'
@@ -1094,14 +1131,14 @@
     relateurl: https://www.opentix.life/event/1918206078046486529
     relatename: "售票連結\t"
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   - serno: '202510020002'
     detailno: 2
     relateurl: https://www.facebook.com/dongda17/posts/pfbid02sgGd1h4Nj1wJnaFYxdsjBMBjFNaKHXTPH6mjGVv9vncKqfEBkkQGP9e3i93M9NaLl
     relatename: "因目前新竹市文化局演藝廳周邊工程施作，進館動線和周邊停車資訊請詳見風城演藝公告。\t"
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202509170001'
@@ -1129,7 +1166,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '108'
+  readnumber: '111'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -1184,7 +1221,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '82'
+  readnumber: '92'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -1244,7 +1281,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '74'
+  readnumber: '82'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -1285,33 +1322,19 @@
   subject: 2025 ⁕*⁎ 與幸福相遇♥～♥將婚教育活動⁎ * ⁕10/26(日)9:00～16:00，即日起開放報名！
   detailcontent: |
     <div class="zbox">
-    <div class="main-a_01">
-    <div class="main-a_03">&lt;好字為之&gt;取自好自為之的雙關意涵，探討文字的弦外之音外，也探究文字於當代的角色和意義。<br />
-    好自為之的典故來自&lt;淮南子，主術訓&gt;，原文為:君人者不任能好自為之，則智日困而自負其責也。<br />
-    AI科技興起後，從文字的載體，傳播方式到產出的主體都被改變，一切更快速的時代，權力的集中到釋放都在不同層面顯現。<br />
-    好自為之於當代的語境與意涵已有所不同，我們現在到底身處於哪個好自為之的時代呢</div>
-    </div>
-    </div>
-  subjectclass: "[400]教育文化"
-  serviceclass: "[9Z0]其他"
-  voice: |-
-    <好字為之>取自好自為之的雙關意涵，探討文字的弦外之音外，也探究文字於當代的角色和意義。
-    好自為之的典故來自<准南子，主術訓>，原文為:君人者不任能好自為之，則智日困而自負其責也。
-    AI科技興起後，從文字的載體，傳播方式到產出的主體都被改變，一切更快速的時代，權力的集中到釋放都在不同層面顯現。
-    好自為之於當代的語境與意涵已有所不同，我們現在到底身處於哪個好自為之的時代呢
-  hostunit: 新竹市文化局
-  activitysdate: '202511081000'
-  activityedate: '202601181800'
-  activityplace: 241藝術空間
-- pubunitname: 文化局
-  subject: "[展覽][演藝廳A、B展區]世界展望會世界兒童人權日公益畫展"
-  detailcontent: |
-    <div class="zbox">
-    <div class="main-a_01">
-    <div class="main-a_03">為響應 11 月 20 日「世界兒童人權日」，台灣世界展望會北區辦公室特別攜手美學王子兒童藝術與新竹在地藝術家、學校，共同舉辦【世界兒童人權日公益畫展】，展期自 11 月 12 日至 11 月 23 日，於 新竹市演藝廳展覽空間 盛大展出。<br />
-    本次展覽以「愛與關懷、希望與未來」為核心，邀請綠菓幼兒園、梅花國小繪畫班等學校師生，與藝術家攜手完成 八幅大型畫布作品；並展出 500 幅 A4 童/同心作品拼接而成的大型藝術牆，展現孩子們以純真筆觸描繪的夢想與盼望。此外，也特別呈現「米羅藝術共創」成果，讓觀者透過藝術感受孩子的心聲。<br />
-    世界展望會長期致力於守護兒童權益，透過資助計畫、教育關懷、急難救助等服務，幫助弱勢孩子有機會安心就學、健康成長。本次公益畫展不僅是藝術交流，更是孩子們發聲的平台，邀請社會大眾以行動回應，支持更多需要幫助的兒童。<br />
-    誠摯邀請您蒞臨展覽現場，一同走進孩子的創作世界。讓我們透過藝術傳遞善意與愛，為孩子們的未來點亮希望。<br />
+    <div class="main-a_13" style="padding:5px"><img alt="⁕*⁎ 2025 與幸福相遇♥～♥將婚教育活動⁎ * ⁕" src="/userfiles/7204/images/114%E5%B0%87%E5%A9%9ADM.jpg" style="width: 100%; height: auto; padding: 3px;" title="⁕*⁎ 2025 與幸福相遇♥～♥將婚教育活動⁎ * ⁕" /><br />
+    <img alt="⁕*⁎ 2025 與幸福相遇♥～♥將婚教育活動⁎ * ⁕" src="/userfiles/7204/images/114%E5%B0%87%E5%A9%9ADM%20(2).png" style="width: 100%; height: auto; padding: 3px;" title="⁕*⁎ 2025 與幸福相遇♥～♥將婚教育活動⁎ * ⁕" /><br />
+    ⁕*⁎ 2025 與幸福相遇 &hearts;～&hearts; 將婚教育活動⁎ * ⁕<br />
+    | 主題1：遇見幸福、幸福家庭願景建立、愛情存款 |<br />
+    | 主題2：就是喜歡這樣的你、家務分工及家庭理財、單雙向溝通、Yes,I Do!承諾幸福 |<br />
+    ♡活動日期►10/26(日)9:00～16:00<br />
+    ♡活動對象►本市聯合婚禮新人及將婚情侶<br />
+    ♡活動地點►國賓飯店10F聯誼廳<br />
+    ♡報名網址►<a href="https://reurl.cc/2QGKyv" title="https://reurl.cc/2QGKyv">https://reurl.cc/2QGKyv</a><br />
+    ♡洽詢專線►03-5325885#103<br />
+    ⁕*⁎活動當天停車免費，請於9:00-9:30報到～⁎ *⁕<br />
+    #將婚教育 #幸福相遇 #承諾幸福<br />
+    <br />
     &nbsp;</div>
     </div>
   posterdate: '20250925'
@@ -1321,7 +1344,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '106'
+  readnumber: '119'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -1470,7 +1493,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '127'
+  readnumber: '130'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -1535,7 +1558,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '189'
+  readnumber: '190'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -1598,7 +1621,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '89'
+  readnumber: '92'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -1641,21 +1664,21 @@
     relateurl: http://https://www.tsos.org.tw/bulletin/show/878
     relatename: 活動訊息網頁
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   - serno: '202509250001'
     detailno: 2
     relateurl: http://https://register.enthuse.com/ps/event/CycleAroundtheGlobe2025
     relatename: 里程登錄
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   - serno: '202509250001'
     detailno: 3
     relateurl: http://www.facebook.com/tspc520
     relatename: 珍愛生命打氣網
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202509170002'
@@ -1749,7 +1772,7 @@
   liaisontel: 03-5324900分機206
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1100'
+  readnumber: '1105'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '1167'
@@ -1788,7 +1811,7 @@
     relateurl: https://www.beclass.com/rid=30500b4688f92c6b9b39
     relatename: 報名網址
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202508180001'
@@ -1822,7 +1845,7 @@
   liaisontel: 03-5324900 分機113
   liaisonfax: 021226@ems.hccg.gov.tw
   liaisonemail: ''
-  readnumber: '689'
+  readnumber: '697'
   subjectid: '85'
   subjectclass: "[880]就業職訓"
   administationid: '1178'
@@ -1912,7 +1935,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '668'
+  readnumber: '671'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -1980,7 +2003,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '563'
+  readnumber: '567'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -2044,7 +2067,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '667'
+  readnumber: '671'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -2124,7 +2147,7 @@
   liaisontel: 03-5324900分機807
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '148'
+  readnumber: '155'
   subjectid: '8'
   subjectclass: "[800]衛生福利勞動"
   administationid: '1178'
@@ -2193,7 +2216,7 @@
   liaisontel: 03-5324900*802
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '397'
+  readnumber: '401'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '231'
@@ -2232,7 +2255,7 @@
     relateurl: https://reurl.cc/3Mk4Y9
     relatename: 報名網址
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202509120002'
@@ -2257,7 +2280,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '312'
+  readnumber: '325'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -2344,7 +2367,7 @@
   liaisontel: 03-5324900 *202
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '277'
+  readnumber: '279'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '219,222'
@@ -2383,7 +2406,7 @@
     relateurl: https://reurl.cc/RkL5VD
     relatename: 線上報名網址
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202509110001'
@@ -2404,7 +2427,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '69'
+  readnumber: '70'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -2459,7 +2482,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '132'
+  readnumber: '135'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -2510,7 +2533,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '135'
+  readnumber: '136'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -2561,7 +2584,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '124'
+  readnumber: '128'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -2658,100 +2681,6 @@
   filedatalist: []
   resourcedatalist: []
   mapdatalist: []
-- serno: '202508280002'
-  pubunitdn: OU=4317,OU=4300,OU=hsinchu,DC=hccg,DC=local
-  pubunitname: 心理健康科
-  subject: 心光行動
-  detailcontent: |
-    <div class="zbox">
-    <div class="main-a_01">
-    <div class="main-a_03">一、心光電影院<br />
-    活動時間：114年9月19日（五），18:00&ndash;20:40<br />
-    活動地點：新竹市影像博物館一樓（新竹市東區中正路65號）<br />
-    主辦單位：新竹市衛生局、新竹市社區心理衛生中心<br />
-    協辦單位：新竹市文化局<br />
-    活動對象：一般民眾<br />
-    聯絡電話：03-5355191#541 高小姐<br />
-    &nbsp;<br />
-    二、心光工作坊<br />
-    活動時間：114年09月25日（四），14:00&ndash;17:00<br />
-    114年10月17日（五），14:00&ndash;17:00<br />
-    活動地點：新竹市衛生社福大樓婦女館&ndash;婦女加油站<br />
-    （新竹市北區中央路241號8樓）<br />
-    主辦單位：新竹市衛生局、新竹市社區心理衛生中心<br />
-    活動對象：一般民眾<br />
-    聯絡電話：03-5355191#543 張小姐<br />
-    <br />
-    報名表單連結： https://forms.gle/xz3Rt3QDKxhEKiVh8<br />
-    &nbsp;</div>
-    </div>
-    </div>
-  posterdate: '20250828'
-  closedate: '20251017'
-  startusing: '0'
-  liaisonper: ''
-  liaisontel: ''
-  liaisonfax: ''
-  liaisonemail: ''
-  readnumber: '156'
-  subjectid: '1'
-  subjectclass: "[100]內政及國土"
-  administationid: '1'
-  administationclass: "[100]內政及國土安全"
-  serviceid: '18'
-  serviceclass: "[I00]公共資訊"
-  languagetype: chinese
-  copyright: ''
-  voice: 心光行動
-  hostunit: ''
-  jointunit: ''
-  invite: ''
-  activitysdate: '202508270000'
-  activityedate: '202510172359'
-  activityplace: 新竹市影像博物館一樓、新竹市衛生社福大樓婦女館–婦女加油站
-  activitydateremark: ''
-  posterdatalist:
-  - serno: '202508280002'
-    detailno: 1
-    mserno: '201601300017'
-    msernoname: 活動訊息
-    websitedn: ou=hcchb,ou=ap_root,o=hccg,c=tw
-    websitename: 衛生局
-    websiteexam: "Y"
-    websiteexamdate: '2025-08-29'
-    websiteexamname: 6buD5a2Q5piA
-    istop: "N"
-    topdate: ''
-    datasort: 9999999
-    examineemail: '1'
-    examineexplain: ''
-  filedatalist:
-  - serno: '202508280002'
-    detailno: 1
-    flag: pic
-    clientfile: 心光行動-海報v3.jpg
-    serverfile: 202508281048220.jpg
-    expfile: 海報
-    downloadpath: https://www.hccg.gov.tw/uploaddowndoc?file=activity/202508281048220.jpg&filedisplay=心光行動-海報v3.jpg&flag=pic
-    downloadpdfpath: ''
-    downloadodfpath: ''
-    filesize: '519816'
-    readnumber: 'null'
-    datasort: 9999999
-  - serno: '202508280002'
-    detailno: 2
-    flag: pic
-    clientfile: 心健月報名QRcode.jpg
-    serverfile: 202508281048221.jpg
-    expfile: QR
-    downloadpath: https://www.hccg.gov.tw/uploaddowndoc?file=activity/202508281048221.jpg&filedisplay=心健月報名QRcode.jpg&flag=pic
-    downloadpdfpath: ''
-    downloadodfpath: ''
-    filesize: '8690'
-    readnumber: 'null'
-    datasort: 9999999
-  resourcedatalist: []
-  mapdatalist: []
 - serno: '202508280001'
   pubunitdn: OU=4317,OU=4300,OU=hsinchu,DC=hccg,DC=local
   pubunitname: 心理健康科
@@ -2791,7 +2720,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '380'
+  readnumber: '382'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -2867,7 +2796,7 @@
     relateurl: http://https://forms.gle/xz3Rt3QDKxhEKiVh8
     relatename: 報名網址
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202506160002'
@@ -2892,7 +2821,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '292'
+  readnumber: '296'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -2969,7 +2898,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '387'
+  readnumber: '388'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -3040,7 +2969,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '380'
+  readnumber: '384'
   subjectid: '4,41'
   subjectclass: "[400]教育文化,[440]文化藝術"
   administationid: '13'
@@ -3109,7 +3038,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '928'
+  readnumber: '930'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -3215,7 +3144,7 @@
   liaisontel: 03-5324900分機211
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '801'
+  readnumber: '813'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '1163,1165'
@@ -3338,7 +3267,7 @@
   liaisontel: 03-5324900分機201
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '628'
+  readnumber: '634'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '1165'
@@ -3377,7 +3306,7 @@
     relateurl: https://reurl.cc/VW4XyQ
     relatename: 報名網址
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202507300002'
@@ -3400,7 +3329,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '372'
+  readnumber: '378'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3459,7 +3388,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '254'
+  readnumber: '256'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3555,7 +3484,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '426'
+  readnumber: '431'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3636,7 +3565,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '740'
+  readnumber: '743'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3695,7 +3624,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '127'
+  readnumber: '129'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -3831,7 +3760,7 @@
     relateurl: http://：https://reurl.cc/QadRb2
     relatename: 報名連結
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202507160001'
@@ -3851,7 +3780,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '111'
+  readnumber: '112'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3908,7 +3837,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1303'
+  readnumber: '1307'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -3977,7 +3906,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1579'
+  readnumber: '1581'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -4053,7 +3982,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1061'
+  readnumber: '1063'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -4132,7 +4061,7 @@
     relateurl: https://www.instagram.com/enlightening_gate_official?igsh=MWkydTNla20wOXFicA==
     relatename: 藝術家帳號
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202505120001'
@@ -4163,7 +4092,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1163'
+  readnumber: '1166'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -4232,7 +4161,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '80'
+  readnumber: '81'
   subjectid: '6'
   subjectclass: "[600]交通建設"
   administationid: '8'
@@ -4353,7 +4282,7 @@
   liaisontel: 03-5324900分機211
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1182'
+  readnumber: '1188'
   subjectid: '83,86'
   subjectclass: "[860]勞動行政,[890]勞健保"
   administationid: '1163,1165,1169'
@@ -4449,7 +4378,7 @@
   liaisontel: 03-5324900分機202
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1198'
+  readnumber: '1205'
   subjectid: '8'
   subjectclass: "[800]衛生福利勞動"
   administationid: '18'
@@ -4491,7 +4420,7 @@
     relateurl: https://forms.gle/XNueAvjvm7wjy5Lo8
     relatename: 114年度勞動基準法令研習會報名網址
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202507090001'
@@ -4561,7 +4490,7 @@
   liaisontel: 03-5324900分機211
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1073'
+  readnumber: '1084'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '1163,1165'
@@ -4774,7 +4703,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '407'
+  readnumber: '413'
   subjectid: '8'
   subjectclass: "[800]衛生福利勞動"
   administationid: '9'
@@ -4843,7 +4772,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '296'
+  readnumber: '302'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '9'
@@ -4908,7 +4837,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '345'
+  readnumber: '350'
   subjectid: '85'
   subjectclass: "[880]就業職訓"
   administationid: '1177,1180,1183'
@@ -4985,7 +4914,7 @@
     relateurl: https://forms.gle/mjNxiPjsgBujqqjt9
     relatename: 新住民咖啡茶飲西點實務班報名表
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202506260001'
@@ -5004,7 +4933,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '307'
+  readnumber: '314'
   subjectid: '82,85'
   subjectclass: "[850]社會福利,[880]就業職訓"
   administationid: '9,1177,1180,1183,1184'
@@ -5081,7 +5010,7 @@
     relateurl: https://forms.gle/mjNxiPjsgBujqqjt9
     relatename: 新住民辦公室軟體與網路行銷課程報名
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202506040002'
@@ -5114,7 +5043,7 @@
   liaisontel: 03-5324900分機201
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '907'
+  readnumber: '915'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '1165'
@@ -5153,7 +5082,7 @@
     relateurl: https://reurl.cc/OY369r
     relatename: '報名網址 https://reurl.cc/OY369r '
     target: "Y"
-    readnumber: 
+    readnumber:
     datasort: 9999999
   mapdatalist: []
 - serno: '202505120002'
@@ -5176,7 +5105,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '756'
+  readnumber: '757'
   subjectid: '9'
   subjectclass: "[900]綜合行政"
   administationid: '13'
@@ -5322,7 +5251,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '745'
+  readnumber: '749'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -5385,7 +5314,7 @@
   liaisontel: 03-5324900#113
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '269'
+  readnumber: '273'
   subjectid: '85'
   subjectclass: "[880]就業職訓"
   administationid: '1178'
@@ -5448,7 +5377,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '172'
+  readnumber: '173'
   subjectid: '11'
   subjectclass: "[120]戶政"
   administationid: '493'
@@ -5513,7 +5442,7 @@
   liaisontel: 03-5319756-243
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '366'
+  readnumber: '371'
   subjectid: '41'
   subjectclass: "[440]文化藝術"
   administationid: '13'
@@ -5667,7 +5596,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '569'
+  readnumber: '571'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -5855,7 +5784,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1283'
+  readnumber: '1290'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -5957,7 +5886,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1228'
+  readnumber: '1230'
   subjectid: '4,41'
   subjectclass: "[400]教育文化,[440]文化藝術"
   administationid: '13'
@@ -6134,7 +6063,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1430'
+  readnumber: '1433'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -6214,7 +6143,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '254'
+  readnumber: '257'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -6361,7 +6290,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '344'
+  readnumber: '346'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -6413,7 +6342,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '604'
+  readnumber: '606'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -6465,7 +6394,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '360'
+  readnumber: '361'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -6517,7 +6446,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '212'
+  readnumber: '215'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -6637,7 +6566,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '871'
+  readnumber: '875'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -6805,7 +6734,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1365'
+  readnumber: '1367'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13,1535'
@@ -6983,7 +6912,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '189'
+  readnumber: '190'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -7114,7 +7043,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '2123'
+  readnumber: '2128'
   subjectid: '9'
   subjectclass: "[900]綜合行政"
   administationid: '6'
@@ -7222,7 +7151,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '660'
+  readnumber: '662'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -7310,7 +7239,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '950'
+  readnumber: '952'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -7402,7 +7331,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1965'
+  readnumber: '1969'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -7471,7 +7400,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1284'
+  readnumber: '1287'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
