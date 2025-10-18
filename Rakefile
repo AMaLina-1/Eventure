@@ -3,7 +3,7 @@
 require 'rake/testtask'
 require 'fileutils'
 
-CODE = 'lib/'
+CODE = 'app/**/*.rb'
 CASSETTE_DIR = 'spec/fixtures/cassettes'
 
 task :default do
@@ -21,7 +21,7 @@ task :respec do
 end
 
 desc 'Run web app'
-task :run do 
+task :run do
   sh 'bundle exec puma'
 end
 
