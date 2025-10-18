@@ -23,10 +23,10 @@ gem 'rubocop'
 gem 'rake'
 
 # Validation
-gem 'dry-struct',
-gem 'dry-types,'
+gem 'dry-types'
+gem 'dry-struct'
 
  # Web Application
- gem 'puma', '~> 5.0'
+ gem 'puma', '~> 6.4'
  gem 'roda', '~> 3.0'
  gem 'slim', '~> 4.0'
