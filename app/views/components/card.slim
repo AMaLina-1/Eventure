@@ -1,6 +1,11 @@
 //- Component: card
 .card.h-100
-  .card-body
-    h5.card-title = card[:name] || card['name'] || '未命名'
-    p.card-text = card[:description] || card['description'] || ''
-    == render('components/btn_card', locals: { card: card }, layout: nil)
+	.card-body
+		- title = card.respond_to?(:subject) ? card.subject : (card.is_a?(Hash) ? (card[:subject] || card['subject'] || '未命名') : '未命名')
+		h5.card-title = title
+		- start = card.respond_to?(:start_time) ? (card.start_time && card.start_time.respond_to?(:strftime) ? card.start_time.strftime('%Y-%m-%d %H:%M') : (card.start_time ? card.start_time.to_s : '')) : (card.is_a?(Hash) ? (card[:start_time] || card['start_time'] || '') : '')
+		p.card-text.text-muted = "活動日期：#{start}"
+		- place = card.respond_to?(:place) ? card.place : (card.is_a?(Hash) ? (card[:place] || card['place'] || '') : '')
+		p.card-text.text-muted = "活動地點：#{place}"
+
+		== render('components/btn_card', locals: { card: card }, layout: nil)

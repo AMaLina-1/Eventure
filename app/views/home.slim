@@ -1,9 +1,32 @@
 //- Two Bootstrap cards: one normal, one placeholder (skeleton)
+.row.mb-2
+
+- local_cards = defined?(cards) && cards ? Array(cards) : (defined?(@cards) && @cards ? Array(@cards) : [])
+
+.row.mb-2
+	script type="application/json" id="cards-data"
+		= Array(local_cards).map { |c| c.respond_to?(:subject) ? c.subject : c[:subject] }.to_json
+	.col-12
+		.input-group
+			input.form-control#user_count type="number" min="1" placeholder="輸入頁數"
+			button.btn.btn-primary#user_submit type="button" 送出
+
+	script
+		| (function () {
+		|   var submit = document.getElementById('user_submit');
+		|   var input = document.getElementById('user_count');
+		|   if (!submit) return;
+		|   submit.addEventListener('click', function () {
+		|     var n = parseInt(input && input.value, 10) || 1;
+		|     window.location.search = '?page=' + encodeURIComponent(n);
+		|   });
+		| })();
+
 
 .row
-		- Array(@cards).each do |c|
-			.col-md-4.mb-4
-				== render('components/card', locals: { card: c }, layout: nil)
+	- local_cards.each do |card|
+		.col-md-4.mb-4
+			== render('components/card', locals: { card: card }, layout: nil)
 
 /loading中的樣式
 	.col-md-6
