@@ -22,13 +22,26 @@ module Eventure
       routing.on 'activities' do
         routing.is do
           routing.get do
-            mapper = Eventure::Hccg::ActivityMapper.new
-            activities = mapper.find(10).map(&:to_entity)
-
-            view 'home', locals: { cards: activities, total_pages: 1, current_page: 1 }
+            view 'home', locals: view_locals
           end
         end
       end
+    end
+
+    def view_locals
+      {
+        cards: activities,
+        total_pages: 1,
+        current_page: 1
+      }
+    end
+
+    def activities
+      @activities ||= service.fetch_activities(100)
+    end
+
+    def service
+      @service ||= Eventure::Services::ActivityService.new
     end
   end
 end
