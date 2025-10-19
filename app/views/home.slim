@@ -1,9 +1,10 @@
 //- Two Bootstrap cards: one normal, one placeholder (skeleton)
 
 .row
-		- Array(@cards).each do |c|
-			.col-md-4.mb-4
-				== render('components/card', locals: { card: c }, layout: nil)
+	- local_cards = defined?(cards) && cards ? Array(cards) : (defined?(@cards) && @cards ? Array(@cards) : [])
+	- local_cards.each do |card|
+		.col-md-4.mb-4
+			== render('components/card', locals: { card: card }, layout: nil)
 
 /loading中的樣式
 	.col-md-6
