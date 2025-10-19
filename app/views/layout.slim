@@ -52,21 +52,22 @@ html
           .modal-body
             .row
               // 左側：城市清單
+
               .col-md-5
                 h6 城市
                 ul.list-group#cityList
                   - Array(@cities || []).each do |c|
                     li.list-group-item
                       label.form-check
-                        input.form-check-input type="radio" name="filter_city" value="#{c}" id= "city-#{c}"
+                        input.form-check-input type="radio" name="filter_city" value="#{$c}" id= "city-#{c}"
                         span.form-check-label= c
 
               // 右側：活動標籤清單（複選）
-              .col-md-7
+              .col-md-4
                 h6 活動標籤
-                // 以堆疊的 checkbox 呈現（checklist）
                 #tagList
-                  - Array(@tags || []).each do |t|
+                  - local_tags = defined?(tags) && tags ? Array(tags) : (defined?(@tags) && @tags ? Array(@tags) : [])
+                  - local_tags.each do |t|
                     .form-check.mb-2
                       input.form-check-input type="checkbox" name="filter_tag" value="#{t}" id="tag-#{t}"
                       label.form-check-label for="tag-#{t}"= t
