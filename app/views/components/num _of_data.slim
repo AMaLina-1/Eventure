@@ -1,9 +1,0 @@
-//- Component: num_of_data
-//- Expects locals: subjects (Array of strings)
-ul.list-group
-	- subs = defined?(subjects) && subjects ? Array(subjects) : []
-	- if subs.empty?
-		li.list-group-item.text-muted 沒有可顯示的活動
-	- else
-		- subs.each do |s|
-			li.list-group-item = s
