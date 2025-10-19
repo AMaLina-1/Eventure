@@ -23,7 +23,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '10'
+  readnumber: '11'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -79,7 +79,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1007'
+  readnumber: '1011'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -155,7 +155,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '602'
+  readnumber: '610'
   subjectid: '9'
   subjectclass: "[900]綜合行政"
   administationid: '13'
@@ -226,7 +226,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '436'
+  readnumber: '439'
   subjectid: '9'
   subjectclass: "[900]綜合行政"
   administationid: '13'
@@ -292,7 +292,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '20'
+  readnumber: '23'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -356,7 +356,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '27'
+  readnumber: '31'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -426,7 +426,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '42'
+  readnumber: '45'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -491,7 +491,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '39'
+  readnumber: '43'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -558,7 +558,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '49'
+  readnumber: '54'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -630,7 +630,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '52'
+  readnumber: '63'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -724,7 +724,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '53'
+  readnumber: '64'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -938,7 +938,7 @@
   liaisontel: 03-5715131#73103
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '55'
+  readnumber: '59'
   subjectid: '4,41'
   subjectclass: "[400]教育文化,[440]文化藝術"
   administationid: '13,337,1536'
@@ -1012,7 +1012,7 @@
   liaisontel: '0975-586-483'
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '59'
+  readnumber: '67'
   subjectid: '4,41'
   subjectclass: "[400]教育文化,[440]文化藝術"
   administationid: '13,337,1536'
@@ -1089,7 +1089,7 @@
   liaisontel: 03-325-1180
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '135'
+  readnumber: '141'
   subjectid: '4,41'
   subjectclass: "[400]教育文化,[440]文化藝術"
   administationid: '13,337,1536'
@@ -1221,7 +1221,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '92'
+  readnumber: '95'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -1344,7 +1344,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '119'
+  readnumber: '120'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -1493,7 +1493,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '130'
+  readnumber: '132'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -1558,7 +1558,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '190'
+  readnumber: '191'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -1621,7 +1621,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '92'
+  readnumber: '93'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -1772,7 +1772,7 @@
   liaisontel: 03-5324900分機206
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1105'
+  readnumber: '1108'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '1167'
@@ -1845,7 +1845,7 @@
   liaisontel: 03-5324900 分機113
   liaisonfax: 021226@ems.hccg.gov.tw
   liaisonemail: ''
-  readnumber: '697'
+  readnumber: '701'
   subjectid: '85'
   subjectclass: "[880]就業職訓"
   administationid: '1178'
@@ -1935,7 +1935,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '671'
+  readnumber: '673'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -2003,7 +2003,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '567'
+  readnumber: '570'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -2067,7 +2067,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '671'
+  readnumber: '673'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -2147,7 +2147,7 @@
   liaisontel: 03-5324900分機807
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '155'
+  readnumber: '158'
   subjectid: '8'
   subjectclass: "[800]衛生福利勞動"
   administationid: '1178'
@@ -2216,7 +2216,7 @@
   liaisontel: 03-5324900*802
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '401'
+  readnumber: '402'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '231'
@@ -2280,7 +2280,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '325'
+  readnumber: '330'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -2367,7 +2367,7 @@
   liaisontel: 03-5324900 *202
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '279'
+  readnumber: '282'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '219,222'
@@ -2427,7 +2427,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '70'
+  readnumber: '71'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -2458,61 +2458,6 @@
     topdate: ''
     datasort: 9999999
     examineemail: '1'
-    examineexplain: ''
-  filedatalist: []
-  resourcedatalist: []
-  mapdatalist: []
-- serno: '202509090002'
-  pubunitdn: OU=7200,OU=hsinchu,DC=hccg,DC=local
-  pubunitname: 家庭教育中心
-  subject: "2025與青春期孩子談心\U0001F495～家長工作坊10/18(六)上午9:30～15:30，計1天課程，即日起報開放報名～額滿為止"
-  detailcontent: "<div class=\"zbox\">\n<div class=\"main-a_13\" style=\"padding:5px\"><img
-    alt=\"2025與青春期孩子談心\U0001F495～家長工作坊10/18(六)上午9:30～15:30，計1天課程。\" src=\"/userfiles/7204/images/1141018%E8%88%87%E9%9D%92%E6%98%A5%E6%9C%9F%E5%AD%A9%E5%AD%90%E8%AB%87%E5%BF%83-%E5%AE%B6%E9%95%B7%E5%B7%A5%E4%BD%9C%E5%9D%8A.jpg\"
-    style=\"width: 100%; height: auto; padding: 3px;\" title=\"2025與青春期孩子談心\U0001F495～家長工作坊10/18(六)上午9:30～15:30，計1天課程。\"
-    /><br />\n2025與青春期孩子談心\U0001F495～家長工作坊<br />\n▋ 課 程 資 訊 ▋<br />\n✨營造適當的界線～在鼓勵與原則中取得平衡<br
-    />\n✨與青少年孩子談～自我保護/人際...<br />\n&loz;課程時間▸10/18(六)上午9:30～15:30，計1天課程。<br />\n&loz;課程講師▸吳貴君心理師<br
-    />\n&loz;參與對象▸新竹市國高中家長&lt;額滿為止&gt;<br />\n&loz;上課地點▸新竹市家庭教育中心(中央路241號-衛福大樓7F)<br
-    />\n▋報名網址▸<a href=\"https://reurl.cc/ax7Dl9\" title=\"https://reurl.cc/ax7Dl9\">https://reurl.cc/ax7Dl9</a><br
-    />\n▋洽詢專線▸(03)5325885#9<br />\n-<br />\n【報名小叮嚀】：<br />\n1.為促進學習效果，本活動請全程參與；另為使資源普及，報名後如無法全程參與，請來電告知，以便開放候補！<br
-    />\n2.課程時間可能依實際情況調整之。</div>\n</div>\n"
-  posterdate: '20250909'
-  closedate: '20251018'
-  startusing: '0'
-  liaisonper: ''
-  liaisontel: ''
-  liaisonfax: ''
-  liaisonemail: ''
-  readnumber: '135'
-  subjectid: '38'
-  subjectclass: "[410]教育"
-  administationid: '849'
-  administationclass: "[553]家庭教育"
-  serviceid: '58'
-  serviceclass: "[7Z0]其他"
-  languagetype: chinese
-  copyright: ''
-  voice: "2025與青春期孩子談心\U0001F495～家長工作坊10/18(六)上午9:30～15:30，計1天課程，即日起報開放報名～額滿為止"
-  hostunit: ''
-  jointunit: ''
-  invite: ''
-  activitysdate: '202510180930'
-  activityedate: '202510181530'
-  activityplace: 新竹市家庭教育中心(中央路241號-衛福大樓7F)
-  activitydateremark: ''
-  posterdatalist:
-  - serno: '202509090002'
-    detailno: 1
-    mserno: '201604260001'
-    msernoname: 活動訊息
-    websitedn: ou=family,ou=ap_root,o=hccg,c=tw
-    websitename: 家庭教育中心
-    websiteexam: "Y"
-    websiteexamdate: ''
-    websiteexamname: ''
-    istop: "Y"
-    topdate: '2025-10-18'
-    datasort: 9999999
-    examineemail: '0'
     examineexplain: ''
   filedatalist: []
   resourcedatalist: []
@@ -2584,7 +2529,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '128'
+  readnumber: '130'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -2644,7 +2589,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '88'
+  readnumber: '89'
   subjectid: '38'
   subjectclass: "[410]教育"
   administationid: '849'
@@ -2720,7 +2665,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '382'
+  readnumber: '383'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -2821,7 +2766,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '296'
+  readnumber: '297'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -2898,7 +2843,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '388'
+  readnumber: '389'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -3144,7 +3089,7 @@
   liaisontel: 03-5324900分機211
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '813'
+  readnumber: '816'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '1163,1165'
@@ -3267,7 +3212,7 @@
   liaisontel: 03-5324900分機201
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '634'
+  readnumber: '636'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '1165'
@@ -3329,7 +3274,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '378'
+  readnumber: '380'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3388,7 +3333,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '256'
+  readnumber: '258'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3484,7 +3429,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '431'
+  readnumber: '433'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3565,7 +3510,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '743'
+  readnumber: '745'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3701,7 +3646,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '187'
+  readnumber: '188'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3780,7 +3725,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '112'
+  readnumber: '113'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3837,7 +3782,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1307'
+  readnumber: '1310'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -3982,7 +3927,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1063'
+  readnumber: '1065'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -4092,7 +4037,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1166'
+  readnumber: '1170'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -4282,7 +4227,7 @@
   liaisontel: 03-5324900分機211
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1188'
+  readnumber: '1190'
   subjectid: '83,86'
   subjectclass: "[860]勞動行政,[890]勞健保"
   administationid: '1163,1165,1169'
@@ -4378,7 +4323,7 @@
   liaisontel: 03-5324900分機202
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1205'
+  readnumber: '1206'
   subjectid: '8'
   subjectclass: "[800]衛生福利勞動"
   administationid: '18'
@@ -4490,7 +4435,7 @@
   liaisontel: 03-5324900分機211
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1084'
+  readnumber: '1086'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '1163,1165'
@@ -4703,7 +4648,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '413'
+  readnumber: '414'
   subjectid: '8'
   subjectclass: "[800]衛生福利勞動"
   administationid: '9'
@@ -4772,7 +4717,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '302'
+  readnumber: '303'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '9'
@@ -4837,7 +4782,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '350'
+  readnumber: '351'
   subjectid: '85'
   subjectclass: "[880]就業職訓"
   administationid: '1177,1180,1183'
@@ -5043,7 +4988,7 @@
   liaisontel: 03-5324900分機201
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '915'
+  readnumber: '920'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '1165'
@@ -5190,7 +5135,7 @@
   liaisontel: 06-2353535#5115
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '175'
+  readnumber: '177'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -5251,7 +5196,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '749'
+  readnumber: '754'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -5314,7 +5259,7 @@
   liaisontel: 03-5324900#113
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '273'
+  readnumber: '274'
   subjectid: '85'
   subjectclass: "[880]就業職訓"
   administationid: '1178'
@@ -5514,7 +5459,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1149'
+  readnumber: '1152'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -5693,7 +5638,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1132'
+  readnumber: '1135'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -5784,7 +5729,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1290'
+  readnumber: '1293'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -5886,7 +5831,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1230'
+  readnumber: '1232'
   subjectid: '4,41'
   subjectclass: "[400]教育文化,[440]文化藝術"
   administationid: '13'
@@ -5969,7 +5914,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1193'
+  readnumber: '1194'
   subjectid: '4,41'
   subjectclass: "[400]教育文化,[440]文化藝術"
   administationid: '13'
@@ -6063,7 +6008,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1433'
+  readnumber: '1435'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -6143,7 +6088,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '257'
+  readnumber: '258'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -6290,7 +6235,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '346'
+  readnumber: '347'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -6342,7 +6287,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '606'
+  readnumber: '607'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -6394,7 +6339,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '361'
+  readnumber: '362'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -6566,7 +6511,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '875'
+  readnumber: '877'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -6734,7 +6679,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1367'
+  readnumber: '1370'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13,1535'
@@ -7043,7 +6988,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '2128'
+  readnumber: '2130'
   subjectid: '9'
   subjectclass: "[900]綜合行政"
   administationid: '6'
@@ -7239,7 +7184,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '952'
+  readnumber: '953'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -7331,7 +7276,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1969'
+  readnumber: '1970'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -7400,7 +7345,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1287'
+  readnumber: '1289'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -7448,5 +7393,52 @@
     filesize: '852055'
     readnumber: 'null'
     datasort: 9999999
+  resourcedatalist: []
+  mapdatalist: []
+- serno: '202504070001'
+  pubunitdn: OU=5000,OU=hsinchu,DC=hccg,DC=local
+  pubunitname: 文化局
+  subject: 測試
+  detailcontent: ''
+  posterdate: '20250407'
+  closedate: ''
+  startusing: '1'
+  liaisonper: ''
+  liaisontel: ''
+  liaisonfax: ''
+  liaisonemail: ''
+  readnumber: '144'
+  subjectid: '1'
+  subjectclass: "[100]內政及國土"
+  administationid: '1'
+  administationclass: "[100]內政及國土安全"
+  serviceid: '1'
+  serviceclass: "[100]生育保健"
+  languagetype: chinese
+  copyright: ''
+  voice: 測試
+  hostunit: ''
+  jointunit: ''
+  invite: ''
+  activitysdate: '202504281345'
+  activityedate: '202504301345'
+  activityplace: 測試
+  activitydateremark: ''
+  posterdatalist:
+  - serno: '202504070001'
+    detailno: 1
+    mserno: '201809060002'
+    msernoname: 風livehouse
+    websitedn: ou=hcccb,ou=ap_root,o=hccg,c=tw
+    websitename: 文化局
+    websiteexam: "Y"
+    websiteexamdate: ''
+    websiteexamname: ''
+    istop: "N"
+    topdate: ''
+    datasort: 9999999
+    examineemail: '1'
+    examineexplain: ''
+  filedatalist: []
   resourcedatalist: []
   mapdatalist: []
