@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'spec_helper'
-require_relative '../app/models/gateways/hccg_api'
+require_relative '../lib/hccg/hccg_activity'
 
 describe 'Tests hccg activity API library' do
   VCR.configure do |c|
@@ -21,25 +21,19 @@ describe 'Tests hccg activity API library' do
 
   describe 'Error raising' do
     it 'SAD: should raise exception on invalid top argument' do
-      error = _(
-        proc {
-          @data = Eventure::Hccg::ActivityMapper
-                 .new(Eventure::Hccg::Api)
-                 .find(101)
-        }
-      ).must_raise RuntimeError
+      error = _(proc { @data = Eventure::ActivityExport.new.run(top: 101) }).must_raise RuntimeError
       _(error.message).must_equal 'Request Failed'
     end
   end
 
   describe 'Data content and structure' do
     before do
-      @data = Eventure::Hccg::ActivityMapper.new(Eventure::Hccg::Api).find(TOP)
+      @data = Eventure::ActivityExport.new.run(top: TOP)
     end
 
     it 'HAPPY: should provide correct pubunitname' do
       idx = rand(@data.length)
-      _(@data[idx].publish_unit).must_equal CORRECT[idx]['pubunitname']
+      _(@data[idx].pubunitname).must_equal CORRECT[idx]['pubunitname']
     end
 
     it 'HAPPY: should provide correct subject' do
@@ -50,13 +44,13 @@ describe 'Tests hccg activity API library' do
 
     it 'HAPPY: should provide correct detailcontent' do
       idx = rand(@data.length)
-      _(@data[idx].details).must_equal CORRECT[idx]['detailcontent']
+      _(@data[idx].detailcontent).must_equal CORRECT[idx]['detailcontent']
     end
 
     it 'HAPPY: should provide correct classes' do
       idx = rand(@data.length)
-      _(@data[idx].subject_class).must_be_kind_of Array
-      _(@data[idx].service_class).must_equal(CORRECT[idx]['serviceclass'].split(',').map { |item| item.split(']')[1] })
+      _(@data[idx].subjectclass).must_match(/\[[A-Za-z0-9]+\].+/)
+      _(@data[idx].serviceclass).must_match(/\[[A-Za-z0-9]+\].+/)
     end
 
     it 'HAPPY: should provide correct voice' do
@@ -66,19 +60,21 @@ describe 'Tests hccg activity API library' do
 
     it 'HAPPY: should provide correct unit' do
       idx = rand(@data.length)
-      _(@data[idx].host).wont_be_nil
-      _(@data[idx].host).must_equal CORRECT[idx]['hostunit']
+      _(@data[idx].hostunit).wont_be_nil
+      _(@data[idx].hostunit).must_equal CORRECT[idx]['hostunit']
     end
 
     it 'HAPPY: should provide correct date' do
       idx = rand(@data.length)
-      _(@data[idx].start_time).must_be_kind_of DateTime
-      _(@data[idx].end_time).must_be :>=, @data[idx].start_time
+      _(@data[idx].activitysdate).must_be_kind_of String
+      _(@data[idx].activitysdate).must_equal CORRECT[idx]['activitysdate']
+      _(@data[idx].activityedate).must_equal CORRECT[idx]['activityedate']
+      _(@data[idx].activityedate).must_be :>=, @data[idx].activitysdate
     end
 
     it 'HAPPY: should provide correct place' do
       idx = rand(@data.length)
-      _(@data[idx].place).must_equal CORRECT[idx]['activityplace']
+      _(@data[idx].activityplace).must_equal CORRECT[idx]['activityplace']
     end
 
     it 'HAPPY: should provide correct number of data' do
