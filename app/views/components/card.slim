@@ -1,0 +1,8 @@
+//- Component: card
+.card.h-100
+	.card-body
+		- title = card.respond_to?(:subject) ? card.subject : (card.is_a?(Hash) ? (card[:subject] || card['subject'] || '未命名') : '未命名')
+		h5.card-title = title
+		- desc = card.respond_to?(:details) ? card.details : (card.is_a?(Hash) ? (card[:description] || card['description'] || card[:details] || card['details'] || '') : '')
+		p.card-text = desc.to_s
+		== render('components/btn_card', locals: { card: card }, layout: nil)

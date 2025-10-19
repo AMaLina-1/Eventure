@@ -3,7 +3,7 @@
 require 'rake/testtask'
 require 'fileutils'
 
-CODE = 'lib/'
+CODE = 'app/**/*.rb'
 CASSETTE_DIR = 'spec/fixtures/cassettes'
 
 task :default do
@@ -13,6 +13,21 @@ end
 desc 'Run all tests'
 task :spec do
   sh 'ruby spec/hccg_api_spec.rb'
+end
+
+desc 'Keep rerunning tests when files change'
+task :respec do
+  sh "rerun -c 'rake spec' --ignore 'coverage/*'"
+end
+
+desc 'Run web app'
+task :run do
+  sh 'bundle exec puma'
+end
+
+desc 'Keep rerunning web app when files change'
+task :rerun do
+  sh "rerun -c --ignore 'coverage/*' -- bundle exec puma"
 end
 
 namespace :vcr do

@@ -1,0 +1,29 @@
+
+//- Component: btn_card
+//- Expects local: card
+
+// 詳細按鈕（使用 Bootstrap modal，每張卡一個）
+- id_suffix = card.respond_to?(:id) ? card.id : (card.is_a?(Hash) ? (card[:id] || card['id']) : card.object_id)
+
+a.btn.btn-primary href="#" role="button" data-bs-toggle="modal" data-bs-target=("#cardModal-#{id_suffix}") 詳細
+
+// Modal（每張卡一個，id 使用 card id 或 object_id 作為後綴）
+.modal.fade id=("cardModal-#{id_suffix}") tabindex="-1" aria-labelledby=("cardModalLabel-#{id_suffix}") aria-hidden="true"
+	.modal-dialog
+		.modal-content
+			.modal-header
+				- title = card.respond_to?(:subject) ? card.subject : (card.is_a?(Hash) ? (card[:subject] || card['subject'] || '未命名') : '未命名')
+				h5.modal-title id=("cardModalLabel-#{id_suffix}") = title
+				button.btn-close type="button" data-bs-dismiss="modal" aria-label="Close"
+			.modal-body
+				- text = card.respond_to?(:voice) ? card.voice : (card.is_a?(Hash) ? (card[:voice] || card['voice'] || '') : '')
+				- text = text.to_s.strip
+				- if text.empty?
+					p.text-muted (無詳細描述)
+				- else
+					p.card-text = text
+				- link = card.respond_to?(:link) ? card.link : (card.is_a?(Hash) ? (card[:link] || card['link']) : '#')
+				- if link && !link.to_s.empty?
+					a href=link target="_blank"= link
+			.modal-footer
+				button.btn.btn-secondary type="button" data-bs-dismiss="modal" 關閉
