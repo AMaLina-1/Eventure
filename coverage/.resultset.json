@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/mnt/c/Users/user/Documents/Eventure/require_app.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/require_app.rb": {
         "lines": [
           null,
           null,
@@ -12,7 +12,7 @@
           null
         ]
       },
-      "/mnt/c/Users/user/Documents/Eventure/config/environment.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/config/environment.rb": {
         "lines": [
           null,
           null,
@@ -22,9 +22,9 @@
           1,
           1,
           1,
-          0,
-          null,
           1,
+          null,
+          0,
           null,
           null,
           null,
@@ -32,7 +32,7 @@
           null
         ]
       },
-      "/mnt/c/Users/user/Documents/Eventure/app/controller/activities_controller.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/controller/activities_controller.rb": {
         "lines": [
           null,
           null,
@@ -52,7 +52,7 @@
           null
         ]
       },
-      "/mnt/c/Users/user/Documents/Eventure/app/controller/app.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/controller/app.rb": {
         "lines": [
           null,
           null,
@@ -103,7 +103,7 @@
           null
         ]
       },
-      "/mnt/c/Users/user/Documents/Eventure/app/models/entities/activity.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/models/entities/activity.rb": {
         "lines": [
           null,
           null,
@@ -132,7 +132,7 @@
           null
         ]
       },
-      "/mnt/c/Users/user/Documents/Eventure/app/models/gateways/hccg_api.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/models/gateways/hccg_api.rb": {
         "lines": [
           null,
           null,
@@ -167,7 +167,7 @@
           null
         ]
       },
-      "/mnt/c/Users/user/Documents/Eventure/app/models/generate_yaml.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/models/generate_yaml.rb": {
         "lines": [
           null,
           null,
@@ -179,7 +179,7 @@
           1
         ]
       },
-      "/mnt/c/Users/user/Documents/Eventure/app/models/mappers/activity_mapper.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/models/mappers/activity_mapper.rb": {
         "lines": [
           null,
           null,
@@ -272,6 +272,6 @@
         ]
       }
     },
-    "timestamp": 1760865949
+    "timestamp": 1760883816
   }
 }

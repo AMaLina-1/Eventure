@@ -79,7 +79,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1011'
+  readnumber: '1012'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -155,7 +155,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '610'
+  readnumber: '611'
   subjectid: '9'
   subjectclass: "[900]綜合行政"
   administationid: '13'
@@ -226,7 +226,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '439'
+  readnumber: '441'
   subjectid: '9'
   subjectclass: "[900]綜合行政"
   administationid: '13'
@@ -426,7 +426,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '45'
+  readnumber: '48'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -491,7 +491,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '43'
+  readnumber: '47'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -558,7 +558,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '54'
+  readnumber: '56'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -630,7 +630,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '63'
+  readnumber: '66'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -724,7 +724,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '64'
+  readnumber: '69'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -857,7 +857,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '303'
+  readnumber: '305'
   subjectid: '8'
   subjectclass: "[800]衛生福利勞動"
   administationid: '226'
@@ -908,7 +908,7 @@
     relateurl: https://reurl.cc/Rkylon
     relatename: 宣導會線上報名連結
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202510090001'
@@ -938,7 +938,7 @@
   liaisontel: 03-5715131#73103
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '59'
+  readnumber: '61'
   subjectid: '4,41'
   subjectclass: "[400]教育文化,[440]文化藝術"
   administationid: '13,337,1536'
@@ -980,7 +980,7 @@
     relateurl: " https://www.facebook.com/dongda17/posts/pfbid02sgGd1h4Nj1wJnaFYxdsjBMBjFNaKHXTPH6mjGVv9vncKqfEBkkQGP9e3i93M9NaLl"
     relatename: "因目前新竹市文化局演藝廳周邊工程施作，進館動線和周邊停車資訊請詳見風城演藝公告。\t"
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202510070001'
@@ -1054,14 +1054,14 @@
     relateurl: https://www.opentix.life/event/1966385494787158017
     relatename: 售票連結
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   - serno: '202510070001'
     detailno: 2
     relateurl: https://www.facebook.com/dongda17/posts/pfbid02sgGd1h4Nj1wJnaFYxdsjBMBjFNaKHXTPH6mjGVv9vncKqfEBkkQGP9e3i93M9NaLl
     relatename: "因目前新竹市文化局演藝廳周邊工程施作，進館動線和周邊停車資訊請詳見風城演藝公告。\t"
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202510020002'
@@ -1131,14 +1131,14 @@
     relateurl: https://www.opentix.life/event/1918206078046486529
     relatename: "售票連結\t"
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   - serno: '202510020002'
     detailno: 2
     relateurl: https://www.facebook.com/dongda17/posts/pfbid02sgGd1h4Nj1wJnaFYxdsjBMBjFNaKHXTPH6mjGVv9vncKqfEBkkQGP9e3i93M9NaLl
     relatename: "因目前新竹市文化局演藝廳周邊工程施作，進館動線和周邊停車資訊請詳見風城演藝公告。\t"
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202509170001'
@@ -1664,21 +1664,21 @@
     relateurl: http://https://www.tsos.org.tw/bulletin/show/878
     relatename: 活動訊息網頁
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   - serno: '202509250001'
     detailno: 2
     relateurl: http://https://register.enthuse.com/ps/event/CycleAroundtheGlobe2025
     relatename: 里程登錄
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   - serno: '202509250001'
     detailno: 3
     relateurl: http://www.facebook.com/tspc520
     relatename: 珍愛生命打氣網
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202509170002'
@@ -1811,7 +1811,7 @@
     relateurl: https://www.beclass.com/rid=30500b4688f92c6b9b39
     relatename: 報名網址
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202508180001'
@@ -2003,7 +2003,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '570'
+  readnumber: '572'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -2067,7 +2067,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '673'
+  readnumber: '674'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -2147,7 +2147,7 @@
   liaisontel: 03-5324900分機807
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '158'
+  readnumber: '159'
   subjectid: '8'
   subjectclass: "[800]衛生福利勞動"
   administationid: '1178'
@@ -2216,7 +2216,7 @@
   liaisontel: 03-5324900*802
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '402'
+  readnumber: '403'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '231'
@@ -2255,7 +2255,7 @@
     relateurl: https://reurl.cc/3Mk4Y9
     relatename: 報名網址
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202509120002'
@@ -2367,7 +2367,7 @@
   liaisontel: 03-5324900 *202
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '282'
+  readnumber: '284'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '219,222'
@@ -2406,7 +2406,7 @@
     relateurl: https://reurl.cc/RkL5VD
     relatename: 線上報名網址
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202509110001'
@@ -2741,7 +2741,7 @@
     relateurl: http://https://forms.gle/xz3Rt3QDKxhEKiVh8
     relatename: 報名網址
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202506160002'
@@ -2766,7 +2766,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '297'
+  readnumber: '298'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -2983,7 +2983,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '930'
+  readnumber: '931'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -3089,7 +3089,7 @@
   liaisontel: 03-5324900分機211
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '816'
+  readnumber: '818'
   subjectid: '83'
   subjectclass: "[860]勞動行政"
   administationid: '1163,1165'
@@ -3251,7 +3251,7 @@
     relateurl: https://reurl.cc/VW4XyQ
     relatename: 報名網址
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202507300002'
@@ -3274,7 +3274,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '380'
+  readnumber: '382'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3333,7 +3333,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '258'
+  readnumber: '259'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3429,7 +3429,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '433'
+  readnumber: '434'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3510,7 +3510,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '745'
+  readnumber: '748'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3705,7 +3705,7 @@
     relateurl: http://：https://reurl.cc/QadRb2
     relatename: 報名連結
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202507160001'
@@ -3725,7 +3725,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '113'
+  readnumber: '115'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -3782,7 +3782,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1310'
+  readnumber: '1312'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -3927,7 +3927,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1065'
+  readnumber: '1067'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '1535'
@@ -4006,7 +4006,7 @@
     relateurl: https://www.instagram.com/enlightening_gate_official?igsh=MWkydTNla20wOXFicA==
     relatename: 藝術家帳號
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202505120001'
@@ -4037,7 +4037,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1170'
+  readnumber: '1171'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -4227,7 +4227,7 @@
   liaisontel: 03-5324900分機211
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1190'
+  readnumber: '1191'
   subjectid: '83,86'
   subjectclass: "[860]勞動行政,[890]勞健保"
   administationid: '1163,1165,1169'
@@ -4365,7 +4365,7 @@
     relateurl: https://forms.gle/XNueAvjvm7wjy5Lo8
     relatename: 114年度勞動基準法令研習會報名網址
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202507090001'
@@ -4859,7 +4859,7 @@
     relateurl: https://forms.gle/mjNxiPjsgBujqqjt9
     relatename: 新住民咖啡茶飲西點實務班報名表
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202506260001'
@@ -4955,7 +4955,7 @@
     relateurl: https://forms.gle/mjNxiPjsgBujqqjt9
     relatename: 新住民辦公室軟體與網路行銷課程報名
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202506040002'
@@ -5027,7 +5027,7 @@
     relateurl: https://reurl.cc/OY369r
     relatename: '報名網址 https://reurl.cc/OY369r '
     target: "Y"
-    readnumber:
+    readnumber: 
     datasort: 9999999
   mapdatalist: []
 - serno: '202505120002'
@@ -5050,7 +5050,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '757'
+  readnumber: '758'
   subjectid: '9'
   subjectclass: "[900]綜合行政"
   administationid: '13'
@@ -5322,7 +5322,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '173'
+  readnumber: '174'
   subjectid: '11'
   subjectclass: "[120]戶政"
   administationid: '493'
@@ -5387,7 +5387,7 @@
   liaisontel: 03-5319756-243
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '371'
+  readnumber: '372'
   subjectid: '41'
   subjectclass: "[440]文化藝術"
   administationid: '13'
@@ -5541,7 +5541,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '571'
+  readnumber: '572'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -5638,7 +5638,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1135'
+  readnumber: '1137'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -5729,7 +5729,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1293'
+  readnumber: '1294'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -5831,7 +5831,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1232'
+  readnumber: '1233'
   subjectid: '4,41'
   subjectclass: "[400]教育文化,[440]文化藝術"
   administationid: '13'
@@ -5914,7 +5914,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1194'
+  readnumber: '1195'
   subjectid: '4,41'
   subjectclass: "[400]教育文化,[440]文化藝術"
   administationid: '13'
@@ -6008,7 +6008,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1435'
+  readnumber: '1437'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -6391,7 +6391,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '215'
+  readnumber: '216'
   subjectid: '1'
   subjectclass: "[100]內政及國土"
   administationid: '1'
@@ -6679,7 +6679,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1370'
+  readnumber: '1371'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13,1535'
@@ -6988,7 +6988,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '2130'
+  readnumber: '2131'
   subjectid: '9'
   subjectclass: "[900]綜合行政"
   administationid: '6'
@@ -7096,7 +7096,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '662'
+  readnumber: '663'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
@@ -7345,7 +7345,7 @@
   liaisontel: ''
   liaisonfax: ''
   liaisonemail: ''
-  readnumber: '1289'
+  readnumber: '1290'
   subjectid: '4'
   subjectclass: "[400]教育文化"
   administationid: '13'
