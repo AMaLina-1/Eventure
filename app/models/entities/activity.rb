@@ -9,17 +9,18 @@ module Eventure
     class Activity < Dry::Struct
       include Dry.Types
 
-      attribute :publish_unit,  Strict::String
-      attribute :subject,       Strict::String
-      attribute :details,       Strict::String
-      attribute :subject_class, Strict::Array.of(String)
-      attribute :service_class, Strict::Array.of(String)
-      attribute :voice,         Strict::String
-      attribute :host,          Strict::String
-      attribute :join,          String.optional
-      attribute :start_time,    Strict::DateTime
-      attribute :end_time,      Strict::DateTime
-      attribute :place,         Strict::String
+      attribute :serno,        Strict::Integer
+      attribute :name,         Strict::String
+      attribute :detail,       Strict::String
+      attribute :start_time,   Strict::DateTime
+      attribute :end_time,     Strict::DateTime
+      attribute :location,     Strict::String
+      attribute :voice,        Strict::String
+      attribute :organizer,    Strict::String
+      attribute :tag_id,       Strict::Array.of(Integer)
+      attribute :tag,          Strict::Array.of(String)
+      attribute :relate_url,   Strict::Array.of(String)
+      attribute :relate_title, Strict::Array.of(String)
     end
   end
 end

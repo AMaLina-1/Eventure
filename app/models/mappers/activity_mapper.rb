@@ -28,47 +28,28 @@ module Eventure
 
         def to_entity
           Eventure::Entity::Activity.new(
-            publish_unit:,
-            subject:,
-            details:,
-            subject_class:, service_class:,
-            voice:,
-            host:, join:,
+            serno:,
+            name:,
+            detail:,
             start_time:, end_time:,
-            place:
+            location:,
+            voice:,
+            organizer:,
+            tag_id:, tag:,
+            relate_url:, relate_title:
           )
         end
 
-        def publish_unit
-          @data['pubunitname']
+        def serno
+          @data['serno']
         end
 
-        def subject
+        def name
           @data['subject']
         end
 
-        def details
+        def detail
           @data['detailcontent']
-        end
-
-        def subject_class
-          @data['subjectclass'].split(',').map { |item| item.split(']')[1] }
-        end
-
-        def service_class
-          @data['serviceclass'].split(',').map { |item| item.split(']')[1] }
-        end
-
-        def voice
-          @data['voice']
-        end
-
-        def host
-          @data['hostunit']
-        end
-
-        def join
-          @data['joinunit']
         end
 
         def start_time
@@ -79,8 +60,32 @@ module Eventure
           DateTime.strptime(@data['activityedate'], '%Y%m%d%H%M')
         end
 
-        def place
+        def location
           @data['activityplace']
+        end
+
+        def voice
+          @data['voice']
+        end
+
+        def organizer
+          @data['hostunit']
+        end
+
+        def tag_id
+          @data['subjectid'].split(',')
+        end
+
+        def tag
+          @data['subjectclass'].split(',').map { |item| item.split(']')[1] }
+        end
+
+        def relate_url
+          @data['resourcedatalist'].map { |resourcedata| resourcedata['relateurl'] }
+        end
+
+        def relate_title
+          @data['resourcedatalist'].map { |resourcedata| resourcedata['relatename'] }
         end
       end
     end
