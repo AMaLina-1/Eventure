@@ -2,6 +2,8 @@
 
 require 'roda'
 require 'yaml'
+require 'figaro'
+require 'sequel'
 
 module Eventure
   class App < Roda # rubocop:disable Style/Documentation
