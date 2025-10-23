@@ -1,38 +1,50 @@
 {
   "RSpec": {
     "coverage": {
-      "/mnt/c/Users/user/Documents/Eventure/require_app.rb": {
+      "/home/linda67890/projects/Eventure/require_app.rb": {
         "lines": [
           null,
           null,
           1,
           1,
-          7,
+          6,
           null,
           null
         ]
       },
-      "/mnt/c/Users/user/Documents/Eventure/config/environment.rb": {
+      "/home/linda67890/projects/Eventure/config/environment.rb": {
         "lines": [
           null,
           null,
           1,
           1,
+          1,
+          1,
           null,
           1,
           1,
           1,
-          0,
+          null,
           null,
           1,
           null,
           null,
           null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
           null,
           null
         ]
       },
-      "/mnt/c/Users/user/Documents/Eventure/app/controller/activities_controller.rb": {
+      "/home/linda67890/projects/Eventure/app/controller/activities_controller.rb": {
         "lines": [
           null,
           null,
@@ -47,63 +59,63 @@
           1,
           0,
           null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/mnt/c/Users/user/Documents/Eventure/app/controller/app.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
           null,
           null,
           null
         ]
       },
-      "/mnt/c/Users/user/Documents/Eventure/app/models/entities/activity.rb": {
+      "/home/linda67890/projects/Eventure/app/controller/app.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/linda67890/projects/Eventure/app/models/entities/activity.rb": {
         "lines": [
           null,
           null,
@@ -132,7 +144,7 @@
           null
         ]
       },
-      "/mnt/c/Users/user/Documents/Eventure/app/models/gateways/hccg_api.rb": {
+      "/home/linda67890/projects/Eventure/app/models/gateways/hccg_api.rb": {
         "lines": [
           null,
           null,
@@ -145,41 +157,29 @@
           null,
           null,
           1,
-          11,
-          null,
-          null,
-          null,
-          1,
-          11,
-          null,
-          null,
-          null,
-          1,
-          1,
-          11,
-          11,
-          null,
           10,
           null,
           null,
           null,
+          1,
+          10,
+          null,
+          null,
+          null,
+          1,
+          1,
+          10,
+          10,
+          null,
+          9,
+          null,
+          null,
+          null,
           null,
           null
         ]
       },
-      "/mnt/c/Users/user/Documents/Eventure/app/models/generate_yaml.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1
-        ]
-      },
-      "/mnt/c/Users/user/Documents/Eventure/app/models/mappers/activity_mapper.rb": {
+      "/home/linda67890/projects/Eventure/app/models/mappers/activity_mapper.rb": {
         "lines": [
           null,
           null,
@@ -272,6 +272,6 @@
         ]
       }
     },
-    "timestamp": 1760865949
+    "timestamp": 1761212725
   }
 }
