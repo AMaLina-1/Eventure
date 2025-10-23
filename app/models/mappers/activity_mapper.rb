@@ -28,8 +28,7 @@ module Eventure
 
         def to_entity
           Eventure::Entity::Activity.new(
-            serno:,
-            name:,
+            serno:, name:,
             detail:,
             start_time:, end_time:,
             location:,
@@ -41,7 +40,7 @@ module Eventure
         end
 
         def serno
-          @data['serno']
+          Integer(@data['serno'])
         end
 
         def name
@@ -73,7 +72,7 @@ module Eventure
         end
 
         def tag_id
-          @data['subjectid'].split(',')
+          @data['subjectid'].split(',').map { |id| Integer(id) }
         end
 
         def tag

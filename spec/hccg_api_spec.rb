@@ -39,7 +39,8 @@ describe 'Tests hccg activity API library' do
 
     it 'HAPPY: should provide correct information' do
       idx = rand(@data.length)
-      _(@data[idx].serno).must_equal CORRECT[idx]['serno']
+      _(@data[idx].serno).must_be_kind_of Integer
+      _(@data[idx].serno).must_equal CORRECT[idx]['serno'].to_i
       _(@data[idx].name).wont_be_nil
       _(@data[idx].name).must_equal CORRECT[idx]['subject']
       _(@data[idx].detail).must_equal CORRECT[idx]['detailcontent']
@@ -55,10 +56,10 @@ describe 'Tests hccg activity API library' do
       _(@data[idx].end_time).must_be :>=, @data[idx].start_time
     end
 
-
     it 'HAPPY: should provide correct tags' do
       idx = rand(@data.length)
       _(@data[idx].tag_id).must_be_kind_of Array
+      _(@data[idx].tag_id[0]).must_be_kind_of Integer
       _(@data[idx].tag).must_equal(CORRECT[idx]['subjectclass'].split(',').map { |item| item.split(']')[1] })
     end
 
@@ -68,7 +69,8 @@ describe 'Tests hccg activity API library' do
       _(@data[idx].relate_title.length).must_equal CORRECT[idx]['resourcedatalist'].length
     end
 
-    it 'HAPPY: should provide correct number of data' do
+    it 'HAPPY: should provide correct datatype and length' do
+      _(@data[0].to_entity).must_be_kind_of Eventure::Entity::Activity
       _(@data.length).must_equal TOP
     end
   end
