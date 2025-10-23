@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'sequel'
+
 module Eventure
   module Database
     # Object-Relational Mapper for Activities
@@ -9,10 +11,10 @@ module Eventure
                    join_table: :activities_tags,
                    left_key: :activity_id, right_key: :tag_id
 
-      many_to_many :relateurls,
-                   class: :'Eventure::Database::RelateurlOrm',
-                   join_table: :activities_relateurls,
-                   left_key: :activities_id, right_key: :relate_url_id
+      many_to_many :relatedata,
+                   class: :'Eventure::Database::RelatedataOrm',
+                   join_table: :activities_relatedata,
+                   left_key: :activity_id, right_key: :relatedata_id
     end
   end
 end

@@ -73,7 +73,7 @@ namespace :db do
     require_relative 'config/environment' # load config info
     require_relative 'spec/helpers/database_helper'
 
-    def app = CodePraise::App
+    def app = Eventure::App
   end
 
   desc 'Run migrations'
@@ -108,5 +108,5 @@ end
 
 desc 'Run application console'
 task :console do
-  sh 'pry -r ./load_all'
+  sh 'pry -r ./load_all.rb'
 end
