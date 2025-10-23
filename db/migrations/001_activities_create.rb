@@ -5,7 +5,7 @@ Sequel.migration do # rubocop:disable Metrics/BlockLength
     create_table(:activities) do
       primary_key :activity_id
       Integer :serno, null: true
-      String :event, null: false
+      String :name, null: false
       Text :detail, null: true
       DateTime :start_time, null: true
       DateTime :end_time, null: true
