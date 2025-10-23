@@ -1,22 +1,18 @@
 # frozen_string_literal: true
 
-require_relative 'spec_helper'
+require_relative 'helper/spec_helper'
+require_relative 'helper/vcr_helper'
 require_relative '../app/models/gateways/hccg_api'
 
 describe 'Tests hccg activity API library' do
-  VCR.configure do |c|
-    c.cassette_library_dir = CASSETTES_FOLDER
-    c.hook_into :webmock
-  end
+  VcrHelper.setup_vcr
 
   before do
-    VCR.insert_cassette CASSETTE_FILE,
-                        record: :new_episodes,
-                        match_requests_on: %i[method uri headers]
+    VcrHelper.configure_vcr_for_hccg
   end
 
   after do
-    VCR.eject_cassette
+    VcrHelper.eject_vcr
   end
 
   describe 'Error raising' do
@@ -56,7 +52,9 @@ describe 'Tests hccg activity API library' do
     it 'HAPPY: should provide correct classes' do
       idx = rand(@data.length)
       _(@data[idx].subject_class).must_be_kind_of Array
-      _(@data[idx].service_class).must_equal(CORRECT[idx]['serviceclass'].split(',').map { |item| item.split(']')[1] })
+      _(@data[idx].service_class).must_equal(CORRECT[idx]['serviceclass'].split(',').map do |item|
+        item.split(']')[1]
+      end)
     end
 
     it 'HAPPY: should provide correct voice' do

@@ -15,12 +15,7 @@ module VcrHelper
     end
   end
 
-  def self.configure_vcr_for_github
-    # VCR.configure do |c|
-    #   c.filter_sensitive_data('<GITHUB_TOKEN>') { GITHUB_TOKEN }
-    #   c.filter_sensitive_data('<GITHUB_TOKEN_ESC>') { CGI.escape(GITHUB_TOKEN) }
-    # end
-
+  def self.configure_vcr_for_hccg
     VCR.insert_cassette(
       CASSETTE_FILE,
       record: :new_episodes,
