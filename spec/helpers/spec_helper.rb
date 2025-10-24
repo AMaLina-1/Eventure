@@ -17,6 +17,9 @@ require 'webmock'
 require_relative '../../require_app'
 require_app
 
+require_relative 'database_helper'
+require_relative 'vcr_helper'
+
 TOP = 10
 CONFIG = YAML.safe_load_file('config/secrets.yml') if File.exist?('config/secrets.yml')
 # API_KEY = CONFIG['API_KEY']

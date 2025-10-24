@@ -11,8 +11,9 @@ task :default do
 end
 
 desc 'Run all tests'
-task :spec do
-  sh 'ruby spec/hccg_api_spec.rb'
+Rake::TestTask.new(:spec) do |t|
+  t.pattern = 'spec/**/*_spec.rb'
+  t.warning = false
 end
 
 desc 'Keep rerunning tests when files change'

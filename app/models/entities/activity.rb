@@ -1,26 +1,50 @@
 # frozen_string_literal: true
 
-require 'dry-types'
 require 'dry-struct'
+require 'dry-types'
+require_relative 'tag'
+require_relative 'relatedata'
 
 module Eventure
   module Entity
-    # Domain entity for an activity
     class Activity < Dry::Struct
       include Dry.Types
 
-      attribute :serno,        Strict::Integer
-      attribute :name,         Strict::String
-      attribute :detail,       Strict::String
-      attribute :start_time,   Strict::DateTime
-      attribute :end_time,     Strict::DateTime
-      attribute :location,     Strict::String
-      attribute :voice,        Strict::String
-      attribute :organizer,    Strict::String
-      attribute :tag_id,       Strict::Array.of(Integer)
-      attribute :tag,          Strict::Array.of(String)
-      attribute :relate_url,   Strict::Array.of(String)
-      attribute :relate_title, Strict::Array.of(String)
+      attribute :serno,        Integer
+      attribute :name,         String
+      attribute :detail,       String
+      attribute :start_time,   DateTime
+      attribute :end_time,     DateTime
+      attribute :location,     String
+      attribute :voice,        String
+      attribute :organizer,    String
+      attribute :tag_ids,      Array.of(Integer).default([].freeze)
+      attribute :tags,         Array.of(Tag).default([].freeze)
+      attribute :related_data, Array.of(RelatedData).default([].freeze)
+
+      def to_entity
+        self
+      end
+      
+      def relate_data
+        related_data
+      end
+
+      def tag_id
+        tag_ids
+      end
+
+      def tag
+        tags.map(&:tag)
+      end
+
+      def relate_url
+        related_data.map(&:relate_url)
+      end
+
+      def relate_title
+        related_data.map(&:relate_title)
+      end
     end
   end
 end

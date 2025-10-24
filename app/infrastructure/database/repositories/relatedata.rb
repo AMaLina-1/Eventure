@@ -20,8 +20,8 @@ module Eventure
       def self.rebuild_entity(db_record)
         return nil unless db_record
 
-        Entity::Relatedata.new(
-          id: db_record.id,
+        Entity::RelatedData.new(
+          relatedata_id: db_record.id,
           relate_title: db_record.relate_title,
           relate_url: db_record.relate_url
         )

@@ -14,7 +14,7 @@ module Eventure
       ENTITY_REPOSITORY = {
         Eventure::Entity::Activity => Activities,
         Eventure::Entity::Tag => Tags,
-        Eventure::Entity::Relatedata => Relatedata
+        Eventure::Entity::RelatedData => Relatedata
       }.freeze
 
       def self.klass(entity_klass)

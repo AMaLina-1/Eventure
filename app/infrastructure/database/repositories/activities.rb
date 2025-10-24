@@ -13,11 +13,13 @@ module Eventure
         rebuild_entity(db_record)
       end
 
-      def self.create(entity)
-        db_activity = build_activity_record(entity)
-        assign_tags(db_activity, entity.tags)
-        assign_related_data(db_activity, entity.relate_data)
-        rebuild_entity(db_activity)
+      def self.create(entities)
+        Array(entities).map do |entity|
+          db_activity = build_activity_record(entity)
+          assign_tags(db_activity, entity.tags)
+          assign_related_data(db_activity, entity.related_data)
+          rebuild_entity(db_activity)
+        end
       end
 
       def self.build_activity_record(entity)
@@ -25,8 +27,8 @@ module Eventure
           serno: entity.serno,
           name: entity.name,
           detail: entity.detail,
-          start_time: entity.start_time,
-          end_time: entity.end_time,
+          start_time: entity.start_time.new_offset(0),
+          end_time: entity.end_time.new_offset(0),
           location: entity.location,
           voice: entity.voice,
           organizer: entity.organizer
@@ -34,9 +36,15 @@ module Eventure
       end
 
       def self.assign_tags(db_activity, tags)
+        db_activity = Database::ActivityOrm.first(activity_id: db_activity.activity_id)
         tags.each do |tag|
-          db_tag = Tags.find_or_create(tag)
-          db_activity.add_tag(db_tag)
+          # Handle both Entity::Tag objects and string tags
+          tag_value = tag.is_a?(Eventure::Entity::Tag) ? tag.tag : tag
+          
+          tag_orm = Database::TagOrm.first(tag: tag_value) ||
+                    Database::TagOrm.create(tag: tag_value)
+          
+          db_activity.add_tag(tag_orm)
         end
       end
 
@@ -54,18 +62,37 @@ module Eventure
           serno: db_record.serno,
           name: db_record.name,
           detail: db_record.detail,
-          start_time: db_record.start_time,
-          end_time: db_record.end_time,
+          start_time: db_record.start_time.to_datetime, 
+          end_time: db_record.end_time.to_datetime,
           location: db_record.location,
           voice: db_record.voice,
           organizer: db_record.organizer,
+          tag_ids: rebuild_tag_ids(db_record.tags),
           tags: rebuild_tags(db_record.tags),
-          relate_data: rebuild_related_data(db_record.relatedata)
+          related_data: rebuild_related_data(db_record.relatedata)
         )
       end
 
+      def self.parse_time_with_offset(time)
+        return nil unless time
+        
+        # Convert to DateTime and create a new DateTime with +08:00 offset
+        # without changing the actual time values
+        dt = time.to_datetime
+        DateTime.new(dt.year, dt.month, dt.day, dt.hour, dt.min, dt.sec, '+08:00')
+      end
+
+      def self.rebuild_tag_ids(db_tags)
+        db_tags.map { |tag| tag.tag_id }
+      end
+
       def self.rebuild_tags(db_tags)
-        db_tags.map { |tag| Tags.rebuild_entity(tag) }
+        db_tags.map do |tag|
+          Eventure::Entity::Tag.new(
+            tag_id: tag.tag_id,
+            tag: tag.tag
+          )
+        end
       end
 
       def self.rebuild_related_data(db_related)

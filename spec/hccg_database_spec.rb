@@ -8,7 +8,7 @@ describe 'Integration Tests of Hccg API and Database' do
   VcrHelper.setup_vcr
 
   before do
-    VcrHelper.configure_vcr_for_github
+    VcrHelper.configure_vcr_for_hccg
   end
 
   after do
@@ -20,18 +20,22 @@ describe 'Integration Tests of Hccg API and Database' do
       DatabaseHelper.wipe_database
     end
 
-    it 'HAPPY: should be able to save activities from Github to database' do
-      activity = Eventure::Hccg::ActivityMapper.new(Eventure::Hccg::Api).find(TOP)
+    it 'HAPPY: should be able to save activities from Hccg to database' do
+      activity = Eventure::Hccg::ActivityMapper.new(Eventure::Hccg::Api)
+                                     .find(TOP)
+                                     .map(&:to_entity)
 
-      rebuilt = Eventure::Repository::For.entity(activity).create(activity)
+      repo = Eventure::Repository::For.entity(activity.first)
+
+      rebuilt = repo.create(activity)
 
       idx = rand(activity.length)
 
       _(rebuilt[idx].serno).must_equal(activity[idx].serno)
       _(rebuilt[idx].name).must_equal(activity[idx].name)
       _(rebuilt[idx].detail).must_equal(activity[idx].detail)
-      _(rebuilt[idx].start_time).must_equal(activity[idx].start_time)
-      _(rebuilt[idx].end_time).must_equal(activity[idx].end_time)
+      _(rebuilt[idx].start_time.to_time.utc).must_equal(activity[idx].start_time.to_time.utc)
+      _(rebuilt[idx].end_time.to_time.utc).must_equal(activity[idx].end_time.to_time.utc)
       _(rebuilt[idx].location).must_equal(activity[idx].location)
       _(rebuilt[idx].voice).must_equal(activity[idx].voice)
       _(rebuilt[idx].organizer).must_equal(activity[idx].organizer)
