@@ -37,7 +37,7 @@ module Eventure
     end
 
     def activities
-      @activities ||= service.fetch_activities(100)
+      @activities ||= Eventure::Repository::Activities.all
     end
 
     def service
