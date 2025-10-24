@@ -2,11 +2,12 @@
 
 module Eventure
   module Repository
-    class Tags 
+    # repository for tags
+    class Tags
       def self.find_or_create(entity)
-        db_record = Database::TagOrm.first(tag: entity.tag) ||
-                    Database::TagOrm.create(tag: entity.tag)
-        db_record
+        tag_value = entity.tag
+        Database::TagOrm.first(tag: tag_value) ||
+          Database::TagOrm.create(tag: tag_value)
       end
 
       def self.rebuild_entity(db_record)

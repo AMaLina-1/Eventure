@@ -9,6 +9,7 @@ require_relative 'relatedata'
 
 module Eventure
   module Repository
+    # mapping between entity and repository
     module For
       ENTITY_REPOSITORY = {
         Eventure::Entity::Activity => Activities,

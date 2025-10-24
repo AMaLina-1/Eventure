@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
+require 'dry-types'
+require 'dry-struct'
+
 module Eventure
   module Entity
-    class Tag
-      attr_accessor :id, :tag
+    # Domain entity for a tag
+    class Tag < Dry::Struct
+      include Dry.Types
 
-      def initialize(id:, tag:)
-        @id = id
-        @tag = tag
-      end
-    end 
+      attribute :id,  Strict::Integer
+      attribute :tag, Strict::String
+    end
   end
 end

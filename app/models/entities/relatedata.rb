@@ -1,15 +1,17 @@
 # frozen_string_literal: true
 
+require 'dry-types'
+require 'dry-struct'
+
 module Eventure
   module Entity
-    class Relatedata
-      attr_accessor :id, :relate_title, :relate_url
+    # Domain entity for related data
+    class Relatedata < Dry::Struct
+      include Dry.Types
 
-      def initialize(id:, relate_title:, relate_url:)
-        @id = id
-        @relate_title = relate_title
-        @relate_url = relate_url
-      end
+      attribute :id,           Strict::Integer
+      attribute :relate_title, Strict::String
+      attribute :relate_url,   Strict::String
     end
   end
 end

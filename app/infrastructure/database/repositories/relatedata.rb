@@ -2,16 +2,19 @@
 
 module Eventure
   module Repository
+    # repository for Relatedata entity
     class Relatedata
       def self.find_or_create(entity)
-        db_record = Database::RelateurlOrm.first(
-          relate_title: entity.relate_title,
-          relate_url: entity.relate_url
+        title = entity.relate_title
+        url   = entity.relate_url
+
+        Database::RelateurlOrm.first(
+          relate_title: title,
+          relate_url: url
         ) || Database::RelateurlOrm.create(
-          relate_title: entity.relate_title,
-          relate_url: entity.relate_url
+          relate_title: title,
+          relate_url: url
         )
-        db_record
       end
 
       def self.rebuild_entity(db_record)
