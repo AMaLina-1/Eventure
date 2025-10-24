@@ -27,8 +27,8 @@ module Eventure
           serno: entity.serno,
           name: entity.name,
           detail: entity.detail,
-          start_time: entity.start_time.new_offset(0),
-          end_time: entity.end_time.new_offset(0),
+          start_time: entity.start_time.to_time.utc,
+          end_time: entity.end_time.to_time.utc,
           location: entity.location,
           voice: entity.voice,
           organizer: entity.organizer
@@ -71,15 +71,6 @@ module Eventure
           tags: rebuild_tags(db_record.tags),
           related_data: rebuild_related_data(db_record.relatedata)
         )
-      end
-
-      def self.parse_time_with_offset(time)
-        return nil unless time
-        
-        # Convert to DateTime and create a new DateTime with +08:00 offset
-        # without changing the actual time values
-        dt = time.to_datetime
-        DateTime.new(dt.year, dt.month, dt.day, dt.hour, dt.min, dt.sec, '+08:00')
       end
 
       def self.rebuild_tag_ids(db_tags)

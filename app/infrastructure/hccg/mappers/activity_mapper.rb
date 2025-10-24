@@ -61,20 +61,13 @@ module Eventure
         end
 
         def start_time
-          # Parse the time string, set as Taiwan time (+08:00), then convert to UTC
-          time_str = @data['activitysdate']
-          local_time = DateTime.strptime(time_str, '%Y%m%d%H%M')
-          local_time.new_offset('+08:00').new_offset(0)  # Set as Taiwan time, then convert to UTC
+          DateTime.strptime(@data['activitysdate'], '%Y%m%d%H%M').new_offset(0)
         end
 
         def end_time
-          # Parse the time string and explicitly set it as Taiwan time (+08:00)
-          # Then convert to UTC by setting new_offset(0)
-          time_str = @data['activityedate']
-          local_time = DateTime.strptime(time_str, '%Y%m%d%H%M')
-          local_time.new_offset('+08:00').new_offset(0)  # Set as Taiwan time, then convert to UTC
+          DateTime.strptime(@data['activityedate'], '%Y%m%d%H%M').new_offset(0)
         end
-        
+
         def location
           @data['activityplace']
         end
