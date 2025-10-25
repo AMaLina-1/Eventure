@@ -66,16 +66,11 @@ module Eventure
 
         db_tags = db_record.tags
         Eventure::Entity::Activity.new(
-          serno: db_record.serno,
-          name: db_record.name,
-          detail: db_record.detail,
-          start_time: build_utc_datetime(db_record.start_time),
-          end_time: build_utc_datetime(db_record.end_time),
-          location: db_record.location,
-          voice: db_record.voice,
+          serno: db_record.serno, name: db_record.name, detail: db_record.detail,
+          start_time: build_utc_datetime(db_record.start_time), end_time: build_utc_datetime(db_record.end_time),
+          location: db_record.location, voice: db_record.voice,
           organizer: db_record.organizer,
-          tag_ids: rebuild_tag_ids(db_tags),
-          tags: rebuild_tags(db_tags),
+          tag_ids: rebuild_tag_ids(db_tags), tags: rebuild_tags(db_tags),
           relate_data: rebuild_relate_data(db_record.relatedata)
         )
       end
