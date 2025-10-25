@@ -8,10 +8,10 @@ module Eventure
         title = entity.relate_title
         url   = entity.relate_url
 
-        Database::RelateurlOrm.first(
+        Database::RelatedataOrm.first(
           relate_title: title,
           relate_url: url
-        ) || Database::RelateurlOrm.create(
+        ) || Database::RelatedataOrm.create(
           relate_title: title,
           relate_url: url
         )
