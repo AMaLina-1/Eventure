@@ -7,6 +7,7 @@ require_relative 'relatedata'
 
 module Eventure
   module Entity
+    # Domain Entity for an activity
     class Activity < Dry::Struct
       include Dry.Types
 
@@ -25,7 +26,7 @@ module Eventure
       def to_entity
         self
       end
-      
+
       def relate_data
         related_data
       end

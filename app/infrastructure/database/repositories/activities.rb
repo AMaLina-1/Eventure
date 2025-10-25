@@ -38,13 +38,18 @@ module Eventure
       def self.assign_tags(db_activity, tags)
         db_activity = Database::ActivityOrm.first(activity_id: db_activity.activity_id)
         tags.each do |tag|
-          # Handle both Entity::Tag objects and string tags
-          tag_value = tag.is_a?(Eventure::Entity::Tag) ? tag.tag : tag
-          
-          tag_orm = Database::TagOrm.first(tag: tag_value) ||
-                    Database::TagOrm.create(tag: tag_value)
-          
+          tag_orm = find_or_create_tag(tag)
           db_activity.add_tag(tag_orm)
+        end
+      end
+
+      def self.find_or_create_tag(tag)
+        if tag.is_a?(Eventure::Entity::Tag)
+          Database::TagOrm.first(tag_id: tag.tag_id) ||
+            Database::TagOrm.create(tag_id: tag.tag_id, tag: tag.tag)
+        else
+          Database::TagOrm.first(tag: tag) ||
+            Database::TagOrm.create(tag: tag)
         end
       end
 
@@ -62,8 +67,8 @@ module Eventure
           serno: db_record.serno,
           name: db_record.name,
           detail: db_record.detail,
-          start_time: db_record.start_time.to_datetime, 
-          end_time: db_record.end_time.to_datetime,
+          start_time: build_utc_datetime(db_record.start_time),
+          end_time: build_utc_datetime(db_record.end_time),
           location: db_record.location,
           voice: db_record.voice,
           organizer: db_record.organizer,
@@ -73,8 +78,19 @@ module Eventure
         )
       end
 
+      def self.build_utc_datetime(time)
+        Time.utc(
+          time.year,
+          time.month,
+          time.day,
+          time.hour,
+          time.min,
+          time.sec
+        ).to_datetime
+      end
+
       def self.rebuild_tag_ids(db_tags)
-        db_tags.map { |tag| tag.tag_id }
+        db_tags.map(&:tag_id)
       end
 
       def self.rebuild_tags(db_tags)
