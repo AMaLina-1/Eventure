@@ -33,16 +33,13 @@ module Eventure
 
         def to_entity
           Eventure::Entity::Activity.new(
-            serno: serno,
-            name: name,
+            serno: serno, name: name,
             detail: detail,
-            start_time: start_time,
-            end_time: end_time,
+            start_time: start_time, end_time: end_time,
             location: location,
             voice: voice,
             organizer: organizer,
-            tag_ids: tag_ids,
-            tags: tags,
+            tag_ids: tag_ids, tags: tags,
             relate_data: relate_data
           )
         end
