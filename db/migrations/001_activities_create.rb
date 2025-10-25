@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-Sequel.migration do # rubocop:disable Metrics/BlockLength
-  change do # rubocop:disable Metrics/BlockLength
+Sequel.migration do
+  change do
     create_table(:activities) do
       primary_key :activity_id
       Integer :serno, null: true

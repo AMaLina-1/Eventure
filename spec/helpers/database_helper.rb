@@ -3,11 +3,21 @@
 # Helper to clean database during test runs
 module DatabaseHelper
   def self.wipe_database
-    # Ignore foreign key constraints when wiping tables
-    Eventure::App.db.run('PRAGMA foreign_keys = OFF')
-    Eventure::Database::ActivityOrm.map(&:destroy)
-    Eventure::Database::TagOrm.map(&:destroy)
-    Eventure::Database::RelatedataOrm.map(&:destroy)
-    Eventure::App.db.run('PRAGMA foreign_keys = ON')
+    db = Eventure::App.db
+    db.run('PRAGMA foreign_keys = OFF')
+
+    destroy_all_tables
+
+    db.run('PRAGMA foreign_keys = ON')
+  end
+
+  def self.destroy_all_tables
+    [
+      Eventure::Database::ActivityOrm,
+      Eventure::Database::TagOrm,
+      Eventure::Database::RelatedataOrm
+    ].each do |orm|
+      orm.map(&:destroy)
+    end
   end
 end

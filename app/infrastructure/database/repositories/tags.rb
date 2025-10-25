@@ -5,7 +5,7 @@ module Eventure
     # repository for tags
     class Tags
       def self.find_or_create(entity)
-        tag_value = entity.respond_to?(:tag) ? entity.tag : entity
+        tag_value = entity.is_a?(Entity::Tag) ? entity.tag : entity
         db_record = Database::TagOrm.first(tag: tag_value) ||
                     Database::TagOrm.create(tag: tag_value)
         rebuild_entity(db_record)

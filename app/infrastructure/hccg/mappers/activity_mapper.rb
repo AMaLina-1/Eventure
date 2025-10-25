@@ -16,7 +16,6 @@ module Eventure
         @parsed_data = nil
       end
 
-      # transfer parsed json object into ActicityMapper object
       def find(top)
         @parsed_data = @gateway.parsed_json(top)
         build_entity
@@ -26,7 +25,7 @@ module Eventure
         @parsed_data.map { |line| DataMapper.new(line).to_entity }
       end
 
-      # Extracts entity elements from data structure
+      # Extracts entity elements from raw data
       class DataMapper
         def initialize(data)
           @data = data
@@ -85,19 +84,25 @@ module Eventure
         end
 
         def tags
-          @data['subjectclass'].split(',').map.with_index do |t, i|
-            Eventure::Entity::Tag.new(tag_id: tag_ids[i], tag: t.split(']')[1])
+          tag_texts = @data['subjectclass'].split(',')
+          tag_texts.map.with_index do |tag_text, index|
+            Eventure::Entity::Tag.new(
+              tag_id: tag_ids[index],
+              tag: tag_text.split(']')[1]
+            )
           end
         end
 
         def related_data
-          @data['resourcedatalist'].map do |rd|
-            Eventure::Entity::RelatedData.new(
-              relatedata_id: nil,
-              relate_title: rd['relatename'],
-              relate_url: rd['relateurl']
-            )
-          end
+          @data['resourcedatalist'].map { |related_item| self.class.build_related_data_entity(related_item) }
+        end
+
+        def self.build_related_data_entity(related_item)
+          Eventure::Entity::RelatedData.new(
+            relatedata_id: nil,
+            relate_title: related_item['relatename'],
+            relate_url: related_item['relateurl']
+          )
         end
       end
     end

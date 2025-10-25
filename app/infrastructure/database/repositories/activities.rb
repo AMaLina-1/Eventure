@@ -45,8 +45,9 @@ module Eventure
 
       def self.find_or_create_tag(tag)
         if tag.is_a?(Eventure::Entity::Tag)
-          Database::TagOrm.first(tag_id: tag.tag_id) ||
-            Database::TagOrm.create(tag_id: tag.tag_id, tag: tag.tag)
+          tag_id = tag.tag_id
+          Database::TagOrm.first(tag_id:) ||
+            Database::TagOrm.create(tag_id:, tag: tag.tag)
         else
           Database::TagOrm.first(tag: tag) ||
             Database::TagOrm.create(tag: tag)
@@ -63,6 +64,7 @@ module Eventure
       def self.rebuild_entity(db_record)
         return nil unless db_record
 
+        db_tags = db_record.tags
         Eventure::Entity::Activity.new(
           serno: db_record.serno,
           name: db_record.name,
@@ -72,8 +74,8 @@ module Eventure
           location: db_record.location,
           voice: db_record.voice,
           organizer: db_record.organizer,
-          tag_ids: rebuild_tag_ids(db_record.tags),
-          tags: rebuild_tags(db_record.tags),
+          tag_ids: rebuild_tag_ids(db_tags),
+          tags: rebuild_tags(db_tags),
           related_data: rebuild_related_data(db_record.relatedata)
         )
       end

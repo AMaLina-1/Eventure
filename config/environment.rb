@@ -6,7 +6,8 @@ require 'figaro'
 require 'sequel'
 
 module Eventure
-  class App < Roda # rubocop:disable Style/Documentation
+  # Main application class
+  class App < Roda
     plugin :environments
 
     # Environment variables setup
