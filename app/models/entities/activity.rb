@@ -21,15 +21,15 @@ module Eventure
       attribute :organizer,    String
       attribute :tag_ids,      Array.of(Integer).default([].freeze)
       attribute :tags,         Array.of(Tag).default([].freeze)
-      attribute :related_data, Array.of(RelatedData).default([].freeze)
+      attribute :relate_data, Array.of(RelateData).default([].freeze)
 
       def to_entity
         self
       end
 
-      def relate_data
-        related_data
-      end
+      # def relate_data
+      #   Eventure::Entity::Activity.relate_data
+      # end
 
       def tag_id
         tag_ids
@@ -40,11 +40,11 @@ module Eventure
       end
 
       def relate_url
-        related_data.map(&:relate_url)
+        relate_data.map(&:relate_url)
       end
 
       def relate_title
-        related_data.map(&:relate_title)
+        relate_data.map(&:relate_title)
       end
     end
   end

@@ -43,7 +43,7 @@ module Eventure
             organizer: organizer,
             tag_ids: tag_ids,
             tags: tags,
-            related_data: related_data
+            relate_data: relate_data
           )
         end
 
@@ -93,15 +93,15 @@ module Eventure
           end
         end
 
-        def related_data
-          @data['resourcedatalist'].map { |related_item| self.class.build_related_data_entity(related_item) }
+        def relate_data
+          @data['resourcedatalist'].map { |relate_item| self.class.build_relate_data_entity(relate_item) }
         end
 
-        def self.build_related_data_entity(related_item)
-          Eventure::Entity::RelatedData.new(
+        def self.build_relate_data_entity(relate_item)
+          Eventure::Entity::RelateData.new(
             relatedata_id: nil,
-            relate_title: related_item['relatename'],
-            relate_url: related_item['relateurl']
+            relate_title: relate_item['relatename'],
+            relate_url: relate_item['relateurl']
           )
         end
       end

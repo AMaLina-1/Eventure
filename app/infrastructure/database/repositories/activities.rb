@@ -17,7 +17,7 @@ module Eventure
         Array(entities).map do |entity|
           db_activity = build_activity_record(entity)
           assign_tags(db_activity, entity.tags)
-          assign_related_data(db_activity, entity.related_data)
+          assign_relate_data(db_activity, entity.relate_data)
           rebuild_entity(db_activity)
         end
       end
@@ -54,7 +54,7 @@ module Eventure
         end
       end
 
-      def self.assign_related_data(db_activity, relate_data)
+      def self.assign_relate_data(db_activity, relate_data)
         relate_data&.each do |relate|
           db_relate = Relatedata.find_or_create(relate)
           db_activity.add_relatedata(db_relate)
@@ -76,7 +76,7 @@ module Eventure
           organizer: db_record.organizer,
           tag_ids: rebuild_tag_ids(db_tags),
           tags: rebuild_tags(db_tags),
-          related_data: rebuild_related_data(db_record.relatedata)
+          relate_data: rebuild_relate_data(db_record.relatedata)
         )
       end
 
@@ -104,8 +104,8 @@ module Eventure
         end
       end
 
-      def self.rebuild_related_data(db_related)
-        db_related.map { |rel| Relatedata.rebuild_entity(rel) }
+      def self.rebuild_relate_data(db_relatedata)
+        db_relatedata.map { |rel| Relatedata.rebuild_entity(rel) }
       end
     end
   end
