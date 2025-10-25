@@ -2,6 +2,7 @@
 
 require 'rake/testtask'
 require 'fileutils'
+require_relative 'require_app'
 
 CODE = 'app/**/*.rb'
 CASSETTE_DIR = 'spec/fixtures/cassettes'
