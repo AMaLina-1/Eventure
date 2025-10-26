@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'spec_helper'
-require_relative '../app/models/gateways/hccg_api'
+require_relative 'helpers/spec_helper'
+require_relative '../app/infrastructure/hccg/gateways/hccg_api'
 
 describe 'Tests hccg activity API library' do
   VCR.configure do |c|
@@ -37,51 +37,40 @@ describe 'Tests hccg activity API library' do
       @data = Eventure::Hccg::ActivityMapper.new(Eventure::Hccg::Api).find(TOP)
     end
 
-    it 'HAPPY: should provide correct pubunitname' do
+    it 'HAPPY: should provide correct information' do
       idx = rand(@data.length)
-      _(@data[idx].publish_unit).must_equal CORRECT[idx]['pubunitname']
-    end
-
-    it 'HAPPY: should provide correct subject' do
-      idx = rand(@data.length)
-      _(@data[idx].subject).wont_be_nil
-      _(@data[idx].subject).must_equal CORRECT[idx]['subject']
-    end
-
-    it 'HAPPY: should provide correct detailcontent' do
-      idx = rand(@data.length)
-      _(@data[idx].details).must_equal CORRECT[idx]['detailcontent']
-    end
-
-    it 'HAPPY: should provide correct classes' do
-      idx = rand(@data.length)
-      _(@data[idx].subject_class).must_be_kind_of Array
-      _(@data[idx].service_class).must_equal(CORRECT[idx]['serviceclass'].split(',').map { |item| item.split(']')[1] })
-    end
-
-    it 'HAPPY: should provide correct voice' do
-      idx = rand(@data.length)
+      _(@data[idx].serno).must_be_kind_of Integer
+      _(@data[idx].serno).must_equal CORRECT[idx]['serno'].to_i
+      _(@data[idx].name).wont_be_nil
+      _(@data[idx].name).must_equal CORRECT[idx]['subject']
+      _(@data[idx].detail).must_equal CORRECT[idx]['detailcontent']
+      _(@data[idx].location).must_equal CORRECT[idx]['activityplace']
       _(@data[idx].voice).must_equal CORRECT[idx]['voice']
+      _(@data[idx].organizer).wont_be_nil
+      _(@data[idx].organizer).must_equal CORRECT[idx]['hostunit']
     end
 
-    it 'HAPPY: should provide correct unit' do
-      idx = rand(@data.length)
-      _(@data[idx].host).wont_be_nil
-      _(@data[idx].host).must_equal CORRECT[idx]['hostunit']
-    end
-
-    it 'HAPPY: should provide correct date' do
+    it 'HAPPY: should provide correct time' do
       idx = rand(@data.length)
       _(@data[idx].start_time).must_be_kind_of DateTime
       _(@data[idx].end_time).must_be :>=, @data[idx].start_time
     end
 
-    it 'HAPPY: should provide correct place' do
+    it 'HAPPY: should provide correct tags' do
       idx = rand(@data.length)
-      _(@data[idx].place).must_equal CORRECT[idx]['activityplace']
+      _(@data[idx].tag_id).must_be_kind_of Array
+      _(@data[idx].tag_id[0]).must_be_kind_of Integer
+      _(@data[idx].tag).must_equal(CORRECT[idx]['subjectclass'].split(',').map { |item| item.split(']')[1] })
     end
 
-    it 'HAPPY: should provide correct number of data' do
+    it 'HAPPY: should provide correct relatedata' do
+      idx = rand(@data.length)
+      _(@data[idx].relate_url).must_be_kind_of Array
+      _(@data[idx].relate_title.length).must_equal CORRECT[idx]['resourcedatalist'].length
+    end
+
+    it 'HAPPY: should provide correct datatype and length' do
+      _(@data[0].to_entity).must_be_kind_of Eventure::Entity::Activity
       _(@data.length).must_equal TOP
     end
   end

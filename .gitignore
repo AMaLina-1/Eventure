@@ -2,3 +2,5 @@ config/secrets.yml
 coverage/*
 !coverage/.resultset.json
 !coverage/.gitkeep
+db/local/*.db
+!db/local/.gitkeep

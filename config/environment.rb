@@ -2,15 +2,28 @@
 
 require 'roda'
 require 'yaml'
+require 'figaro'
+require 'sequel'
 
 module Eventure
+  # Main application class
   class App < Roda
-    CONFIG = if File.exist?('config/secrets.yml')
-               YAML.safe_load_file('config/secrets.yml')
-             else
-               {}
-             end
-    # if we will add an api key later on
-    # API_KEY = CONFIG['HCCG_API_KEY'] if CONFIG['HCCG_API_KEY']
+    plugin :environments
+
+    # Environment variables setup
+    Figaro.application = Figaro::Application.new(
+      environment:,
+      path: File.expand_path('config/secrets.yml')
+    )
+    Figaro.load
+    def self.config = Figaro.env
+
+    configure :development, :test do
+      ENV['DATABASE_URL'] = "sqlite://#{config.DB_FILENAME}"
+    end
+
+    # Database Setup
+    @db = Sequel.connect(ENV.fetch('DATABASE_URL'))
+    def self.db = @db # rubocop:disable Style/TrivialAccessors
   end
 end
