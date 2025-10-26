@@ -22,7 +22,7 @@ A web application that helps users discover **events** and **activities** happen
     }
     ```
     
-- Response data
+- Response Data
     
     After calling thie API, it will return the detail of the activities, and here are some infromation that might be helpful for our final project.
 
@@ -36,3 +36,11 @@ A web application that helps users discover **events** and **activities** happen
     - **Classification**: Used to categorize events based on two types:
       - **Subject Classification**: Describes the theme or topic of the event (e.g., culture, education, sports).  
       - **Service Classification**: Describes the target audience or service category (e.g., general public, youth, elderly).
+
+- Entity-Relationship Diagram
+
+  <table>
+    <tr>
+      <td><img src = 'images/ERD.png' width = '700'></td>
+    </tr>
+  </table>

@@ -11,17 +11,17 @@ module Eventure
     class Activity < Dry::Struct
       include Dry.Types
 
-      attribute :serno,        Integer
-      attribute :name,         String
-      attribute :detail,       String
-      attribute :start_time,   DateTime
-      attribute :end_time,     DateTime
-      attribute :location,     String
-      attribute :voice,        String
-      attribute :organizer,    String
-      attribute :tag_ids,      Array.of(Integer).default([].freeze)
-      attribute :tags,         Array.of(Tag).default([].freeze)
-      attribute :relate_data, Array.of(RelateData).default([].freeze)
+      attribute :serno,        Strict::Integer
+      attribute :name,         Strict::String
+      attribute :detail,       Strict::String
+      attribute :start_time,   Strict::DateTime
+      attribute :end_time,     Strict::DateTime
+      attribute :location,     Strict::String
+      attribute :voice,        Strict::String
+      attribute :organizer,    Strict::String
+      attribute :tag_ids,      Strict::Array.of(Integer).default([].freeze)
+      attribute :tags,         Strict::Array.of(Tag).default([].freeze)
+      attribute :relate_data,  Strict::Array.of(RelateData).default([].freeze)
 
       def to_entity
         self
