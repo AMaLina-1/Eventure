@@ -57,7 +57,8 @@ module Eventure
       def self.assign_relate_data(db_activity, relate_data)
         relate_data&.each do |relate|
           db_relate = Relatedata.find_or_create(relate)
-          db_activity.add_relatedata(db_relate)
+          # Use association dataset shovel to associate relatedata (works regardless of generated add_* method name)
+          db_activity.relatedata << db_relate
         end
       end
 
