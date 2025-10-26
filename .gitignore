@@ -2,10 +2,5 @@ config/secrets.yml
 coverage/*
 !coverage/.resultset.json
 !coverage/.gitkeep
-<<<<<<< HEAD
-coverage/
-*.resultset.json
-=======
 db/local/*.db
 !db/local/.gitkeep
->>>>>>> origin/mary-db-all
