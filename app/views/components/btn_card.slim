@@ -22,8 +22,8 @@ a.btn.btn-primary href="#" role="button" data-bs-toggle="modal" data-bs-target=(
 					p.text-muted (無詳細描述)
 				- else
 					p.card-text = text
-				- link = card.respond_to?(:link) ? card.link : (card.is_a?(Hash) ? (card[:link] || card['link']) : '#')
-				- if link && !link.to_s.empty?
-					a href=link target="_blank"= link
+				- relate_url = card.respond_to?(:relate_url) ? card.relate_url : (card.is_a?(Hash) ? (card[:relate_url] || card['relate_url']) : '#')
+				- if relate_url && !relate_url.to_s.empty?
+					a href=relate_url target="_blank"= relate_url
 			.modal-footer
 				button.btn.btn-secondary type="button" data-bs-dismiss="modal" 關閉

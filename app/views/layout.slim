@@ -65,15 +65,15 @@ html
               // 右側：活動標籤清單（複選）
               .col-md-4
                 h6 活動標籤
-                #tagList
-                  - local_tags = defined?(tags) && tags ? Array(tags) : (defined?(@tags) && @tags ? Array(@tags) : [])
-                  - local_tags.each do |t|
-                    .form-check.mb-2
-                      input.form-check-input type="checkbox" name="filter_tag" value="#{t}" id="tag-#{t}"
-                      label.form-check-label for="tag-#{t}"= t
+                form#filtersForm method="get" action="/activities"
+                  #tagList
+                    - Array(@tags).each do |t|
+                      .form-check.mb-2
+                        input.form-check-input type="checkbox" name="filter_tag[]" value="#{t}" id="tag-#{t}"
+                        label.form-check-label for="tag-#{t}"= t
           .modal-footer
             button.btn.btn-secondary type="button" data-bs-dismiss="modal" 取消
-            button.btn.btn-primary id="applyFilters" type="button" Save
+            button.btn.btn-primary type="submit" form="filtersForm" Save
 
     // 留空：目前不加自訂 JS，僅靠 Bootstrap 的 data-bs-* 屬性開啟 modal
 
