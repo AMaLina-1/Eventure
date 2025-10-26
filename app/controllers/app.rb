@@ -22,10 +22,22 @@ module Eventure
       routing.on 'activities' do
         routing.is do
           routing.get do
+            ensure_activities_seeded!
             view 'home', locals: view_locals
           end
         end
       end
+    end
+
+    def ensure_activities_seeded!
+      # Only seed when DB has no activities yet
+      return unless Eventure::Database::ActivityOrm.none?
+
+      entities = service.fetch_activities(100)
+      return if entities.nil? || entities.empty?
+
+      repo = Repository::For.entity(entities.first)
+      repo.create(entities) if repo.respond_to?(:create)
     end
 
     def view_locals
