@@ -25,6 +25,19 @@ module Eventure
         @parsed_data.map { |line| DataMapper.new(line).to_entity }
       end
 
+      def self.to_attr_hash(entity)
+        {
+          serno: entity.serno,
+          name: entity.name,
+          detail: entity.detail,
+          start_time: entity.start_time.to_time.utc,
+          end_time: entity.end_time.to_time.utc,
+          location: entity.location,
+          voice: entity.voice,
+          organizer: entity.organizer
+        }
+      end
+
       # Extracts entity elements from raw data
       class DataMapper
         def initialize(data)
@@ -33,14 +46,14 @@ module Eventure
 
         def to_entity
           Eventure::Entity::Activity.new(
-            serno: serno, name: name,
-            detail: detail,
-            start_time: start_time, end_time: end_time,
-            location: location,
-            voice: voice,
-            organizer: organizer,
-            tag_ids: tag_ids, tags: tags,
-            relate_data: relate_data
+            serno:, name:,
+            detail:,
+            start_time:, end_time:,
+            location:,
+            voice:,
+            organizer:,
+            tag_ids:, tags:,
+            relate_data:
           )
         end
 

@@ -21,16 +21,14 @@ module Eventure
 
       routing.on 'activities' do
         routing.is do
-          routing.get do
-            ensure_activities_seeded
-            view 'home', locals: view_locals
-          end
+          routing.get { show_activities(100) }
         end
       end
     end
 
-    def ensure_activities_seeded(limit: 100)
-      Eventure::Repository::Activities.sync_from(service, limit: limit)
+    def show_activities(top)
+      service.save_activities(top)
+      view 'home', locals: view_locals
     end
 
     def view_locals

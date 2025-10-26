@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../hccg/mappers/activity_mapper'
+
 module Eventure
   module Repository
     # repository for activities
@@ -21,41 +23,29 @@ module Eventure
 
       def self.create(entities)
         Array(entities).map do |entity|
-          db_activity = build_activity_record(entity)
+          db_activity = find_or_create_activity(entity)
           assign_tags(db_activity, entity.tags)
           assign_relate_data(db_activity, entity.relate_data)
           rebuild_entity(db_activity)
         end
       end
 
-      # 單筆 upsert（以 serno 為唯一鍵）
-      def self.db_find_or_create(entity)
-        record = with_unique_retry(entity.serno) { create_activity_then_assign(entity) }
-        rebuild_entity(record)
-      end
+      def self.find_or_create_activity(entity)
+        attrs = Eventure::Hccg::ActivityMapper.to_attr_hash(entity)
+        db_activity = Eventure::Database::ActivityOrm.first(serno: entity.serno)
 
-      # 批次 upsert
-      def self.create_or_find(entities)
-        Array(entities).map { |entity| db_find_or_create(entity) }
-      end
+        if db_activity
+          db_activity.update(attrs)
+        else
+          db_activity = Eventure::Database::ActivityOrm.create(attrs)
+        end
 
-      # -- helpers --------------------------------------------------------------
-
-      def self.find_existing_by_serno(serno)
-        Database::ActivityOrm.first(serno: serno)
-      end
-
-      def self.create_activity_then_assign(entity)
-        db_activity = build_activity_record(entity)
-        assign_tags(db_activity, entity.tags)
-        assign_relate_data(db_activity, entity.relate_data)
         db_activity
       end
 
       def self.build_activity_record(entity)
         Database::ActivityOrm.create(
-          serno: entity.serno,
-          name: entity.name,
+          serno: entity.serno, name: entity.name,
           detail: entity.detail,
           start_time: entity.start_time.to_time.utc,
           end_time: entity.end_time.to_time.utc,
@@ -66,10 +56,14 @@ module Eventure
       end
 
       def self.assign_tags(db_activity, tags)
-        # 重新抓一次，確保關聯方法可用（依你的 ORM 關聯設定）
-        db_activity = Database::ActivityOrm.first(activity_id: db_activity.activity_id)
-        tags.each do |tag|
+        # return if tags.nil? || tags.empty?
+
+        existing_tag_ids = db_activity.tags.map(&:tag_id)
+
+        Array(tags).each do |tag|
           tag_orm = find_or_create_tag(tag)
+          next if existing_tag_ids.include?(tag_orm.tag_id)
+
           db_activity.add_tag(tag_orm)
         end
       end
@@ -84,9 +78,17 @@ module Eventure
       end
 
       def self.assign_relate_data(db_activity, relate_data)
-        relate_data&.each do |relate|
+        # return if relate_data.nil? || relate_data.empty?
+
+        # existing_rel_urls = db_activity.relatedata.map(&:relate_url)
+        existing_relatedata = db_activity.relatedata
+
+        Array(relate_data).each do |relate|
           db_relate = Relatedata.find_or_create(relate)
-          db_activity.relatedata << db_relate
+          next if existing_relatedata.map(&:relate_url).include?(db_relate.relate_url)
+
+          # Use association dataset shovel to associate relatedata (works regardless of generated add_* method name)
+          existing_relatedata << db_relate
         end
       end
 
