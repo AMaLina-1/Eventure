@@ -21,11 +21,14 @@ module Eventure
 
       routing.on 'activities' do
         routing.is do
-          routing.get do
-            view 'home', locals: view_locals
-          end
+          routing.get { show_activities(100) }
         end
       end
+    end
+
+    def show_activities(top)
+      service.save_activities(top)
+      view 'home', locals: view_locals
     end
 
     def view_locals
@@ -37,7 +40,7 @@ module Eventure
     end
 
     def activities
-      @activities ||= service.fetch_activities(100)
+      @activities ||= Eventure::Repository::Activities.all
     end
 
     def service
