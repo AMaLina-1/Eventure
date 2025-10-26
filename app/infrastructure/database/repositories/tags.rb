@@ -4,6 +4,10 @@ module Eventure
   module Repository
     # repository for tags
     class Tags
+      def self.all
+        Database::TagOrm.all.map { |db_tag| rebuild_entity(db_tag) }
+      end
+
       def self.find_or_create(entity)
         tag_value = entity.is_a?(Entity::Tag) ? entity.tag : entity
         db_record = Database::TagOrm.first(tag: tag_value) ||
@@ -15,7 +19,7 @@ module Eventure
         return nil unless db_record
 
         Entity::Tag.new(
-          id: db_record.tag_id || db_record.id,
+          tag_id: db_record.tag_id || db_record.id,
           tag: db_record.tag
         )
       end
