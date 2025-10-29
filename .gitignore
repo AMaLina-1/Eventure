@@ -4,3 +4,4 @@ coverage/*
 !coverage/.gitkeep
 db/local/*.db
 !db/local/.gitkeep
+.bundle/

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+ruby File.read('.ruby-version').strip
 
 gem 'yaml'
 
@@ -48,4 +49,8 @@ gem 'sequel', '~> 5.0'
 
 group :development, :test do
   gem 'sqlite3', '~> 1.0'
+end
+
+group :production do
+  gem 'pg'
 end
