@@ -2,6 +2,7 @@
 
 require 'rake/testtask'
 require 'fileutils'
+require_relative 'require_app'
 
 CODE = 'app/**/*.rb'
 CASSETTE_DIR = 'spec/fixtures/cassettes'
@@ -68,6 +69,7 @@ namespace :quality do
   end
 end
 
+# rubocop:disable Metrics/BlockLength
 namespace :db do
   task :config do
     require 'sequel'
@@ -106,6 +108,7 @@ namespace :db do
     puts "Deleted #{Eventure::App.config.DB_FILENAME}"
   end
 end
+# rubocop:enable Metrics/BlockLength
 
 desc 'Run application console'
 task :console do

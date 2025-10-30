@@ -11,6 +11,11 @@ module Eventure
       def fetch_activities(limit = 100)
         @mapper.find(limit).map(&:to_entity)
       end
+
+      def save_activities(top)
+        entities = fetch_activities(top)
+        Repository::For.entity(entities.first).create(entities)
+      end
     end
   end
 end

@@ -12,7 +12,7 @@ a.btn.btn-primary href="#" role="button" data-bs-toggle="modal" data-bs-target=(
 	.modal-dialog
 		.modal-content
 			.modal-header
-				- title = card.respond_to?(:subject) ? card.subject : (card.is_a?(Hash) ? (card[:subject] || card['subject'] || '未命名') : '未命名')
+				- title = card.respond_to?(:name) ? card.name : (card.is_a?(Hash) ? (card[:name] || card['name'] || '未命名') : '未命名')
 				h5.modal-title id=("cardModalLabel-#{id_suffix}") = title
 				button.btn-close type="button" data-bs-dismiss="modal" aria-label="Close"
 			.modal-body
@@ -22,8 +22,8 @@ a.btn.btn-primary href="#" role="button" data-bs-toggle="modal" data-bs-target=(
 					p.text-muted (無詳細描述)
 				- else
 					p.card-text = text
-				- link = card.respond_to?(:link) ? card.link : (card.is_a?(Hash) ? (card[:link] || card['link']) : '#')
-				- if link && !link.to_s.empty?
-					a href=link target="_blank"= link
+				- relate_url = card.respond_to?(:relate_url) ? card.relate_url : (card.is_a?(Hash) ? (card[:relate_url] || card['relate_url']) : '#')
+				- if relate_url && !relate_url.to_s.empty?
+					a href=relate_url target="_blank"= relate_url
 			.modal-footer
 				button.btn.btn-secondary type="button" data-bs-dismiss="modal" 關閉

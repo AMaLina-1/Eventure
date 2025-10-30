@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../hccg/mappers/activity_mapper'
+
 module Eventure
   module Repository
     # repository for activities
@@ -15,17 +17,29 @@ module Eventure
 
       def self.create(entities)
         Array(entities).map do |entity|
-          db_activity = build_activity_record(entity)
+          db_activity = find_or_create_activity(entity)
           assign_tags(db_activity, entity.tags)
-          assign_related_data(db_activity, entity.related_data)
+          assign_relate_data(db_activity, entity.relate_data)
           rebuild_entity(db_activity)
         end
       end
 
+      def self.find_or_create_activity(entity)
+        attrs = Eventure::Hccg::ActivityMapper.to_attr_hash(entity)
+        db_activity = Eventure::Database::ActivityOrm.first(serno: entity.serno)
+
+        if db_activity
+          db_activity.update(attrs)
+        else
+          db_activity = Eventure::Database::ActivityOrm.create(attrs)
+        end
+
+        db_activity
+      end
+
       def self.build_activity_record(entity)
         Database::ActivityOrm.create(
-          serno: entity.serno,
-          name: entity.name,
+          serno: entity.serno, name: entity.name,
           detail: entity.detail,
           start_time: entity.start_time.to_time.utc,
           end_time: entity.end_time.to_time.utc,
@@ -36,9 +50,14 @@ module Eventure
       end
 
       def self.assign_tags(db_activity, tags)
-        db_activity = Database::ActivityOrm.first(activity_id: db_activity.activity_id)
-        tags.each do |tag|
+        # return if tags.nil? || tags.empty?
+
+        existing_tag_ids = db_activity.tags.map(&:tag_id)
+
+        Array(tags).each do |tag|
           tag_orm = find_or_create_tag(tag)
+          next if existing_tag_ids.include?(tag_orm.tag_id)
+
           db_activity.add_tag(tag_orm)
         end
       end
@@ -54,10 +73,18 @@ module Eventure
         end
       end
 
-      def self.assign_related_data(db_activity, relate_data)
-        relate_data&.each do |relate|
+      def self.assign_relate_data(db_activity, relate_data)
+        # return if relate_data.nil? || relate_data.empty?
+
+        # existing_rel_urls = db_activity.relatedata.map(&:relate_url)
+        existing_relatedata = db_activity.relatedata
+
+        Array(relate_data).each do |relate|
           db_relate = Relatedata.find_or_create(relate)
-          db_activity.add_relatedata(db_relate)
+          next if existing_relatedata.map(&:relate_url).include?(db_relate.relate_url)
+
+          # Use association dataset shovel to associate relatedata (works regardless of generated add_* method name)
+          existing_relatedata << db_relate
         end
       end
 
@@ -66,17 +93,12 @@ module Eventure
 
         db_tags = db_record.tags
         Eventure::Entity::Activity.new(
-          serno: db_record.serno,
-          name: db_record.name,
-          detail: db_record.detail,
-          start_time: build_utc_datetime(db_record.start_time),
-          end_time: build_utc_datetime(db_record.end_time),
-          location: db_record.location,
-          voice: db_record.voice,
+          serno: db_record.serno, name: db_record.name, detail: db_record.detail,
+          start_time: build_utc_datetime(db_record.start_time), end_time: build_utc_datetime(db_record.end_time),
+          location: db_record.location, voice: db_record.voice,
           organizer: db_record.organizer,
-          tag_ids: rebuild_tag_ids(db_tags),
-          tags: rebuild_tags(db_tags),
-          related_data: rebuild_related_data(db_record.relatedata)
+          tag_ids: rebuild_tag_ids(db_tags), tags: rebuild_tags(db_tags),
+          relate_data: rebuild_relate_data(db_record.relatedata)
         )
       end
 
@@ -104,8 +126,8 @@ module Eventure
         end
       end
 
-      def self.rebuild_related_data(db_related)
-        db_related.map { |rel| Relatedata.rebuild_entity(rel) }
+      def self.rebuild_relate_data(db_relatedata)
+        db_relatedata.map { |rel| Relatedata.rebuild_entity(rel) }
       end
     end
   end

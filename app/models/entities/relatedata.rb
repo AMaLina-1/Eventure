@@ -6,7 +6,7 @@ require 'dry-types'
 module Eventure
   module Entity
     # Domain Entity for related data
-    class RelatedData < Dry::Struct
+    class RelateData < Dry::Struct
       include Dry.Types
 
       attribute :relatedata_id, Integer.optional
