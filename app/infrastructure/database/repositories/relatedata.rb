@@ -21,7 +21,7 @@ module Eventure
         return nil unless db_record
 
         Entity::RelateData.new(
-          relatedata_id: db_record.id,
+          relatedata_id: db_record.relatedata_id,
           relate_title: db_record.relate_title,
           relate_url: db_record.relate_url
         )

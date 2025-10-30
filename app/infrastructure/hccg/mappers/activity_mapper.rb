@@ -104,10 +104,16 @@ module Eventure
         end
 
         def relate_data
-          @data['resourcedatalist'].map { |relate_item| self.class.build_relate_data_entity(relate_item) }
+          resource_list = @data['resourcedatalist']
+          return [] if resource_list.nil? || resource_list.empty?
+          resource_list.map do |relate_item|
+            self.class.build_relate_data_entity(relate_item)
+          end.compact
         end
 
         def self.build_relate_data_entity(relate_item)
+          return nil if relate_item.nil?
+          
           Eventure::Entity::RelateData.new(
             relatedata_id: nil,
             relate_title: relate_item['relatename'],

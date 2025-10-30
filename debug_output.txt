@@ -1,0 +1,331 @@
+Run options: --seed 38750
+
+# Running:
+
+
+=== DEBUG relate_data ===
+serno: 202510170001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202507150003
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202509120001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202509150001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510140003
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510150001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130002
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510140002
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130003
+resource_list: []
+.
+=== DEBUG relate_data ===
+serno: 202510170001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202507150003
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202509120001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202509150001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510140003
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510150001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130002
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510140002
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130003
+resource_list: []
+.
+=== DEBUG relate_data ===
+serno: 202510170001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202507150003
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202509120001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202509150001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510140003
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510150001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130002
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510140002
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130003
+resource_list: []
+.
+=== DEBUG relate_data ===
+serno: 202510170001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202507150003
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202509120001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202509150001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510140003
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510150001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130002
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510140002
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130003
+resource_list: []
+.
+=== DEBUG relate_data ===
+serno: 202510170001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202507150003
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202509120001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202509150001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510140003
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510150001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130002
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510140002
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130003
+resource_list: []
+.
+=== DEBUG relate_data ===
+serno: 202510170001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202507150003
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202509120001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202509150001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510140003
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510150001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130002
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510140002
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130001
+resource_list: []
+
+=== DEBUG relate_data ===
+serno: 202510130003
+resource_list: []
+
+=== DEBUG assign_relate_data ===
+db_activity.activity_id: 1
+relate_data: []
+relate_data count: 0
+existing_relatedata count: 0
+Final relatedata count: 0
+=== END DEBUG ===
+
+=== DEBUG assign_relate_data ===
+db_activity.activity_id: 2
+relate_data: []
+relate_data count: 0
+existing_relatedata count: 0
+Final relatedata count: 0
+=== END DEBUG ===
+
+=== DEBUG assign_relate_data ===
+db_activity.activity_id: 3
+relate_data: []
+relate_data count: 0
+existing_relatedata count: 0
+Final relatedata count: 0
+=== END DEBUG ===
+
+=== DEBUG assign_relate_data ===
+db_activity.activity_id: 4
+relate_data: []
+relate_data count: 0
+existing_relatedata count: 0
+Final relatedata count: 0
+=== END DEBUG ===
+
+=== DEBUG assign_relate_data ===
+db_activity.activity_id: 5
+relate_data: []
+relate_data count: 0
+existing_relatedata count: 0
+Final relatedata count: 0
+=== END DEBUG ===
+
+=== DEBUG assign_relate_data ===
+db_activity.activity_id: 6
+relate_data: []
+relate_data count: 0
+existing_relatedata count: 0
+Final relatedata count: 0
+=== END DEBUG ===
+
+=== DEBUG assign_relate_data ===
+db_activity.activity_id: 7
+relate_data: []
+relate_data count: 0
+existing_relatedata count: 0
+Final relatedata count: 0
+=== END DEBUG ===
+
+=== DEBUG assign_relate_data ===
+db_activity.activity_id: 8
+relate_data: []
+relate_data count: 0
+existing_relatedata count: 0
+Final relatedata count: 0
+=== END DEBUG ===
+
+=== DEBUG assign_relate_data ===
+db_activity.activity_id: 9
+relate_data: []
+relate_data count: 0
+existing_relatedata count: 0
+Final relatedata count: 0
+=== END DEBUG ===
+
+=== DEBUG assign_relate_data ===
+db_activity.activity_id: 10
+relate_data: []
+relate_data count: 0
+existing_relatedata count: 0
+Final relatedata count: 0
+=== END DEBUG ===
+..
+
+Finished in 0.470210s, 14.8870 runs/s, 68.0546 assertions/s.
+
+7 runs, 32 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for RSpec to /mnt/c/Users/user/Documents/Eventure/coverage.
+Line Coverage: 80.94% (242 / 299)
