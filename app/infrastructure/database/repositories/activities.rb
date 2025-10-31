@@ -6,6 +6,12 @@ module Eventure
   module Repository
     # repository for activities
     class Activities
+      # --- 每次都同步（不看 DB 是否為空） ---
+      def self.sync_from(service, limit: 100) # rubocop:disable Naming/PredicateMethod
+        Array(service.fetch_activities(limit)).each { |entity| db_find_or_create(entity) }
+        true
+      end
+
       def self.all
         Database::ActivityOrm.all.map { |db_activity| rebuild_entity(db_activity) }
       end
@@ -27,13 +33,11 @@ module Eventure
       def self.find_or_create_activity(entity)
         attrs = Eventure::Hccg::ActivityMapper.to_attr_hash(entity)
         db_activity = Eventure::Database::ActivityOrm.first(serno: entity.serno)
-
         if db_activity
           db_activity.update(attrs)
         else
           db_activity = Eventure::Database::ActivityOrm.create(attrs)
         end
-
         db_activity
       end
 
@@ -45,7 +49,8 @@ module Eventure
           end_time: entity.end_time.to_time.utc,
           location: entity.location,
           voice: entity.voice,
-          organizer: entity.organizer
+          organizer: entity.organizer,
+          likes_count: 0
         )
       end
 
@@ -58,18 +63,21 @@ module Eventure
           tag_orm = find_or_create_tag(tag)
           next if existing_tag_ids.include?(tag_orm.tag_id)
 
-          db_activity.add_tag(tag_orm)
+          begin
+            db_activity.add_tag(tag_orm)
+          rescue Sequel::UniqueConstraintViolation
+            # another process inserted the same join row concurrently; ignore
+            next
+          end
         end
       end
 
       def self.find_or_create_tag(tag)
         if tag.is_a?(Eventure::Entity::Tag)
           tag_id = tag.tag_id
-          Database::TagOrm.first(tag_id:) ||
-            Database::TagOrm.create(tag_id:, tag: tag.tag)
+          Database::TagOrm.first(tag_id:) || Database::TagOrm.create(tag_id:, tag: tag.tag)
         else
-          Database::TagOrm.first(tag: tag) ||
-            Database::TagOrm.create(tag: tag)
+          Database::TagOrm.first(tag: tag) || Database::TagOrm.create(tag: tag)
         end
       end
 
@@ -88,29 +96,25 @@ module Eventure
         end
       end
 
-      def self.rebuild_entity(db_record)
+      def self.rebuild_entity(db_record) # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
         return nil unless db_record
 
         db_tags = db_record.tags
         Eventure::Entity::Activity.new(
-          serno: db_record.serno, name: db_record.name, detail: db_record.detail,
-          start_time: build_utc_datetime(db_record.start_time), end_time: build_utc_datetime(db_record.end_time),
+          serno: db_record.serno, name: db_record.name,
+          detail: db_record.detail,
+          start_time: build_utc_datetime(db_record.start_time),
+          end_time: build_utc_datetime(db_record.end_time),
           location: db_record.location, voice: db_record.voice,
           organizer: db_record.organizer,
           tag_ids: rebuild_tag_ids(db_tags), tags: rebuild_tags(db_tags),
-          relate_data: rebuild_relate_data(db_record.relatedata)
+          relate_data: rebuild_relate_data(db_record.relatedata),
+          likes_count: db_record.likes_count.to_i
         )
       end
 
       def self.build_utc_datetime(time)
-        Time.utc(
-          time.year,
-          time.month,
-          time.day,
-          time.hour,
-          time.min,
-          time.sec
-        ).to_datetime
+        Time.utc(time.year, time.month, time.day, time.hour, time.min, time.sec).to_datetime
       end
 
       def self.rebuild_tag_ids(db_tags)
@@ -118,16 +122,31 @@ module Eventure
       end
 
       def self.rebuild_tags(db_tags)
-        db_tags.map do |tag|
-          Eventure::Entity::Tag.new(
-            tag_id: tag.tag_id,
-            tag: tag.tag
-          )
-        end
+        db_tags.map { |tag| Eventure::Entity::Tag.new(tag_id: tag.tag_id, tag: tag.tag) }
       end
 
       def self.rebuild_relate_data(db_relatedata)
         db_relatedata.map { |rel| Relatedata.rebuild_entity(rel) }
+      end
+
+      # 交易包起來；若撞到唯一鍵（代表已存在），就改取既有那筆
+      def self.with_unique_retry(serno, &)
+        Eventure::App.db.transaction(&)
+      rescue Sequel::UniqueConstraintViolation
+        find_existing_by_serno(serno)
+      end
+      private_class_method :with_unique_retry
+
+      def self.add_user_likes(serno)
+        raise ArgumentError, 'serno required' if serno.nil? || serno.to_s.empty?
+
+        Eventure::App.db.transaction do
+          db_activity = Database::ActivityOrm.first(serno: serno)
+          raise Sequel::NoMatchingRow, 'activity not found' unless db_activity
+
+          db_activity.update(likes_count: db_activity.likes_count.to_i + 1)
+          db_activity.likes_count.to_i
+        end
       end
     end
   end

@@ -19,6 +19,7 @@ module Eventure
       attribute :location,     Strict::String
       attribute :voice,        Strict::String
       attribute :organizer,    Strict::String
+      attribute :likes_count,  Strict::Integer.default(0)
       attribute :tag_ids,      Strict::Array.of(Integer).default([].freeze)
       attribute :tags,         Strict::Array.of(Tag).default([].freeze)
       attribute :relate_data,  Strict::Array.of(RelateData).default([].freeze)
