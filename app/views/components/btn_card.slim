@@ -1,29 +1,119 @@
-
 //- Component: btn_card
 //- Expects local: card
 
-// 詳細按鈕（使用 Bootstrap modal，每張卡一個）
 - id_suffix = card.respond_to?(:id) ? card.id : (card.is_a?(Hash) ? (card[:id] || card['id']) : card.object_id)
 
+/ 原本的「詳細」按鈕（先保留）
 a.btn.btn-primary href="#" role="button" data-bs-toggle="modal" data-bs-target=("#cardModal-#{id_suffix}") 詳細
 
-// Modal（每張卡一個，id 使用 card id 或 object_id 作為後綴）
+/ 書籤按鈕：預設空心（想要黃色可加 .text-warning）
+button.btn.btn-link.p-0.btn-bookmark type="button" aria-label="bookmark" data-bookmarked="false"
+  i.bi.bi-bookmark.text-warning aria-hidden="true"
+
+/ 愛心按鈕：預設空心
+button.btn.btn-link.p-0.btn-heart type="button" aria-label="like" data-liked="false" data-serno=(card.respond_to?(:serno) ? card.serno : (card.is_a?(Hash) ? (card[:serno] || card['serno']) : nil))
+  i.bi.bi-suit-heart.text-danger aria-hidden="true"
+
+/ 按讚次數（從 card 取值，fallback 0） — 先看 likes_count
+- if card.respond_to?(:likes_count)
+  - likes = card.likes_count
+- elsif card.is_a?(Hash)
+  - likes = (card[:likes_count] || card['likes_count'])
+- else
+  - likes = 0
+- likes = (likes).to_i
+span.like-count.ms-2 = likes
+
+- unless defined?(@btn_heart_script_included) && @btn_heart_script_included
+  javascript:
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('.btn-heart, .btn-bookmark');
+      if (!btn) return;
+      e.preventDefault();
+      var icon = btn.querySelector('i.bi');
+      if (!icon) return;
+
+      var isBookmark = icon.classList.contains('bi-bookmark') || icon.classList.contains('bi-bookmark-fill');
+
+      if (isBookmark) {
+        var filledBM = icon.classList.contains('bi-bookmark-fill');
+        icon.classList.toggle('bi-bookmark-fill', !filledBM);
+        icon.classList.toggle('bi-bookmark', filledBM);
+        btn.setAttribute('data-bookmarked', String(!filledBM));
+      } else {
+        // heart：切換樣式
+        var filledH = icon.classList.contains('bi-suit-heart-fill');
+        icon.classList.toggle('bi-suit-heart-fill', !filledH);
+        icon.classList.toggle('bi-suit-heart', filledH);
+        var nowLiked = String(!filledH);
+        btn.setAttribute('data-liked', nowLiked);
+
+        var countSpan = btn.nextElementSibling;
+        var current = 0;
+        if (countSpan && countSpan.classList && countSpan.classList.contains('like-count')) {
+          current = parseInt(countSpan.textContent, 10) || 0;
+        }
+
+        // 規則：只有「變成實心」才加一次
+        if (nowLiked === 'true') {
+          var serno = btn.getAttribute('data-serno');
+          if (serno) {
+            fetch('/activities/like', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: new URLSearchParams({ serno: serno })
+            })
+            .then(function (resp) { return resp.ok ? resp.json() : Promise.reject(); })
+            .then(function (data) {
+              if (countSpan && data && typeof data.likes_count !== 'undefined') {
+                countSpan.textContent = String(parseInt(data.likes_count, 10) || 0);
+              } else if (countSpan) {
+                countSpan.textContent = String(current + 1); // 保底
+              }
+            })
+            .catch(function () {
+              if (countSpan) countSpan.textContent = String(current + 1); // 失敗也先 +1 顯示
+            });
+          } else if (countSpan) {
+            countSpan.textContent = String(current + 1); // 沒 serno，只本地 +1
+          }
+        }
+        // 變回空心：不減分，照你的需求
+      }
+    });
+  - @btn_heart_script_included = true
+
+/ Modal（每張卡一個）
 .modal.fade id=("cardModal-#{id_suffix}") tabindex="-1" aria-labelledby=("cardModalLabel-#{id_suffix}") aria-hidden="true"
-	.modal-dialog
-		.modal-content
-			.modal-header
-				- title = card.respond_to?(:name) ? card.name : (card.is_a?(Hash) ? (card[:name] || card['name'] || '未命名') : '未命名')
-				h5.modal-title id=("cardModalLabel-#{id_suffix}") = title
-				button.btn-close type="button" data-bs-dismiss="modal" aria-label="Close"
-			.modal-body
-				- text = card.respond_to?(:voice) ? card.voice : (card.is_a?(Hash) ? (card[:voice] || card['voice'] || '') : '')
-				- text = text.to_s.strip
-				- if text.empty?
-					p.text-muted (無詳細描述)
-				- else
-					p.card-text = text
-				- relate_url = card.respond_to?(:relate_url) ? card.relate_url : (card.is_a?(Hash) ? (card[:relate_url] || card['relate_url']) : '#')
-				- if relate_url && !relate_url.to_s.empty?
-					a href=relate_url target="_blank"= relate_url
-			.modal-footer
-				button.btn.btn-secondary type="button" data-bs-dismiss="modal" 關閉
+  .modal-dialog
+    .modal-content
+      .modal-header
+        - title = card.respond_to?(:name) ? card.name : (card.is_a?(Hash) ? (card[:name] || card['name'] || '未命名') : '未命名')
+        h5.modal-title id=("cardModalLabel-#{id_suffix}") = title
+        button.btn-close type="button" data-bs-dismiss="modal" aria-label="Close"
+      .modal-body
+	    - start_time = card.respond_to?(:start_time) ? card.start_time : (card.is_a?(Hash) ? (card[:start_time] || card['start_time'] || '') : '')
+        - start_time = start_time.to_s.strip
+        - if start_time.empty?
+          p.start_time-muted (無時間)
+        - else
+          p.card-start_time = "活動時間：#{start_time}"
+		
+		- location = card.respond_to?(:location) ? card.location : (card.is_a?(Hash) ? (card[:location] || card['location'] || '') : '')
+        - location = location.to_s.strip
+        - if location.empty?
+          p.location-muted (無地點)
+        - else
+          p.card-location = "活動地點：#{location}"
+
+        - voice = card.respond_to?(:voice) ? card.voice : (card.is_a?(Hash) ? (card[:voice] || card['voice'] || '') : '')
+        - voice = voice.to_s.strip
+        - if voice.empty?
+          p.voice-muted (無詳細描述)
+        - else
+          p.card-voice = voice
+        - relate_url = card.respond_to?(:relate_url) ? card.relate_url : (card.is_a?(Hash) ? (card[:relate_url] || card['relate_url']) : '#')
+        - if relate_url && !relate_url.to_s.empty?
+          a href=relate_url target="_blank" = relate_url
+      .modal-footer
+        button.btn.btn-secondary type="button" data-bs-dismiss="modal" 關閉
