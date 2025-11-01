@@ -20,7 +20,7 @@ require_app
 require_relative 'database_helper'
 require_relative 'vcr_helper'
 
-TOP = 10
+TOP = 100
 CONFIG = YAML.safe_load_file('config/secrets.yml') if File.exist?('config/secrets.yml')
 # API_KEY = CONFIG['API_KEY']
 CORRECT = YAML.safe_load_file('spec/fixtures/results.yml')

@@ -75,17 +75,13 @@ module Eventure
       end
 
       def self.assign_relate_data(db_activity, relate_data)
-        # return if relate_data.nil? || relate_data.empty?
+        return if relate_data.to_a.empty?
 
-        # existing_rel_urls = db_activity.relatedata.map(&:relate_url)
-        existing_relatedata = db_activity.relatedata
+        db_activity.reload
 
         Array(relate_data).each do |relate|
           db_relate = Relatedata.find_or_create(relate)
-          next if existing_relatedata.map(&:relate_url).include?(db_relate.relate_url)
-
-          # Use association dataset shovel to associate relatedata (works regardless of generated add_* method name)
-          existing_relatedata << db_relate
+          db_activity.add_relatedatum(db_relate) unless db_activity.relatedata.include?(db_relate)
         end
       end
 
