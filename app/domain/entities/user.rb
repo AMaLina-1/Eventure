@@ -10,34 +10,38 @@ module Eventure
       include Dry.Types()
 
       attribute :user_id,      Strict::String
-      attribute :user_date,    Strict::Date
-      attribute :user_theme,   Strict::String.optional
-      attribute :user_region,  Strict::String.optional
+      attribute :user_date,    Strict::Array.of(Date).default([].freeze)
+      attribute :user_theme,   Strict::Array.of(String).default([].freeze)
+      attribute :user_region,  Strict::Array.of(String).default([].freeze)
       attribute :user_saved,   Strict::Array.default([].freeze)
       attribute :user_likes,   Strict::Array.default([].freeze)
 
       def update_start_date(date)
-        new(user_date: date)
+        new(user_date: [date, user_date[1]])
       end
 
       def update_end_date(date)
-        new(user_date: date)
+        new(user_date: [user_date[0], date])
       end
 
       def add_theme(theme)
-        new(user_theme: theme)
+        return self if user_theme.include?(theme)
+
+        new(user_theme: user_theme + [theme])
       end
 
-      def remove_theme
-        new(user_theme: nil)
+      def remove_theme(theme)
+        new(user_theme: user_theme.reject { |reject_theme| reject_theme == theme })
       end
 
       def add_region(region)
-        new(user_region: region)
+        return self if user_region.include?(region)
+
+        new(user_region: user_region + [region])
       end
 
-      def remove_region
-        new(user_region: nil)
+      def remove_region(region)
+        new(user_region: user_region.reject { |reject_region| reject_region == region })
       end
 
       def add_saved(serno)
@@ -69,7 +73,7 @@ module Eventure
       end
 
       def to_saved
-        Value::Saved.new(saved: !user_saved.empty?)
+        Value::Saved.new(saved: user_saved.map(&:to_s))
       end
 
       private

@@ -9,18 +9,18 @@ module Eventure
     class Saved < Dry::Struct
       include Dry.Types()
 
-      attribute :saved, Strict::Bool
+      attribute :saved, Strict::Array.of(Strict::String)
 
-      def saved?
-        saved
+      def saved?(id)
+        saved.include?(id.to_s)
       end
 
       def saved_count
-        saved ? 1 : 0
+        saved.count
       end
 
       def to_s
-        saved.to_s
+        saved.join(', ')
       end
 
       def ==(other)
