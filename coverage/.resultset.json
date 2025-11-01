@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/linda67890/projects/Eventure/require_app.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/require_app.rb": {
         "lines": [
           null,
           null,
@@ -21,7 +21,7 @@
           null
         ]
       },
-      "/home/linda67890/projects/Eventure/config/environment.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/config/environment.rb": {
         "lines": [
           null,
           null,
@@ -54,7 +54,7 @@
           null
         ]
       },
-      "/home/linda67890/projects/Eventure/app/models/entities/activity.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/models/entities/activity.rb": {
         "lines": [
           null,
           null,
@@ -109,7 +109,7 @@
           null
         ]
       },
-      "/home/linda67890/projects/Eventure/app/models/entities/tag.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/models/entities/tag.rb": {
         "lines": [
           null,
           null,
@@ -129,7 +129,7 @@
           null
         ]
       },
-      "/home/linda67890/projects/Eventure/app/models/entities/relatedata.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/models/entities/relatedata.rb": {
         "lines": [
           null,
           null,
@@ -150,7 +150,7 @@
           null
         ]
       },
-      "/home/linda67890/projects/Eventure/app/infrastructure/database/orm/activity_orm.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/infrastructure/database/orm/activity_orm.rb": {
         "lines": [
           null,
           null,
@@ -174,7 +174,7 @@
           null
         ]
       },
-      "/home/linda67890/projects/Eventure/app/infrastructure/database/orm/relatedata_orm.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/infrastructure/database/orm/relatedata_orm.rb": {
         "lines": [
           null,
           null,
@@ -193,7 +193,7 @@
           null
         ]
       },
-      "/home/linda67890/projects/Eventure/app/infrastructure/database/orm/tag_orm.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/infrastructure/database/orm/tag_orm.rb": {
         "lines": [
           null,
           null,
@@ -213,7 +213,7 @@
           null
         ]
       },
-      "/home/linda67890/projects/Eventure/app/infrastructure/database/repositories/activities.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/infrastructure/database/repositories/activities.rb": {
         "lines": [
           null,
           null,
@@ -351,7 +351,7 @@
           null
         ]
       },
-      "/home/linda67890/projects/Eventure/app/infrastructure/hccg/mappers/activity_mapper.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/infrastructure/hccg/mappers/activity_mapper.rb": {
         "lines": [
           null,
           null,
@@ -475,7 +475,7 @@
           null
         ]
       },
-      "/home/linda67890/projects/Eventure/app/infrastructure/database/repositories/for.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/infrastructure/database/repositories/for.rb": {
         "lines": [
           null,
           null,
@@ -508,7 +508,7 @@
           null
         ]
       },
-      "/home/linda67890/projects/Eventure/app/infrastructure/database/repositories/tags.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/infrastructure/database/repositories/tags.rb": {
         "lines": [
           null,
           null,
@@ -536,7 +536,7 @@
           null
         ]
       },
-      "/home/linda67890/projects/Eventure/app/infrastructure/database/repositories/relatedata.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/infrastructure/database/repositories/relatedata.rb": {
         "lines": [
           null,
           null,
@@ -571,7 +571,7 @@
           null
         ]
       },
-      "/home/linda67890/projects/Eventure/app/infrastructure/hccg/gateways/hccg_api.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/infrastructure/hccg/gateways/hccg_api.rb": {
         "lines": [
           null,
           null,
@@ -606,7 +606,7 @@
           null
         ]
       },
-      "/home/linda67890/projects/Eventure/app/controllers/activities_controller.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/controllers/activities_controller.rb": {
         "lines": [
           null,
           null,
@@ -631,7 +631,7 @@
           null
         ]
       },
-      "/home/linda67890/projects/Eventure/app/controllers/app.rb": {
+      "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/controllers/app.rb": {
         "lines": [
           null,
           null,
@@ -686,6 +686,6 @@
         ]
       }
     },
-    "timestamp": 1761494855
+    "timestamp": 1761966114
   }
 }
