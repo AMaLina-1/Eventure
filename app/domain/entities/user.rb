@@ -5,6 +5,7 @@ require 'dry-struct'
 
 module Eventure
   module Entity
+    # User entity
     class User < Dry::Struct
       include Dry.Types()
 
@@ -15,11 +16,11 @@ module Eventure
       attribute :user_saved,   Strict::Array.default([].freeze)
       attribute :user_likes,   Strict::Array.default([].freeze)
 
-      def set_start_date(date)
+      def update_start_date(date)
         new(user_date: date)
       end
 
-      def set_end_date(date)
+      def update_end_date(date)
         new(user_date: date)
       end
 
@@ -46,7 +47,7 @@ module Eventure
       end
 
       def remove_saved(serno)
-        new(user_saved: user_saved.reject { |s| s == serno })
+        new(user_saved: user_saved.reject { |saved_id| saved_id == serno })
       end
 
       def add_user_likes(serno)
@@ -56,22 +57,9 @@ module Eventure
       end
 
       def remove_user_likes(serno)
-        new(user_likes: user_likes.reject { |s| s == serno })
+        new(user_likes: user_likes.reject { |liked_id| liked_id == serno })
       end
 
-      def saved_count
-        user_saved.length
-      end
-
-      def likes_count
-        user_likes.length
-      end
-
-      def saved_activities
-        user_saved
-      end
-
-      # Conversion methods
       def to_filter
         Value::Filter.new(
           filter_date: user_date,

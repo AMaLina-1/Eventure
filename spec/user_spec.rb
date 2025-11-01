@@ -10,14 +10,14 @@ require_relative '../app/domain/values/filter'
 describe 'User entity domain logic tests' do
   VcrHelper.setup_vcr
 
-  before do 
+  before do
     VcrHelper.configure_vcr_for_hccg
     @activities = Eventure::Hccg::ActivityMapper.new(Eventure::Hccg::Api)
                                                 .find(TOP)
                                                 .map(&:to_entity)
 
     @available_tags = @activities.flat_map(&:tag).uniq
-    @available_regions = ['North', 'Central', 'East', 'South']
+    @available_regions = %w[North Central East South]
 
     @base_user = Eventure::Entity::User.new(
       user_id: rand(1000..9999).to_s,
@@ -33,29 +33,29 @@ describe 'User entity domain logic tests' do
     VcrHelper.eject_vcr
   end
 
-  describe 'User entity structure' do 
-    it 'HAPPY: should create a user entity with correct datatype' do 
+  describe 'User entity structure' do
+    it 'HAPPY: should create a user entity with correct datatype' do
       _(@base_user).must_be_kind_of Eventure::Entity::User
       _(@base_user.user_id).must_be_kind_of String
       _(@base_user.user_date).must_be_kind_of Date
     end
 
     it 'HAPPY: should initialize with empty collections' do
-      _(@base_user.saved_count).must_equal 0
-      _(@base_user.likes_count).must_equal 0
-      _(@base_user.saved_activities).must_be_kind_of Array
+      _(@base_user.user_saved.length).must_equal 0
+      _(@base_user.user_likes.length).must_equal 0
+      _(@base_user.user_saved).must_be_kind_of Array
     end
   end
 
   describe 'User preference methods' do
     it 'HAPPY: should set start date' do
       new_date = Date.today + 7
-      updated_user = @base_user.set_start_date(new_date)
+      updated_user = @base_user.update_start_date(new_date)
 
       _(updated_user.user_date).must_equal new_date
     end
 
-    it 'HAPPY: should add and remove theme' do 
+    it 'HAPPY: should add and remove theme' do
       user_no_theme = @base_user.remove_theme
       theme = @available_tags.sample
       updated_user = user_no_theme.add_theme(theme)
@@ -64,7 +64,7 @@ describe 'User entity domain logic tests' do
       _(updated_user.remove_theme.user_theme).must_be_nil
     end
 
-    it 'HAPPY: should add and remove region' do 
+    it 'HAPPY: should add and remove region' do
       user_no_region = @base_user.remove_region
       region = @available_regions.sample
       updated_user = user_no_region.add_region(region)
@@ -78,7 +78,7 @@ describe 'User entity domain logic tests' do
     let(:sample_serno) { @activities[rand(@activities.length)].serno }
     let(:another_serno) { @activities[(@activities.length - 1)].serno }
 
-    it 'HAPPY: should add saved activity' do 
+    it 'HAPPY: should add saved activity' do
       updated_user = @base_user.add_saved(sample_serno)
 
       _(updated_user.user_saved.length).must_equal 1
@@ -117,7 +117,7 @@ describe 'User entity domain logic tests' do
   describe 'User likes activities logic' do
     let(:sample_serno) { @activities[rand(@activities.length)].serno }
 
-    it 'HAPPY: should add liked activity' do 
+    it 'HAPPY: should add liked activity' do
       updated_user = @base_user.add_user_likes(sample_serno)
 
       _(updated_user.user_likes.length).must_equal 1
@@ -157,14 +157,14 @@ describe 'User entity domain logic tests' do
       saved = updated_user.to_saved
 
       _(saved).must_be_kind_of Eventure::Value::Saved
-      _(saved.is_saved?).must_equal true
+      _(saved.saved?).must_equal true
     end
 
     it 'HAPPY: should convert user to saved value object when no saved items' do
       saved = @base_user.to_saved
 
       _(saved).must_be_kind_of Eventure::Value::Saved
-      _(saved.is_saved?).must_equal false
+      _(saved.saved?).must_equal false
     end
   end
 end

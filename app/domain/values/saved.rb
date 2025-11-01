@@ -5,12 +5,13 @@ require 'dry-struct'
 
 module Eventure
   module Value
+    # Saved value object
     class Saved < Dry::Struct
       include Dry.Types()
 
       attribute :saved, Strict::Bool
 
-      def is_saved? 
+      def saved?
         saved
       end
 
@@ -23,7 +24,7 @@ module Eventure
       end
 
       def ==(other)
-        other.is_a?(Saved) && other.saved == saved 
+        self.class == other.class && saved == other.saved
       end
     end
   end
