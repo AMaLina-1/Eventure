@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../hccg/mappers/activity_mapper'
+require_relative '../../../domain/values/location'
 
 module Eventure
   module Repository
@@ -91,25 +92,29 @@ module Eventure
       def self.rebuild_entity(db_record)
         return nil unless db_record
 
+        Eventure::Entity::Activity.new(rebuild_entity_attributes(db_record))
+      end
+
+      def self.rebuild_entity_attributes(db_record)
         db_tags = db_record.tags
-        Eventure::Entity::Activity.new(
+
+        {
           serno: db_record.serno, name: db_record.name, detail: db_record.detail,
           start_time: build_utc_datetime(db_record.start_time), end_time: build_utc_datetime(db_record.end_time),
-          location: db_record.location, voice: db_record.voice,
+          location: rebuild_location(db_record.location), voice: db_record.voice,
           organizer: db_record.organizer,
           tag_ids: rebuild_tag_ids(db_tags), tags: rebuild_tags(db_tags),
           relate_data: rebuild_relate_data(db_record.relatedata)
-        )
+        }
+      end
+
+      def self.rebuild_location(location_string)
+        Eventure::Value::Location.new(location_string)
       end
 
       def self.build_utc_datetime(time)
         Time.utc(
-          time.year,
-          time.month,
-          time.day,
-          time.hour,
-          time.min,
-          time.sec
+          time.year, time.month, time.day, time.hour, time.min, time.sec
         ).to_datetime
       end
 

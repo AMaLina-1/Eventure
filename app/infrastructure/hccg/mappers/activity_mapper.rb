@@ -32,7 +32,7 @@ module Eventure
           detail: entity.detail,
           start_time: entity.start_time.to_time.utc,
           end_time: entity.end_time.to_time.utc,
-          location: entity.location,
+          location: entity.location.to_s,
           voice: entity.voice,
           organizer: entity.organizer
         }

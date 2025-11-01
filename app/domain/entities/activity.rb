@@ -2,8 +2,11 @@
 
 require 'dry-struct'
 require 'dry-types'
+require 'date'
 require_relative 'tag'
 require_relative 'relatedata'
+require_relative '../values/location'
+require_relative '../lib/timehelper'
 
 module Eventure
   module Entity
@@ -16,7 +19,7 @@ module Eventure
       attribute :detail,       Strict::String
       attribute :start_time,   Strict::DateTime
       attribute :end_time,     Strict::DateTime
-      attribute :location,     Strict::String
+      attribute :location,     Strict::Location
       attribute :voice,        Strict::String
       attribute :organizer,    Strict::String
       attribute :tag_ids,      Strict::Array.of(Integer).default([].freeze)
@@ -46,6 +49,51 @@ module Eventure
       def relate_title
         relate_data.map(&:relate_title)
       end
+
+      def status
+        now = DateTime.now
+        check_past(now, 3) if end_time < now
+        check_future(now, 7) if now < start_time
+        'Ongoing'
+
+        # Archived:  end_time < now - 3
+        # Expired:   now - 3 <= end_time && end_time <= now
+        # Ongoing:   start_time <= now && now < end_time
+        # Upcoming:  now < start_time && start_time <= now + 7
+        # Scheduled: now + 7 < start_time
+      end
+
+      def duration
+        diff = ((end_time - start_time) * 24 * 60).to_i
+        day, remain = diff.divmod(24 * 60)
+        hour, minute = remain.divmod(60)
+        "#{day} days #{hour} hours #{minute} minutes"
+      end
+
+      def city
+        location.city
+      end
+
+      def district
+        location.district
+      end
+
+      def add_likes; end
+
+      def remove_likes; end
+
+      # private
+
+      def check_past(now, offset)
+        end_time < now - offset ? 'Archived' : 'Expired'
+      end
+
+      def check_future(now, offset)
+        now + offset < start_time ? 'Scheduled' : 'Upcoming'
+      end
     end
   end
 end
+
+# start_time = DateTime.parse("2025-11-01T19:00:00")
+# end_time = DateTime.parse("2025-11-03T7:10:00")
