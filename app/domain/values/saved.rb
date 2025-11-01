@@ -1,24 +1,25 @@
 # frozen_string_literal: true
 
+require 'dry-types'
+require 'dry-struct'
+
 module Eventure
   module Value
-    class Saved 
-      attr_reader :is_saved
+    class Saved < Dry::Struct
+      include Dry.Types()
 
-      def initialize(is_saved)
-        @is_saved = is_saved
-      end
+      attribute :is_saved, Strict::Bool
 
       def saved? 
-        @is_saved == true
+        is_saved
       end
 
       def to_s
-        @is_saved.to_s
+        is_saved.to_s
       end
 
       def ==(other)
-        other.class == self.class && other.is_saved == @is_saved  
+        other.is_a?(Saved) && other.is_saved == is_saved 
       end
     end
   end
