@@ -42,26 +42,9 @@ module Eventure
 
     def show_activities(top)
       service.save_activities(top)
-
-      # prepare tags for the view
-      @tags = if defined?(Eventure::Repository::Tags) && Eventure::Repository::Tags.respond_to?(:all)
-                Eventure::Repository::Tags.all.map(&:tag)
-              else
-                Eventure::Repository::Activities.all.flat_map { |a| Array(a.tags).map(&:tag) }.uniq
-              end
-
-      # read selected tags from params (name is filter_tag[] in the form)
-      selected = Array(request.params['filter_tag'] || []).map(&:to_s)
-
-      all_activities = Eventure::Repository::Activities.all
-      @activities = if selected.empty?
-                      all_activities
-                    else
-                      all_activities.select do |a|
-                        Array(a.tags).map { |t| t.tag.to_s }.intersect?(selected)
-                      end
-                    end
-
+      result      = service.search(request.params)
+      @activities = result[:activities]
+      @tags       = result[:tags]
       view 'home', locals: view_locals
     end
 
