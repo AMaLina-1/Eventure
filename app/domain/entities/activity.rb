@@ -6,7 +6,6 @@ require 'date'
 require_relative 'tag'
 require_relative 'relatedata'
 require_relative '../values/location'
-require_relative '../lib/timehelper'
 
 module Eventure
   module Entity
@@ -19,7 +18,7 @@ module Eventure
       attribute :detail,       Strict::String
       attribute :start_time,   Strict::DateTime
       attribute :end_time,     Strict::DateTime
-      attribute :location,     Strict::Location
+      attribute :location,     Eventure::Value::Location
       attribute :voice,        Strict::String
       attribute :organizer,    Strict::String
       attribute :tag_ids,      Strict::Array.of(Integer).default([].freeze)
