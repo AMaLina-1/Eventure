@@ -20,14 +20,31 @@ module Eventure
       end
 
       routing.on 'activities' do
+        # GET /activities
         routing.is do
           routing.get { show_activities(100) }
+        end
+
+        routing.post 'like' do
+          serno = routing.params['serno'] || routing.params['serno[]']
+          routing.halt 400, 'Missing serno' unless serno
+
+          begin
+            new_count = Eventure::Repository::Activities.add_user_likes(serno)
+            response['Content-Type'] = 'application/json'
+            { likes_count: new_count }.to_json
+          rescue Sequel::NoMatchingRow
+            routing.halt 404, 'Activity not found'
+          end
         end
       end
     end
 
     def show_activities(top)
       service.save_activities(top)
+      result      = service.search(request.params)
+      @activities = result[:activities]
+      @tags       = result[:tags]
       view 'home', locals: view_locals
     end
 

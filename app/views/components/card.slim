@@ -7,5 +7,7 @@
 		p.card-text.text-muted = "活動日期：#{start}"
 		- location = card.respond_to?(:location) ? card.location : (card.is_a?(Hash) ? (card[:location] || card['location'] || '') : '')
 		p.card-text.text-muted = "活動地點：#{location}"
+		- tag = card.respond_to?(:tag) ? card.tag : (card.is_a?(Hash) ? (card[:tag] || card['tag'] || '') : '')
+		p.card-text.text-muted = "活動分類：#{tag}"
 
 		== render('components/btn_card', locals: { card: card }, layout: nil)

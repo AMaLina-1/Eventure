@@ -1,11 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-<<<<<<< HEAD
       "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/require_app.rb": {
-=======
-      "/mnt/c/Users/user/Documents/Eventure/require_app.rb": {
->>>>>>> fde35a828862be79885eb25951994d7cba23c183
         "lines": [
           null,
           null,
@@ -25,11 +21,7 @@
           null
         ]
       },
-<<<<<<< HEAD
       "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/config/environment.rb": {
-=======
-      "/mnt/c/Users/user/Documents/Eventure/config/environment.rb": {
->>>>>>> fde35a828862be79885eb25951994d7cba23c183
         "lines": [
           null,
           null,
@@ -62,11 +54,7 @@
           null
         ]
       },
-<<<<<<< HEAD
       "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/models/entities/activity.rb": {
-=======
-      "/mnt/c/Users/user/Documents/Eventure/app/models/entities/activity.rb": {
->>>>>>> fde35a828862be79885eb25951994d7cba23c183
         "lines": [
           null,
           null,
@@ -81,6 +69,7 @@
           1,
           1,
           null,
+          1,
           1,
           1,
           1,
@@ -121,11 +110,7 @@
           null
         ]
       },
-<<<<<<< HEAD
       "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/models/entities/tag.rb": {
-=======
-      "/mnt/c/Users/user/Documents/Eventure/app/models/entities/tag.rb": {
->>>>>>> fde35a828862be79885eb25951994d7cba23c183
         "lines": [
           null,
           null,
@@ -145,11 +130,7 @@
           null
         ]
       },
-<<<<<<< HEAD
       "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/models/entities/relatedata.rb": {
-=======
-      "/mnt/c/Users/user/Documents/Eventure/app/models/entities/relatedata.rb": {
->>>>>>> fde35a828862be79885eb25951994d7cba23c183
         "lines": [
           null,
           null,
@@ -170,11 +151,7 @@
           null
         ]
       },
-<<<<<<< HEAD
       "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/infrastructure/database/orm/activity_orm.rb": {
-=======
-      "/mnt/c/Users/user/Documents/Eventure/app/infrastructure/database/orm/activity_orm.rb": {
->>>>>>> fde35a828862be79885eb25951994d7cba23c183
         "lines": [
           null,
           null,
@@ -198,11 +175,7 @@
           null
         ]
       },
-<<<<<<< HEAD
       "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/infrastructure/database/orm/relatedata_orm.rb": {
-=======
-      "/mnt/c/Users/user/Documents/Eventure/app/infrastructure/database/orm/relatedata_orm.rb": {
->>>>>>> fde35a828862be79885eb25951994d7cba23c183
         "lines": [
           null,
           null,
@@ -221,11 +194,7 @@
           null
         ]
       },
-<<<<<<< HEAD
       "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/infrastructure/database/orm/tag_orm.rb": {
-=======
-      "/mnt/c/Users/user/Documents/Eventure/app/infrastructure/database/orm/tag_orm.rb": {
->>>>>>> fde35a828862be79885eb25951994d7cba23c183
         "lines": [
           null,
           null,
@@ -245,11 +214,7 @@
           null
         ]
       },
-<<<<<<< HEAD
       "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/infrastructure/database/repositories/activities.rb": {
-=======
-      "/mnt/c/Users/user/Documents/Eventure/app/infrastructure/database/repositories/activities.rb": {
->>>>>>> fde35a828862be79885eb25951994d7cba23c183
         "lines": [
           null,
           null,
@@ -259,6 +224,12 @@
           1,
           null,
           1,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
           1,
           0,
           null,
@@ -302,6 +273,7 @@
           null,
           null,
           null,
+          null,
           1,
           null,
           null,
@@ -319,10 +291,8 @@
           108,
           108,
           108,
-          null,
           null,
           0,
-          null,
           null,
           null,
           null,
@@ -342,6 +312,9 @@
           null,
           100,
           100,
+          null,
+          null,
+          null,
           null,
           null,
           null,
@@ -599,30 +572,37 @@
           1,
           20,
           null,
-<<<<<<< HEAD
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           null,
           1,
           10,
           null,
           null,
           1,
-          10,
-          10,
-          null,
-          null,
-          null,
-          null,
+          23,
           null,
           null,
           1,
           10,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
           null,
           null,
           null,
@@ -743,9 +723,6 @@
           1,
           0,
           null,
-=======
-          20,
->>>>>>> fde35a828862be79885eb25951994d7cba23c183
           null,
           null,
           null,
@@ -756,7 +733,6 @@
           null
         ]
       },
-<<<<<<< HEAD
       "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/infrastructure/database/repositories/for.rb": {
         "lines": [
           null,
@@ -798,6 +774,10 @@
           1,
           null,
           1,
+          1,
+          0,
+          null,
+          null,
           1,
           0,
           0,
@@ -854,9 +834,6 @@
         ]
       },
       "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/infrastructure/hccg/gateways/hccg_api.rb": {
-=======
-      "/mnt/c/Users/user/Documents/Eventure/app/infrastructure/hccg/gateways/hccg_api.rb": {
->>>>>>> fde35a828862be79885eb25951994d7cba23c183
         "lines": [
           null,
           null,
@@ -891,11 +868,7 @@
           null
         ]
       },
-<<<<<<< HEAD
       "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/controllers/activities_controller.rb": {
-=======
-      "/mnt/c/Users/user/Documents/Eventure/app/controllers/activities_controller.rb": {
->>>>>>> fde35a828862be79885eb25951994d7cba23c183
         "lines": [
           null,
           null,
@@ -920,11 +893,7 @@
           null
         ]
       },
-<<<<<<< HEAD
       "/mnt/c/Users/mary8/OneDrive/Desktop/SOA/final_project/Eventure/app/controllers/app.rb": {
-=======
-      "/mnt/c/Users/user/Documents/Eventure/app/controllers/app.rb": {
->>>>>>> fde35a828862be79885eb25951994d7cba23c183
         "lines": [
           null,
           null,
@@ -948,14 +917,48 @@
           null,
           null,
           0,
+          null,
           0,
           0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
           null,
           null,
           null,
           null,
           1,
           0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
           0,
           null,
           null,
@@ -980,9 +983,13 @@
       }
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     "timestamp": 1761966114
 =======
     "timestamp": 1761840315
 >>>>>>> fde35a828862be79885eb25951994d7cba23c183
+=======
+    "timestamp": 1761919737
+>>>>>>> ea807f9dc818a4b6bc77998013010135fad484bd
   }
 }
