@@ -8,18 +8,22 @@ module Eventure
     class Saved < Dry::Struct
       include Dry.Types()
 
-      attribute :is_saved, Strict::Bool
+      attribute :saved, Strict::Bool
 
-      def saved? 
-        is_saved
+      def is_saved? 
+        saved
+      end
+
+      def saved_count
+        saved ? 1 : 0
       end
 
       def to_s
-        is_saved.to_s
+        saved.to_s
       end
 
       def ==(other)
-        other.is_a?(Saved) && other.is_saved == is_saved 
+        other.is_a?(Saved) && other.saved == saved 
       end
     end
   end
