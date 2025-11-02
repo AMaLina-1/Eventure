@@ -20,7 +20,7 @@ describe 'User entity domain logic tests' do
     @available_regions = %w[North Central East South]
 
     @base_user = Eventure::Entity::User.new(
-      user_id: rand(1000..9999).to_s,
+      user_id: rand(1000..9999),
       user_date: [Date.today, Date.today + 7],
       user_theme: [@available_tags.sample],
       user_region: [@available_regions.sample],
@@ -36,7 +36,7 @@ describe 'User entity domain logic tests' do
   describe 'User entity structure' do
     it 'HAPPY: should create a user entity with correct datatype' do
       _(@base_user).must_be_kind_of Eventure::Entity::User
-      _(@base_user.user_id).must_be_kind_of String
+      _(@base_user.user_id).must_be_kind_of Integer
       _(@base_user.user_date).must_be_kind_of Array
       _(@base_user.user_date.all? { |date| date.is_a?(Date) }).must_equal true
     end

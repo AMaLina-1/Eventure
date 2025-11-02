@@ -21,7 +21,7 @@ module Eventure
         Repository::For.entity(entities.first).create(entities)
       end
 
-      def search(activities) #: Eventure::Repository::Activities)
+      def search(activities)
         user = Eventure::Entity::User.new(
           user_id: 1, user_date: [Date.parse('2025-10-31'), Date.parse('2025-11-02')],
           user_theme: %w[教育文化 教育], user_region: [], user_saved: [], user_likes: []

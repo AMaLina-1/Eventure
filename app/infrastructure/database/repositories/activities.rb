@@ -8,7 +8,7 @@ module Eventure
     # repository for activities
     class Activities
       # --- 每次都同步（不看 DB 是否為空） ---
-      def self.sync_from(service, limit: 100) # rubocop:disable Naming/PredicateMethod
+      def self.sync_from?(service, limit: 100)
         Array(service.fetch_activities(limit)).each { |entity| db_find_or_create(entity) }
         true
       end
@@ -48,10 +48,8 @@ module Eventure
           detail: entity.detail,
           start_time: entity.start_time.to_time.utc,
           end_time: entity.end_time.to_time.utc,
-          location: entity.location,
-          voice: entity.voice,
-          organizer: entity.organizer,
-          likes_count: 0
+          location: entity.location, voice: entity.voice,
+          organizer: entity.organizer, likes_count: 0
         )
       end
 
@@ -135,12 +133,12 @@ module Eventure
       end
 
       # 交易包起來；若撞到唯一鍵（代表已存在），就改取既有那筆
-      def self.with_unique_retry(serno, &)
-        Eventure::App.db.transaction(&)
-      rescue Sequel::UniqueConstraintViolation
-        find_existing_by_serno(serno)
-      end
-      private_class_method :with_unique_retry
+      # def self.with_unique_retry(serno, &)
+      #   Eventure::App.db.transaction(&)
+      # rescue Sequel::UniqueConstraintViolation
+      #   find_existing_by_serno(serno)
+      # end
+      # private_class_method :with_unique_retry
     end
   end
 end
