@@ -28,16 +28,17 @@ module Eventure
         )
         filter = user.to_filter
         # all_activities = activities_repo.all
-        select_activities_by_filter(activities, filter)
+        # select_activities_by_filter(activities, filter)
+        save_activities(activities).select { |activity| filter.match_filter?(activity) }
       end
 
-      def select_activities_by_filter(activities, filter)
-        activity_after_filter = activities.select { |activity| filter.match_filter?(activity) }
-        tags_for_filter = activity_after_filter
-                          .flat_map { |activity| Array(activity.tags).map { |tag| tag.tag.to_s } }.uniq
+      # def select_activities_by_filter(activities, filter)
+      #   activity_after_filter = activities.select { |activity| filter.match_filter?(activity) }
+      #   tags_for_filter = activity_after_filter
+      #                     .flat_map { |activity| Array(activity.tags).map { |tag| tag.tag.to_s } }.uniq
 
-        [activity_after_filter, tags_for_filter]
-      end
+      #   [activity_after_filter, tags_for_filter]
+      # end
 
       private
 
