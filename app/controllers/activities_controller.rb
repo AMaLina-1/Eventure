@@ -34,7 +34,7 @@ module Eventure
       def select_activities_by_filter(activities, filter)
         activity_after_filter = activities.select { |activity| filter.match_filter?(activity) }
         tags_for_filter = activity_after_filter
-                          .flat_map { |activity| Array(activity.tags).map { |tag| tag.tag.to_s } }
+                          .flat_map { |activity| Array(activity.tags).map { |tag| tag.tag.to_s } }.uniq
 
         [activity_after_filter, tags_for_filter]
       end

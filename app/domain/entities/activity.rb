@@ -24,6 +24,7 @@ module Eventure
       attribute :tag_ids,      Strict::Array.of(Integer).default([].freeze)
       attribute :tags,         Strict::Array.of(Tag).default([].freeze)
       attribute :relate_data,  Strict::Array.of(RelateData).default([].freeze)
+      attribute? :likes_count, Strict::Integer
 
       def to_entity
         self
