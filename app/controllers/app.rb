@@ -49,7 +49,7 @@ module Eventure
     def show_activities(top)
       # service.save_activities(top)
       # @activities = service.search(service.save_activities(top))
-      activities = service.search(top, temp_user)
+      activities = service.search(top, Eventure::Entity::TempUser.new(user_id: 1))
       @activities = activities
       @tags = activities.flat_map { |activity| extract_tags(activity) }.uniq
       view 'home', locals: view_locals
@@ -73,15 +73,6 @@ module Eventure
 
     def service
       @service ||= Eventure::Services::ActivityService.new
-    end
-
-    def temp_user
-      Eventure::Entity::TempUser.new(
-        user_id: 1,
-        user_date: [Date.parse('2025-10-31'), Date.parse('2025-11-02')],
-        user_theme: %w[教育文化 教育],
-        user_region: [], user_saved: [], user_likes: []
-      )
     end
 
     private

@@ -19,7 +19,7 @@ module Eventure
     def self.config = Figaro.env
 
     configure :development, :test do
-      ENV['DATABASE_URL'] ||= "sqlite://#{config.DB_FILENAME}"
+      ENV['DATABASE_URL'] = "sqlite://#{config.DB_FILENAME}"
     end
 
     # Database Setup

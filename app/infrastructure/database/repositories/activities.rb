@@ -32,22 +32,23 @@ module Eventure
       end
 
       def self.find_or_create_activity(entity)
-        db_activity = Eventure::Database::ActivityOrm.first(serno: entity.serno)
         attr_hash = Eventure::Hccg::ActivityMapper.to_attr_hash(entity)
-        if db_activity
-          # attrs_without_likes = attrs.dup
-          # attrs_without_likes.delete(:likes_count)
-          # attrs_without_likes.delete('likes_count')
-          # db_activity.update(attrs.reject { |attr_name, _| attr_name.to_s == 'likes_count' })
-          db_activity.update(attr_hash.reject { |attr_name, _| attr_name.to_s == 'likes_count' })
-          # db_activity.update(attrs_without_likes)
-        else
-          db_activity = Eventure::Database::ActivityOrm.create(
-            **attr_hash.merge(likes_count: 0).reject { |attr_name, _| attr_name.to_s == 'likes_count' },
-            likes_count: entity.likes_count
-          )
-        end
-        db_activity
+        filtered_attrs = attr_hash.reject { |attr_name, _| attr_name.to_s == 'likes_count' }
+
+        Eventure::Database::ActivityOrm.first(serno: entity.serno)&.tap do |activity|
+          activity.update(filtered_attrs)
+        end || Eventure::Database::ActivityOrm.create(**attr_hash, likes_count: entity.likes_count || 0)
+        # db_activity = Eventure::Database::ActivityOrm.first(serno: entity.serno)
+        # attr_hash = Eventure::Hccg::ActivityMapper.to_attr_hash(entity)
+        # if db_activity
+        #   db_activity.update(attr_hash.reject { |attr_name, _| attr_name.to_s == 'likes_count' })
+        # else
+        #   db_activity = Eventure::Database::ActivityOrm.create(
+        #     **attr_hash.merge(likes_count: 0).reject { |attr_name, _| attr_name.to_s == 'likes_count' },
+        #     likes_count: entity.likes_count
+        #   )
+        # end
+        # db_activity
       end
 
       def self.build_activity_record(entity)
@@ -110,10 +111,7 @@ module Eventure
       def self.rebuild_entity_attributes(db_record)
         # db_tags = db_record.tags
 
-        {
-          **base_attributes(db_record),
-          **time_relate_attributes(db_record, db_record.tags)
-        }
+        { **base_attributes(db_record), **time_relate_attributes(db_record, db_record.tags) }
       end
 
       def self.base_attributes(db_record)
