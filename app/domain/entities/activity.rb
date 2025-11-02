@@ -77,7 +77,17 @@ module Eventure
         location.district
       end
 
-      def add_likes; end
+      def self.add_likes(serno)
+        raise ArgumentError, 'serno required' if serno.nil? || serno.to_s.empty?
+
+        Eventure::App.db.transaction do
+          db_activity = Database::ActivityOrm.first(serno: serno)
+          raise Sequel::NoMatchingRow, 'activity not found' unless db_activity
+
+          db_activity.update(likes_count: db_activity.likes_count.to_i + 1)
+          db_activity.likes_count.to_i
+        end
+      end
 
       def remove_likes; end
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'date'
-require_relative '../domain/value/filter'
+require_relative '../domain/values/filter'
 
 module Eventure
   module Services
@@ -20,30 +20,36 @@ module Eventure
         Repository::For.entity(entities.first).create(entities)
       end
 
-      def search(params,
-                 activities_repo: Eventure::Repository::Activities,
-                 tags_repo: (Eventure::Repository::Tags if defined?(Eventure::Repository::Tags)))
-        filter         = build_filter_from(params)
+      def search(activities_repo: Eventure::Repository::Activities)
+        user = Eventure::Entity::User.new(
+          user_id: 1, user_date: %w[2025-10-31 2025-11-02],
+          user_theme: %w[教育文化 教育], user_region: [], user_saved: [], user_likes: []
+        )
+        filter = user.to_filter
         all_activities = activities_repo.all
+        select_activities_by_filter(all_activities, filter)
+      end
 
-        {
-          activities: all_activities.select { |activity| filter.match_filter?(activity) },
-          tags: tags_repo.all.map(&:tag)
-        }
+      def select_activities_by_filter(activities, filter)
+        activity_after_filter = activities.select { |activity| filter.match_filter?(activity) }
+        tags_for_filter = activity_after_filter
+                          .flat_map { |activity| Array(activity.tags).map { |tag| tag.tag.to_s } }
+
+        [activity_after_filter, tags_for_filter]
       end
 
       private
 
-      def build_filter_from(params)
-        tags_param, regions_param, raw_start_date, raw_end_date =
-          params.values_at('filter_tag', 'filter_region', 'start_date', 'end_date')
+      # def build_filter_from(params)
+      #   tags_param, regions_param, raw_start_date, raw_end_date =
+      #     params.values_at('filter_tag', 'filter_region', 'start_date', 'end_date')
 
-        Eventure::Value::Filter.new(
-          filter_theme: Array(tags_param).map(&:to_s),
-          filter_region: Array(regions_param).map(&:to_s),
-          filter_date: parse_date_range(raw_start_date, raw_end_date)
-        )
-      end
+      #   Eventure::Value::Filter.new(
+      #     filter_theme: Array(tags_param).map(&:to_s),
+      #     filter_region: Array(regions_param).map(&:to_s),
+      #     filter_date: parse_date_range(raw_start_date, raw_end_date)
+      #   )
+      # end
 
       # :reek:UtilityFunction
       def parse_date_range(start_raw, end_raw)

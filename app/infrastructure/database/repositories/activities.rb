@@ -93,7 +93,7 @@ module Eventure
         end
       end
 
-      def self.rebuild_entity(db_record) # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
+      def self.rebuild_entity(db_record)
         return nil unless db_record
 
         Eventure::Entity::Activity.new(rebuild_entity_attributes(db_record))
@@ -141,18 +141,6 @@ module Eventure
         find_existing_by_serno(serno)
       end
       private_class_method :with_unique_retry
-
-      def self.add_user_likes(serno)
-        raise ArgumentError, 'serno required' if serno.nil? || serno.to_s.empty?
-
-        Eventure::App.db.transaction do
-          db_activity = Database::ActivityOrm.first(serno: serno)
-          raise Sequel::NoMatchingRow, 'activity not found' unless db_activity
-
-          db_activity.update(likes_count: db_activity.likes_count.to_i + 1)
-          db_activity.likes_count.to_i
-        end
-      end
     end
   end
 end
