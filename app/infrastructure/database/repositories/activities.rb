@@ -113,7 +113,7 @@ module Eventure
       end
 
       def self.rebuild_location(location_string)
-        Eventure::Value::Location.new(location_string)
+        Eventure::Value::Location.new(building: location_string)
       end
 
       def self.build_utc_datetime(time)

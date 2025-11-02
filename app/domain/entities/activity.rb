@@ -89,7 +89,13 @@ module Eventure
         end
       end
 
-      def remove_likes; end
+      def remove_likes(serno)
+        db_activity = Database::ActivityOrm.first(serno: serno)
+        raise Sequel::NoMatchingRow, 'activity not found' unless db_activity
+
+        db_activity.update(likes_count: db_activity.likes_count.to_i - 1)
+        db_activity.likes_count.to_i
+      end
 
       # private
 

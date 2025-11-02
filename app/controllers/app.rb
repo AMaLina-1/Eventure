@@ -30,7 +30,8 @@ module Eventure
           routing.halt 400, 'Missing serno' unless serno
 
           begin
-            new_count = Eventure::Repository::Activities.add_user_likes(serno)
+            # new_count = Eventure::Repository::Activities.add_user_likes(serno)
+            new_count = Eventure::Entity::Activity.add_likes(serno)
             response['Content-Type'] = 'application/json'
             { likes_count: new_count }.to_json
           rescue Sequel::NoMatchingRow
@@ -41,10 +42,8 @@ module Eventure
     end
 
     def show_activities(top)
-      service.save_activities(top)
-      result      = service.search(request.params)
-      @activities = result[:activities]
-      @tags       = result[:tags]
+      # service.save_activities(top)
+      @activities, @tags = service.search(service.save_activities(top))
       view 'home', locals: view_locals
     end
 

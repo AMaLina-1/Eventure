@@ -9,7 +9,7 @@ module Eventure
     class User < Dry::Struct
       include Dry.Types()
 
-      attribute :user_id,      Strict::String
+      attribute :user_id,      Strict::Integer
       attribute :user_date,    Strict::Array.of(Date).default([].freeze)
       attribute :user_theme,   Strict::Array.of(String).default([].freeze)
       attribute :user_region,  Strict::Array.of(String).default([].freeze)

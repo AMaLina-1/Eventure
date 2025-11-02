@@ -2,6 +2,7 @@
 
 require 'date'
 require_relative '../domain/values/filter'
+require_relative '../domain/entities/user'
 
 module Eventure
   module Services
@@ -20,14 +21,14 @@ module Eventure
         Repository::For.entity(entities.first).create(entities)
       end
 
-      def search(activities_repo: Eventure::Repository::Activities)
+      def search(activities) #: Eventure::Repository::Activities)
         user = Eventure::Entity::User.new(
-          user_id: 1, user_date: %w[2025-10-31 2025-11-02],
+          user_id: 1, user_date: [Date.parse('2025-10-31'), Date.parse('2025-11-02')],
           user_theme: %w[教育文化 教育], user_region: [], user_saved: [], user_likes: []
         )
         filter = user.to_filter
-        all_activities = activities_repo.all
-        select_activities_by_filter(all_activities, filter)
+        # all_activities = activities_repo.all
+        select_activities_by_filter(activities, filter)
       end
 
       def select_activities_by_filter(activities, filter)

@@ -5,6 +5,7 @@ require 'date'
 require_relative '../../../domain/entities/activity'
 require_relative '../../../domain/entities/tag'
 require_relative '../../../domain/entities/relatedata'
+require_relative '../../../domain/values/location'
 
 module Eventure
   module Hccg
@@ -78,7 +79,7 @@ module Eventure
         end
 
         def location
-          @data['activityplace']
+          Eventure::Value::Location.new(building: @data['activityplace'])
         end
 
         def voice
