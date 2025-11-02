@@ -2,9 +2,9 @@
 
 A web application that helps users discover **events** and **activities** happening in Hsinchu City.
 
-# API Introduction
+## API Introduction
 
-## Hshinchu City Government Web OpenAPI
+### Hshinchu City Government Web OpenAPI
 
 - Introduction: Getting activity information from Hsinchu government.
 - Request URL:
@@ -43,4 +43,11 @@ A web application that helps users discover **events** and **activities** happen
     <tr>
       <td><img src = 'images/ERD.png' width = '700'></td>
     </tr>
+
   </table>
+
+## Context Description
+Our application provides a **one-stop event discovery platform** that helps users easily find `activities` they like. Instead of visiting multiple resources, users can search for activities through our unified interface. Our main features include:
+- Allowing users to apply `filters` such as `date`, `theme`, and `region` to quickly find relevant activities.
+- Providing a `save` option for users to save those activities they are interested in during a browsing session.
+- Enabling a `like` feature that allows users to express interest in activities, and the system displays their popularity based on the total number of likes.
