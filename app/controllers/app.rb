@@ -41,8 +41,12 @@ module Eventure
       # @activities = service.search(service.save_activities(top))
       activities = service.search(top)
       @activities = activities
-      @tags = activities.flat_map { |activity| Array(activity.tags).map { |tag| tag.tag.to_s } }.uniq
+      @tags = activities.flat_map { |activity| extract_tags(activity) }.uniq
       view 'home', locals: view_locals
+    end
+
+    def extract_tags(activity)
+      Array(activity.tags).map { |tag| tag.tag.to_s }
     end
 
     def view_locals

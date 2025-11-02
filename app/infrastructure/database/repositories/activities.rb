@@ -8,10 +8,10 @@ module Eventure
     # repository for activities
     class Activities
       # --- 每次都同步（不看 DB 是否為空） ---
-      def self.sync_from?(service, limit: 100)
-        Array(service.fetch_activities(limit)).each { |entity| db_find_or_create(entity) }
-        true
-      end
+      # def self.sync_from?(service, limit: 100)
+      #   Array(service.fetch_activities(limit)).each { |entity| db_find_or_create(entity) }
+      #   true
+      # end
 
       def self.all
         Database::ActivityOrm.all.map { |db_activity| rebuild_entity(db_activity) }
@@ -32,13 +32,16 @@ module Eventure
       end
 
       def self.find_or_create_activity(entity) # rubocop:disable Metrics/MethodLength
-        attrs = Eventure::Hccg::ActivityMapper.to_attr_hash(entity)
+        # attrs = 
         db_activity = Eventure::Database::ActivityOrm.first(serno: entity.serno)
         if db_activity
-          attrs_without_likes = attrs.dup
-          attrs_without_likes.delete(:likes_count)
-          attrs_without_likes.delete('likes_count')
-          db_activity.update(attrs_without_likes)
+          # attrs_without_likes = attrs.dup
+          # attrs_without_likes.delete(:likes_count)
+          # attrs_without_likes.delete('likes_count')
+          # db_activity.update(attrs.reject { |attr_name, _| attr_name.to_s == 'likes_count' })
+          db_activity.update(Eventure::Hccg::ActivityMapper.to_attr_hash(entity)
+                     .reject { |attr_name, _| attr_name.to_s == 'likes_count' })
+          # db_activity.update(attrs_without_likes)
         else
           db_activity = Eventure::Database::ActivityOrm.create(attrs.merge(likes_count: 0))
         end
@@ -54,7 +57,7 @@ module Eventure
           location: entity.location,
           voice: entity.voice,
           organizer: entity.organizer,
-          likes_count: db_record.likes_count.to_i
+          likes_count: 0 # db_record.likes_count.to_i
         )
       end
 
@@ -67,12 +70,12 @@ module Eventure
           tag_orm = find_or_create_tag(tag)
           next if existing_tag_ids.include?(tag_orm.tag_id)
 
-          begin
-            db_activity.add_tag(tag_orm)
-          rescue Sequel::UniqueConstraintViolation
-            # another process inserted the same join row concurrently; ignore
-            next
-          end
+          # begin
+          db_activity.add_tag(tag_orm)
+          # rescue Sequel::UniqueConstraintViolation
+          # another process inserted the same join row concurrently; ignore
+          # next
+          # end
         end
       end
 
@@ -103,14 +106,25 @@ module Eventure
       end
 
       def self.rebuild_entity_attributes(db_record)
-        db_tags = db_record.tags
+        # db_tags = db_record.tags
 
         {
-          serno: db_record.serno, name: db_record.name, detail: db_record.detail,
+          **base_attributes(db_record),
+          **time_relate_attributes(db_record, db_record.tags)
+        }
+      end
+
+      def self.base_attributes(db_record)
+        {
+          serno: db_record.serno, name: db_record.name, detail: db_record.detail, voice: db_record.voice, organizer: db_record.organizer,
+          location: rebuild_location(db_record.location), likes_count: db_record.likes_count.to_i
+        }
+      end
+
+      def self.time_relate_attributes(db_record, db_record_tags)
+        {
           start_time: build_utc_datetime(db_record.start_time), end_time: build_utc_datetime(db_record.end_time),
-          location: rebuild_location(db_record.location), voice: db_record.voice,
-          organizer: db_record.organizer, tag_ids: rebuild_tag_ids(db_tags), tags: rebuild_tags(db_tags),
-          relate_data: rebuild_relate_data(db_record.relatedata), likes_count: db_record.likes_count.to_i
+          tag_ids: rebuild_tag_ids(db_record_tags), tags: rebuild_tags(db_record_tags), relate_data: rebuild_relate_data(db_record.relatedata)
         }
       end
 
