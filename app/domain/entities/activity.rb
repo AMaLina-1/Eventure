@@ -24,7 +24,11 @@ module Eventure
       attribute :tag_ids,      Strict::Array.of(Integer).default([].freeze)
       attribute :tags,         Strict::Array.of(Tag).default([].freeze)
       attribute :relate_data,  Strict::Array.of(RelateData).default([].freeze)
-      attribute? :likes_count, Strict::Integer
+      # attribute? :likes_count, Strict::Integer
+
+      def likes_count
+        @likes_count ||= 0
+      end
 
       def to_entity
         self
@@ -82,26 +86,12 @@ module Eventure
         location.city
       end
 
-      def self.add_likes(serno)
-        # raise ArgumentError, 'serno required' if serno.nil? || serno.to_s.empty?
-
-        # Eventure::App.db.transaction do
-        #   db_activity = Database::ActivityOrm.first(serno: serno)
-        #   raise Sequel::NoMatchingRow, 'activity not found' unless db_activity
-
-        #   db_activity.update(likes_count: db_activity.likes_count.to_i + 1)
-        #   db_activity.likes_count.to_i
-        # end
-        db_activity = Database::ActivityOrm.where(serno: serno).update { likes_count + 1 }
-        db_activity.likes_count.to_i
+      def add_likes
+        @likes_count += 1
       end
 
-      def remove_likes(serno)
-        db_activity = Database::ActivityOrm.where(serno: serno).update { likes_count - 1 }
-        # raise Sequel::NoMatchingRow, 'activity not found' unless db_activity
-
-        # db_activity.update(likes_count: db_activity.likes_count.to_i - 1)
-        db_activity.likes_count.to_i
+      def remove_likes
+        @likes_count -= 1 if @likes_count.positive?
       end
 
       # private

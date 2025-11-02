@@ -33,16 +33,19 @@ module Eventure
 
       def self.find_or_create_activity(entity)
         db_activity = Eventure::Database::ActivityOrm.first(serno: entity.serno)
+        attr_hash = Eventure::Hccg::ActivityMapper.to_attr_hash(entity)
         if db_activity
           # attrs_without_likes = attrs.dup
           # attrs_without_likes.delete(:likes_count)
           # attrs_without_likes.delete('likes_count')
           # db_activity.update(attrs.reject { |attr_name, _| attr_name.to_s == 'likes_count' })
-          db_activity.update(Eventure::Hccg::ActivityMapper.to_attr_hash(entity)
-                     .reject { |attr_name, _| attr_name.to_s == 'likes_count' })
+          db_activity.update(attr_hash.reject { |attr_name, _| attr_name.to_s == 'likes_count' })
           # db_activity.update(attrs_without_likes)
         else
-          db_activity = Eventure::Database::ActivityOrm.create(attrs.merge(likes_count: 0))
+          db_activity = Eventure::Database::ActivityOrm.create(
+            **attr_hash.merge(likes_count: 0).reject { |attr_name, _| attr_name.to_s == 'likes_count' },
+            likes_count: entity.likes_count
+          )
         end
         db_activity
       end
@@ -98,7 +101,10 @@ module Eventure
       def self.rebuild_entity(db_record)
         return nil unless db_record
 
-        Eventure::Entity::Activity.new(rebuild_entity_attributes(db_record))
+        entity = Eventure::Entity::Activity.new(rebuild_entity_attributes(db_record))
+        entity.instance_variable_set(:@likes_count, db_record.likes_count.to_i)
+
+        entity
       end
 
       def self.rebuild_entity_attributes(db_record)
@@ -114,7 +120,7 @@ module Eventure
         {
           serno: db_record.serno, name: db_record.name, detail: db_record.detail,
           voice: db_record.voice, organizer: db_record.organizer,
-          location: rebuild_location(db_record.location), likes_count: db_record.likes_count.to_i
+          location: rebuild_location(db_record.location)
         }
       end
 
@@ -146,6 +152,12 @@ module Eventure
 
       def self.rebuild_relate_data(db_relatedata)
         db_relatedata.map { |rel| Relatedata.rebuild_entity(rel) }
+      end
+
+      def self.update_likes(entity)
+        db_activity = Database::ActivityOrm.first(serno: entity.serno)
+        db_activity.update(likes_count: entity.likes_count)
+        # db_activity
       end
 
       # 交易包起來；若撞到唯一鍵（代表已存在），就改取既有那筆
