@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../../models/entities/activity'
-require_relative '../../../models/entities/tag'
-require_relative '../../../models/entities/relatedata'
+require_relative '../../../domain/entities/activity'
+require_relative '../../../domain/entities/tag'
+require_relative '../../../domain/entities/relatedata'
 require_relative 'activities'
 require_relative 'tags'
 require_relative 'relatedata'

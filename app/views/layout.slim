@@ -6,6 +6,7 @@ html
 
     / Bootstrap CSS (Cerulean theme)
     link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.8/dist/cerulean/bootstrap.min.css" crossorigin="anonymous"
+    link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" crossorigin="anonymous"
     == assets(:css)
 
   body
@@ -18,17 +19,19 @@ html
         #navbarSupportedContent.collapse.navbar-collapse
           ul.navbar-nav.me-auto.mb-2.mb-lg-0
             li.nav-item
-              a.nav-link.active aria-current="page" href="/" Home
+              a.nav-link.active aria-current="page" href="/" 
+                i.bi.bi-house-door-fill.me-1 aria-hidden="true"
+                | Home
             li.nav-item
               // Filtering 按鈕會觸發 modal
-              a.nav-link href="#" data-bs-toggle="modal" data-bs-target="#filterModal" Filtering
+              a.nav-link href="#" data-bs-toggle="modal" data-bs-target="#filterModal"
+                i.bi.bi-funnel-fill.me-1 aria-hidden="true"
+                | Filtering
             // single Filtering trigger above opens the modal
-            li.nav-item.dropdown
-              a.nav-link.dropdown-toggle href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" 區域
-              ul.dropdown-menu
-                - Array(@cities || []).each do |city|
-                  li
-                    a.dropdown-item href="#" = city
+            li.nav-item
+              a.nav-link.active aria-current="page" href="/save"
+                i.bi.bi-bookmark-fill.me-1.text-warning aria-hidden="true"
+                | Save
           form.d-flex role="search"
             input.form-control.me-2 type="search" placeholder="Search" aria-label="Search"
             button.btn.btn-outline-success type="submit" Search
