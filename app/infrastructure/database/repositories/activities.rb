@@ -31,8 +31,7 @@ module Eventure
         end
       end
 
-      def self.find_or_create_activity(entity) # rubocop:disable Metrics/MethodLength
-        # attrs = 
+      def self.find_or_create_activity(entity)
         db_activity = Eventure::Database::ActivityOrm.first(serno: entity.serno)
         if db_activity
           # attrs_without_likes = attrs.dup
@@ -50,14 +49,11 @@ module Eventure
 
       def self.build_activity_record(entity)
         Database::ActivityOrm.create(
-          serno: entity.serno, name: entity.name,
-          detail: entity.detail,
+          serno: entity.serno, name: entity.name, detail: entity.detail,
           start_time: entity.start_time.to_time.utc,
           end_time: entity.end_time.to_time.utc,
-          location: entity.location,
-          voice: entity.voice,
-          organizer: entity.organizer,
-          likes_count: 0 # db_record.likes_count.to_i
+          location: entity.location, voice: entity.voice,
+          organizer: entity.organizer, likes_count: 0 # db_record.likes_count.to_i
         )
       end
 
@@ -116,7 +112,8 @@ module Eventure
 
       def self.base_attributes(db_record)
         {
-          serno: db_record.serno, name: db_record.name, detail: db_record.detail, voice: db_record.voice, organizer: db_record.organizer,
+          serno: db_record.serno, name: db_record.name, detail: db_record.detail,
+          voice: db_record.voice, organizer: db_record.organizer,
           location: rebuild_location(db_record.location), likes_count: db_record.likes_count.to_i
         }
       end
@@ -124,7 +121,8 @@ module Eventure
       def self.time_relate_attributes(db_record, db_record_tags)
         {
           start_time: build_utc_datetime(db_record.start_time), end_time: build_utc_datetime(db_record.end_time),
-          tag_ids: rebuild_tag_ids(db_record_tags), tags: rebuild_tags(db_record_tags), relate_data: rebuild_relate_data(db_record.relatedata)
+          tag_ids: rebuild_tag_ids(db_record_tags), tags: rebuild_tags(db_record_tags),
+          relate_data: rebuild_relate_data(db_record.relatedata)
         }
       end
 

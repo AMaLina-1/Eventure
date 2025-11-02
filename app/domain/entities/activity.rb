@@ -83,22 +83,24 @@ module Eventure
       end
 
       def self.add_likes(serno)
-        raise ArgumentError, 'serno required' if serno.nil? || serno.to_s.empty?
+        # raise ArgumentError, 'serno required' if serno.nil? || serno.to_s.empty?
 
-        Eventure::App.db.transaction do
-          db_activity = Database::ActivityOrm.first(serno: serno)
-          raise Sequel::NoMatchingRow, 'activity not found' unless db_activity
+        # Eventure::App.db.transaction do
+        #   db_activity = Database::ActivityOrm.first(serno: serno)
+        #   raise Sequel::NoMatchingRow, 'activity not found' unless db_activity
 
-          db_activity.update(likes_count: db_activity.likes_count.to_i + 1)
-          db_activity.likes_count.to_i
-        end
+        #   db_activity.update(likes_count: db_activity.likes_count.to_i + 1)
+        #   db_activity.likes_count.to_i
+        # end
+        db_activity = Database::ActivityOrm.where(serno: serno).update { likes_count + 1 }
+        db_activity.likes_count.to_i
       end
 
       def remove_likes(serno)
         db_activity = Database::ActivityOrm.where(serno: serno).update { likes_count - 1 }
         # raise Sequel::NoMatchingRow, 'activity not found' unless db_activity
 
-        db_activity.update(likes_count: db_activity.likes_count.to_i - 1)
+        # db_activity.update(likes_count: db_activity.likes_count.to_i - 1)
         db_activity.likes_count.to_i
       end
 
