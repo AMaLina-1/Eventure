@@ -31,13 +31,16 @@ module Eventure
         end
       end
 
-      def self.find_or_create_activity(entity)
+      def self.find_or_create_activity(entity) # rubocop:disable Metrics/MethodLength
         attrs = Eventure::Hccg::ActivityMapper.to_attr_hash(entity)
         db_activity = Eventure::Database::ActivityOrm.first(serno: entity.serno)
         if db_activity
-          db_activity.update(attrs)
+          attrs_without_likes = attrs.dup
+          attrs_without_likes.delete(:likes_count)
+          attrs_without_likes.delete('likes_count')
+          db_activity.update(attrs_without_likes)
         else
-          db_activity = Eventure::Database::ActivityOrm.create(attrs)
+          db_activity = Eventure::Database::ActivityOrm.create(attrs.merge(likes_count: 0))
         end
         db_activity
       end
@@ -51,7 +54,7 @@ module Eventure
           location: entity.location,
           voice: entity.voice,
           organizer: entity.organizer,
-          likes_count: 0
+          likes_count: db_record.likes_count.to_i
         )
       end
 
@@ -106,9 +109,8 @@ module Eventure
           serno: db_record.serno, name: db_record.name, detail: db_record.detail,
           start_time: build_utc_datetime(db_record.start_time), end_time: build_utc_datetime(db_record.end_time),
           location: rebuild_location(db_record.location), voice: db_record.voice,
-          organizer: db_record.organizer,
-          tag_ids: rebuild_tag_ids(db_tags), tags: rebuild_tags(db_tags),
-          relate_data: rebuild_relate_data(db_record.relatedata)
+          organizer: db_record.organizer, tag_ids: rebuild_tag_ids(db_tags), tags: rebuild_tags(db_tags),
+          relate_data: rebuild_relate_data(db_record.relatedata), likes_count: db_record.likes_count.to_i
         }
       end
 

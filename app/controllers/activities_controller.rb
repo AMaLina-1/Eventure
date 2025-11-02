@@ -21,7 +21,7 @@ module Eventure
         Repository::For.entity(entities.first).create(entities)
       end
 
-      def search(activities) #: Eventure::Repository::Activities)
+      def search(activities)
         user = Eventure::Entity::User.new(
           user_id: 1, user_date: [Date.parse('2025-10-31'), Date.parse('2025-11-02')],
           user_theme: %w[教育文化 教育], user_region: [], user_saved: [], user_likes: []
@@ -34,7 +34,7 @@ module Eventure
       def select_activities_by_filter(activities, filter)
         activity_after_filter = activities.select { |activity| filter.match_filter?(activity) }
         tags_for_filter = activity_after_filter
-                          .flat_map { |activity| Array(activity.tags).map { |tag| tag.tag.to_s } }
+                          .flat_map { |activity| Array(activity.tags).map { |tag| tag.tag.to_s } }.uniq
 
         [activity_after_filter, tags_for_filter]
       end
