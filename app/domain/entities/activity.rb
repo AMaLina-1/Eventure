@@ -17,8 +17,6 @@ module Eventure
       attribute :serno,        Strict::Integer
       attribute :name,         Strict::String
       attribute :detail,       Strict::String
-      attribute :start_time,   Strict::DateTime
-      attribute :end_time,     Strict::DateTime
       attribute :location,     Eventure::Value::Location
       attribute :voice,        Strict::String
       attribute :organizer,    Strict::String
@@ -27,6 +25,10 @@ module Eventure
       attribute :relate_data,  Strict::Array.of(RelateData).default([].freeze)
       attribute :activity_date, Eventure::Value::ActivityDate
       # attribute? :likes_count, Strict::Integer
+
+      # 讓舊 view 照樣可用
+      def start_time = activity_date.start_time
+      def end_time   = activity_date.end_time
 
       def likes_count
         @likes_count ||= 0

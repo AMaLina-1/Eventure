@@ -2,6 +2,7 @@
 
 require_relative '../../hccg/mappers/activity_mapper'
 require_relative '../../../domain/values/location'
+require_relative '../../../domain/values/activity_date'
 
 module Eventure
   module Repository
@@ -124,7 +125,10 @@ module Eventure
 
       def self.time_relate_attributes(db_record, db_record_tags)
         {
-          start_time: build_utc_datetime(db_record.start_time), end_time: build_utc_datetime(db_record.end_time),
+          activity_date: Eventure::Value::ActivityDate.new(
+            start_time: build_utc_datetime(db_record.start_time),
+            end_time: build_utc_datetime(db_record.end_time)
+          ),
           tag_ids: rebuild_tag_ids(db_record_tags), tags: rebuild_tags(db_record_tags),
           relate_data: rebuild_relate_data(db_record.relatedata)
         }
