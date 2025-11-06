@@ -50,9 +50,10 @@ module Eventure
       # service.save_activities(top)
       # @activities = service.search(service.save_activities(top))
       activities = service.search(top, Eventure::Entity::TempUser.new(user_id: 1))
+      liked = Array(session[:user_likes]).map(&:to_i)
       @activities = activities
       @tags = activities.flat_map { |activity| extract_tags(activity) }.uniq
-      view 'home', locals: view_locals
+      view 'home', locals: view_locals.merge(liked_sernos: liked)
     end
 
     def extract_tags(activity)
