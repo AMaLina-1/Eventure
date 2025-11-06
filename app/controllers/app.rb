@@ -44,6 +44,8 @@ module Eventure
             routing.halt 400, { error: 'Missing activity ID' }.to_json
           end
 
+          response['Content-Type'] = 'application/json'
+
           begin
             # try to update likes
             update_likes(serno.to_i)
@@ -70,31 +72,25 @@ module Eventure
       toggle_like(activity, serno.to_i)
       # save updated likes to db
       Eventure::Repository::Activities.update_likes(activity)
+      { likes_count: activity.likes_count || 0 }.to_json
     rescue StandardError => e
       flash[:error] = "Database failed to update: #{e.message}"
       halt 500, { error: 'Database update failed' }.to_json
-    ensure
-      # return response
-      response['Content-Type'] = 'application/json'
-      { likes_count: activity.likes_count || 0 }.to_json
-      # { likes_count: new_count }.to_json
     end
 
     # show activites page
     def show_activities(top)
-      # service.save_activities(top)
-      # @activities = service.search(service.save_activities(top))
-
       # get activities from service
       activities = service.search(top, Eventure::Entity::TempUser.new(user_id: 1))
-      flash[:notice] = 'No acitivites available right now' if acitivites.nil? || acitivites.empty?
-      # extract tags
+      if activities.nil? || activities.empty?
+        flash[:notice] = 'No activities available'
+        return
+      end
+
+      liked = Array(session[:user_likes]).map(&:to_i)
       @activities = activities
       @tags = activities.flat_map { |activity| extract_tags(activity) }.uniq
-      view 'home', locals: view_locals
-    rescue StandardError => e
-      flash[:error] = "Error loading activities: #{e.message}"
-      routing.redirect '/'
+      view 'home', locals: view_locals.merge(liked_sernos: liked)
     end
 
     def extract_tags(activity)

@@ -40,8 +40,8 @@
 .row
 	- local_cards.each do |card|
 		.col-md-4.mb-4
-			== render('components/card', locals: { card: card }, layout: nil)
-
+			== render('components/card', locals: { card: card, liked_sernos: liked_sernos }, layout: nil)
+			
 /loading中的樣式
 	.col-md-6
 		.card aria-hidden="true"
