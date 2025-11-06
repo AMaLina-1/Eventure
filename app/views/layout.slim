@@ -43,6 +43,15 @@ html
           a.text-underline-hover href="/" Eventure
 
       main
+        - if flash[:notice]
+          .alert.alert-success.alert-dismissible.fade.show role="alert"
+            = flash[:notice]
+            button.btn-close type="button" data-bs-dismiss="alert" aria-label="Close"
+        - if flash[:error]
+          .alert.alert-danger.alert-dismissible.fade.show role="alert"
+            = flash[:error]
+            button.btn-close type="button" data-bs-dismiss="alert" aria-label="Close"
+            
         == yield
 
     // Filtering modal (兩層篩選：左側城市、右側活動標籤)
