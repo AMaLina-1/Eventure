@@ -6,7 +6,7 @@ module Views
   # View for a list of activity entities
   class ActivityList
     include Enumerable
-    
+
     def initialize(activites)
       @activites = activites.map { |activity| Activity.new(activity) }
     end
@@ -15,8 +15,8 @@ module Views
       @activites.any?
     end
 
-    def each
-      @activites.each { |activity| yield activity}
+    def each(&block)
+      @activites.each { |activity| block.call(activity) } if block
     end
   end
 end

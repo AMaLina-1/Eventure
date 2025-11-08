@@ -14,7 +14,7 @@ module Views
     def name
       @activity.name
     end
-    
+
     def detail
       @activity.detail
     end
@@ -31,22 +31,20 @@ module Views
       @activity.organizer
     end
 
-    ###
     def tag_ids
-    #   @activity.tag_ids
-      @activity.tags.map { |tag| tag.tag_id }
+      @activity.tags.map(&:tag_id)
     end
 
     def tags
-      @activity.tags.map { |tag| tag.tag }
+      @activity.tags.map(&:tag)
     end
 
     def relate_data_title
-      @activity.relate_data.map { |data| data.relate_title }
+      @activity.relate_data.map(&:relate_title)
     end
 
     def relate_data_url
-      @activity.relate_data.map { |data| data.relate_url }
+      @activity.relate_data.map(&:relate_url)
     end
 
     def start_date
@@ -61,6 +59,7 @@ module Views
       @activity.activity_date.duration
     end
 
+    # now = DateTime.now 可能有問題
     def status
       @activity.activity_date.status
     end
@@ -68,10 +67,5 @@ module Views
     def likes_count
       @activity.likes_count
     end
-    # def tags
-    #   @activity.serno
-    # end
-
-
   end
 end

@@ -66,6 +66,10 @@ module Eventure
         location.district
       end
 
+      def building
+        location.to_s
+      end
+
       def region
         location.city
       end

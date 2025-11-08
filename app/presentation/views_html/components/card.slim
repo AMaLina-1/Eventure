@@ -3,11 +3,13 @@
 	.card-body
 		- title = card.name
 		h5.card-title = title
-		- start = card.start_date //.strftime('%Y-%m-%d %H:%M')
+		- start = card.start_date.strftime('%Y-%m-%d %H:%M')
 		p.card-text.text-muted = "活動日期：#{start}"
 		- location = card.location
 		p.card-text.text-muted = "活動地點：#{location}"
 		- tag = card.tags
 		p.card-text.text-muted = "活動分類：#{tag}"
+		- status = card.status
+		p.card-text.text-muted = "狀態：#{status}"
 
 		== render('components/btn_card', locals: { card: card, liked_sernos: liked_sernos }, layout: nil)

@@ -5,7 +5,6 @@
 - # 建立一個與 btn_card 相同 id_suffix 邏輯的陣列，供前端用來依序對應 modal
 - # card_ids = Array(local_cards).map { |c| c.respond_to?(:id) ? c.id : (c.is_a?(Hash) ? (c[:id] || c['id'] || c.object_id) : c.object_id) }
 - card_ids = cards.map { |c| c.serno }
-- liked_sernos = [202410240001]
 
 .row.mb-2
 	script type="application/json" id="cards-data"

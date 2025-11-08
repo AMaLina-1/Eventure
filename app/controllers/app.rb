@@ -79,7 +79,7 @@ module Eventure
     # show activites page
     def show_activities(top)
       # get activities from service
-      activities = service.search(top, Eventure::Entity::TempUser.new(user_id: 1))
+      # activities = service.search(top, Eventure::Entity::TempUser.new(user_id: 1))
       if activities.nil? || activities.empty?
         flash[:notice] = 'No activities available'
         return
