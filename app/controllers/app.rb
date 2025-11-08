@@ -3,18 +3,16 @@
 require 'roda'
 require 'slim'
 require 'slim/include'
+require_relative '../presentation/view_objects/activity_list'
 
 module Eventure
   # main app controller
   class App < Roda
     plugin :flash
-    plugin :render, engine: 'slim', views: 'app/views'
-    plugin :assets, css: 'style.css', path: 'app/views/assets'
+    plugin :render, engine: 'slim', views: 'app/presentation/views_html'
+    plugin :assets, css: 'style.css', path: 'app/presentation/assets'
     plugin :common_logger, $stdout
     plugin :halt
-    plugin :sessions,
-           secret: 'a_very_long_random_secret_key_at_least_64_characters_long_for_security_123456', # 必填，用來加密 session
-           cookie_only: true
 
     route do |routing|
       routing.assets
@@ -81,14 +79,14 @@ module Eventure
     # show activites page
     def show_activities(top)
       # get activities from service
-      activities = service.search(top, Eventure::Entity::TempUser.new(user_id: 1))
+      # activities = service.search(top, Eventure::Entity::TempUser.new(user_id: 1))
       if activities.nil? || activities.empty?
         flash[:notice] = 'No activities available'
         return
       end
 
       liked = Array(session[:user_likes]).map(&:to_i)
-      @activities = activities
+      @filtered_activities = activities
       @tags = activities.flat_map { |activity| extract_tags(activity) }.uniq
       view 'home', locals: view_locals.merge(liked_sernos: liked)
     end
@@ -99,7 +97,7 @@ module Eventure
 
     def view_locals
       {
-        cards: activities,
+        cards: Views::ActivityList.new(activities),
         total_pages: 1,
         current_page: 1
       }

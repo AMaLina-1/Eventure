@@ -21,7 +21,7 @@ module Eventure
       end
 
       def status
-        now = DateTime.now
+        now = ::DateTime.now
         return check_past(now, 3) if end_time < now
 
         return check_future(now, 7) if now < start_time
