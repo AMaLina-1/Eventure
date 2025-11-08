@@ -8,13 +8,10 @@ module Eventure
   # main app controller
   class App < Roda
     plugin :flash
-    plugin :render, engine: 'slim', views: 'app/views'
-    plugin :assets, css: 'style.css', path: 'app/views/assets'
+    plugin :render, engine: 'slim', views: 'app/presentation/views_html'
+    plugin :assets, css: 'style.css', path: 'app/presentation/assets'
     plugin :common_logger, $stdout
     plugin :halt
-    plugin :sessions,
-           secret: 'a_very_long_random_secret_key_at_least_64_characters_long_for_security_123456', # 必填，用來加密 session
-           cookie_only: true
 
     route do |routing|
       routing.assets
