@@ -2,7 +2,7 @@
 //- Expects locals: card, liked_sernos (可選)
 
 - id_suffix = card.respond_to?(:id) ? card.id : (card.is_a?(Hash) ? (card[:id] || card['id']) : card.object_id)
-- serno_val = card.respond_to?(:serno) ? card.serno : (card.is_a?(Hash) ? (card[:serno] || card['serno']) : nil)
+- serno_val = card.serno
 - liked_list = defined?(liked_sernos) ? Array(liked_sernos).map(&:to_i) : []
 - liked = serno_val && liked_list.include?(serno_val.to_i)
 
@@ -17,7 +17,7 @@ button.btn.btn-link.p-0.btn-heart type="button" aria-label="like" data-liked=(li
     i.bi.bi-suit-heart.text-danger aria-hidden="true"
 
 / 按讚次數（從 card 取值，fallback 0）
-- likes = (card.respond_to?(:likes_count) ? card.likes_count : (card.is_a?(Hash) ? (card[:likes_count] || card['likes_count']) : 0)).to_i
+- likes = card.likes_count.to_i
 span.like-count.ms-2 = likes
 
 - unless defined?(@btn_heart_script_included) && @btn_heart_script_included
@@ -78,32 +78,32 @@ span.like-count.ms-2 = likes
   .modal-dialog
     .modal-content
       .modal-header
-        - title = card.respond_to?(:name) ? card.name : (card.is_a?(Hash) ? (card[:name] || card['name'] || '未命名') : '未命名')
+        - title = card.name
         h5.modal-title id=("cardModalLabel-#{id_suffix}") = title
         button.btn-close type="button" data-bs-dismiss="modal" aria-label="Close"
       .modal-body
-        - start_time = card.respond_to?(:start_time) ? card.start_time : (card.is_a?(Hash) ? (card[:start_time] || card['start_time'] || '') : '')
+        - start_time = card.start_date
         - start_time = start_time.to_s.strip
         - if start_time.empty?
           p.start_time-muted (無時間)
         - else
           p.card-start_time = "活動時間：#{start_time}"
 
-        - location = card.respond_to?(:location) ? card.location : (card.is_a?(Hash) ? (card[:location] || card['location'] || '') : '')
+        - location = card.location
         - location = location.to_s.strip
         - if location.empty?
           p.location-muted (無地點)
         - else
           p.card-location = "活動地點：#{location}"
 
-        - voice = card.respond_to?(:voice) ? card.voice : (card.is_a?(Hash) ? (card[:voice] || card['voice'] || '') : '')
+        - voice = card.voice
         - voice = voice.to_s.strip
         - if voice.empty?
           p.voice-muted (無詳細描述)
         - else
           p.card-voice = voice
 
-        - relate_url = card.respond_to?(:relate_url) ? card.relate_url : (card.is_a?(Hash) ? (card[:relate_url] || card['relate_url']) : '#')
+        - relate_url = card.relate_data_url
         - if relate_url && !relate_url.to_s.empty?
           a href=relate_url target="_blank" = relate_url
       .modal-footer

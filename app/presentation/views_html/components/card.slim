@@ -1,13 +1,13 @@
 //- Component: card
 .card.h-100
 	.card-body
-		- title = card.respond_to?(:name) ? card.name : (card.is_a?(Hash) ? (card[:name] || card['name'] || '未命名') : '未命名')
+		- title = card.name
 		h5.card-title = title
-		- start = card.respond_to?(:start_time) ? (card.start_time && card.start_time.respond_to?(:strftime) ? card.start_time.strftime('%Y-%m-%d %H:%M') : (card.start_time ? card.start_time.to_s : '')) : (card.is_a?(Hash) ? (card[:start_time] || card['start_time'] || '') : '')
+		- start = card.start_date //.strftime('%Y-%m-%d %H:%M')
 		p.card-text.text-muted = "活動日期：#{start}"
-		- location = card.respond_to?(:location) ? card.location : (card.is_a?(Hash) ? (card[:location] || card['location'] || '') : '')
+		- location = card.location
 		p.card-text.text-muted = "活動地點：#{location}"
-		- tag = card.respond_to?(:tag) ? card.tag : (card.is_a?(Hash) ? (card[:tag] || card['tag'] || '') : '')
+		- tag = card.tags
 		p.card-text.text-muted = "活動分類：#{tag}"
 
 		== render('components/btn_card', locals: { card: card, liked_sernos: liked_sernos }, layout: nil)

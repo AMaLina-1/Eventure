@@ -3,6 +3,7 @@
 require 'roda'
 require 'slim'
 require 'slim/include'
+require_relative '../presentation/view_objects/activity_list'
 
 module Eventure
   # main app controller
@@ -85,7 +86,7 @@ module Eventure
       end
 
       liked = Array(session[:user_likes]).map(&:to_i)
-      @activities = activities
+      @filtered_activities = activities
       @tags = activities.flat_map { |activity| extract_tags(activity) }.uniq
       view 'home', locals: view_locals.merge(liked_sernos: liked)
     end
@@ -96,7 +97,7 @@ module Eventure
 
     def view_locals
       {
-        cards: activities,
+        cards: Views::ActivityList.new(activities),
         total_pages: 1,
         current_page: 1
       }
