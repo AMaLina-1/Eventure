@@ -22,39 +22,41 @@ module Eventure
       routing.root { routing.redirect '/activities' }
 
       # activities route
-      routing.on 'activities' do
-        handle_activities_routes(routing)
-      end
+      routing.on('activities') { handle_activities_routes(routing) }
     end
 
     private
 
     def handle_activities_routes(routing)
       # GET /activities
-      routing.is do
-        show_activities
-      rescue StandardError => e # :reek:UncommunicativeVariableName
-        flash[:error] = "Error loading activities: #{e.message}"
-        routing.redirect '/'
-      end
+      routing.is { handle_show_activities(routing) }
 
       # update likes
-      routing.post 'like' do
-        handle_like_request(routing)
-      end
+      routing.post('like') { handle_like_request(routing) }
+    end
+
+    def handle_show_activities(routing)
+      show_activities
+    rescue StandardError => e
+      flash[:error] = "Error loading activities: #{e.message}"
+      routing.redirect '/'
     end
 
     def handle_like_request(routing)
-      serno = routing.params['serno'] || routing.params['serno[]']
-      unless serno
-        flash[:error] = 'Missing activity ID'
-        routing.halt 400, { error: 'Missing activity ID' }.to_json
-      end
+      params = routing.params
+      serno = params['serno'] || params['serno[]']
+      return handle_missing_serno(routing) unless serno
+
       response['Content-Type'] = 'application/json'
       # try to update likes
       update_likes(serno.to_i)
     rescue StandardError => e # :reek:UncommunicativeVariableName
       handle_like_error(e)
+    end
+
+    def handle_missing_serno(routing)
+      flash[:error] = 'Missing activity ID'
+      routing.halt 400, { error: 'Missing activity ID' }.to_json
     end
 
     def handle_like_error(exception)
