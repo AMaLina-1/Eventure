@@ -6,6 +6,7 @@ require_relative '../../../domain/entities/activity'
 require_relative '../../../domain/entities/tag'
 require_relative '../../../domain/entities/relatedata'
 require_relative '../../../domain/values/location'
+require_relative '../../../domain/values/activity_date'
 
 module Eventure
   module Hccg
@@ -49,12 +50,11 @@ module Eventure
           Eventure::Entity::Activity.new(
             serno:, name:,
             detail:,
-            start_time:, end_time:,
-            location:,
-            voice:,
-            organizer:,
-            tag_ids:, tags:,
-            relate_data:
+            activity_date: Eventure::Value::ActivityDate.new(
+              start_time: start_time,
+              end_time: end_time
+            ),
+            location:, voice:, organizer:, tag_ids:, tags:, relate_data:
           )
         end
 

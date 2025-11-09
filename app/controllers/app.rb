@@ -2,57 +2,93 @@
 
 require 'roda'
 require 'slim'
+require 'slim/include'
+require_relative '../presentation/view_objects/activity_list'
 
 module Eventure
   # main app controller
   class App < Roda
-    plugin :render, engine: 'slim', views: 'app/views'
-    plugin :assets, css: 'style.css', path: 'app/views/assets'
+    plugin :flash
+    plugin :render, engine: 'slim', views: 'app/presentation/views_html'
+    plugin :assets, css: 'style.css', path: 'app/presentation/assets'
     plugin :common_logger, $stdout
     plugin :halt
-    plugin :sessions,
-           secret: 'a_very_long_random_secret_key_at_least_64_characters_long_for_security_123456', # 必填，用來加密 session
-           cookie_only: true
 
     route do |routing|
       routing.assets
       response['Content-Type'] = 'text/html; charset=utf-8'
 
-      routing.root do
-        routing.redirect '/activities'
-      end
+      # root route
+      routing.root { routing.redirect '/activities' }
 
+      # activities route
       routing.on 'activities' do
         # GET /activities
-        routing.is { show_activities(100) }
+        routing.is do
+          begin
+            show_activities(100)
+          rescue StandardError => e
+            flash[:error] = "Error loading activities: #{e.message}"
+            routing.redirect '/'
+          end
+        end
 
+        # update likes
         routing.post 'like' do
+          # check parameters
           serno = routing.params['serno'] || routing.params['serno[]']
-          update_likes(serno.to_i)
+          unless serno
+            flash[:error] = 'Missing activity ID'
+            routing.halt 400, { error: 'Missing activity ID' }.to_json
+          end
+
+          response['Content-Type'] = 'application/json'
+
+          begin
+            # try to update likes
+            update_likes(serno.to_i)
+          rescue StandardError => e
+            flash[:error] = "Error updating likes: #{e.message}"
+            response.status = 500
+            { error: 'Internal server error' }.to_json
+          end
         end
       end
     end
 
+    # update likes for an activity
     def update_likes(serno)
       # puts temp_user.user_likes
       session[:user_likes] ||= []
+      # fetch avtivity from repo
       activity = Eventure::Repository::Activities.find_serno(serno)
+      unless activity
+        flash[:error] = 'Activity not found'
+        halt 404, { error: 'Activity not found' }.to_json
+      end
+      # toggle like/unlike
       toggle_like(activity, serno.to_i)
-
+      # save updated likes to db
       Eventure::Repository::Activities.update_likes(activity)
-
-      response['Content-Type'] = 'application/json'
-      { likes_count: activity.likes_count }.to_json
-      # { likes_count: new_count }.to_json
+      { likes_count: activity.likes_count || 0 }.to_json
+    rescue StandardError => e
+      flash[:error] = "Database failed to update: #{e.message}"
+      halt 500, { error: 'Database update failed' }.to_json
     end
 
+    # show activites page
     def show_activities(top)
-      # service.save_activities(top)
-      # @activities = service.search(service.save_activities(top))
-      activities = service.search(top, Eventure::Entity::TempUser.new(user_id: 1))
-      @activities = activities
+      # get activities from service
+      # activities = service.search(top, Eventure::Entity::TempUser.new(user_id: 1))
+      if activities.nil? || activities.empty?
+        flash[:notice] = 'No activities available'
+        return
+      end
+
+      liked = Array(session[:user_likes]).map(&:to_i)
+      @filtered_activities = activities
       @tags = activities.flat_map { |activity| extract_tags(activity) }.uniq
-      view 'home', locals: view_locals
+      view 'home', locals: view_locals.merge(liked_sernos: liked)
     end
 
     def extract_tags(activity)
@@ -61,7 +97,7 @@ module Eventure
 
     def view_locals
       {
-        cards: activities,
+        cards: Views::ActivityList.new(activities),
         total_pages: 1,
         current_page: 1
       }
@@ -78,12 +114,13 @@ module Eventure
     private
 
     def toggle_like(activity, serno)
-      if session[:user_likes].include?(serno)
+      user_likes = session[:user_likes]
+      if user_likes.include?(serno)
         activity.remove_likes
-        session[:user_likes].delete(serno)
+        user_likes.delete(serno)
       else
         activity.add_likes
-        session[:user_likes] << serno
+        user_likes << serno
       end
     end
   end
