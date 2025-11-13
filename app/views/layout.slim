@@ -29,9 +29,9 @@ html
                 | Filtering
             // single Filtering trigger above opens the modal
             li.nav-item
-              a.nav-link.active aria-current="page" href="/like"
-                i.bi.bi-suit-heart-fill.me-1.text-danger aria-hidden="true"
-                | Like
+              a.nav-link.active aria-current="page" href="/save"
+                i.bi.bi-bookmark-fill.me-1.text-warning aria-hidden="true"
+                | Save
           form.d-flex role="search"
             input.form-control.me-2 type="search" placeholder="Search" aria-label="Search"
             button.btn.btn-outline-success type="submit" Search
@@ -43,15 +43,6 @@ html
           a.text-underline-hover href="/" Eventure
 
       main
-        - if flash[:notice]
-          .alert.alert-success.alert-dismissible.fade.show role="alert"
-            = flash[:notice]
-            button.btn-close type="button" data-bs-dismiss="alert" aria-label="Close"
-        - if flash[:error]
-          .alert.alert-danger.alert-dismissible.fade.show role="alert"
-            = flash[:error]
-            button.btn-close type="button" data-bs-dismiss="alert" aria-label="Close"
-            
         == yield
 
     // Filtering modal (兩層篩選：左側城市、右側活動標籤)

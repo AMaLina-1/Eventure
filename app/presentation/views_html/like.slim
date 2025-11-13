@@ -40,7 +40,9 @@
 .row
 	- local_cards.each do |card|
 		.col-md-4.mb-4
-			== render('components/card', locals: { card: card }, layout: nil)
+			- component_locals = { card: card }
+			- component_locals[:liked_sernos] = (defined?(liked_sernos) ? liked_sernos : (defined?(@liked_sernos) ? @liked_sernos : []))
+			== render('components/card', locals: component_locals, layout: nil)
 
 /loading中的樣式
 	.col-md-6
