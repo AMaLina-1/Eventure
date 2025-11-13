@@ -9,7 +9,7 @@
 - liked = serno_val && liked_list.include?(serno_val.to_i)
 
 / 「詳細」按鈕
-a.btn.btn-primary href="#" role="button" data-bs-toggle="modal" data-bs-target=("#cardModal-#{id_suffix}") 詳細
+a.btn.btn-primary.me-2 href="#" role="button" data-bs-toggle="modal" data-bs-target=("#cardModal-#{id_suffix}") 詳細
 
 / 愛心按鈕（initial state 依 session）
 button.btn.btn-link.p-0.btn-heart type="button" aria-label="like" data-liked=(liked ? 'true' : 'false') data-serno=serno_val
@@ -108,8 +108,12 @@ span.like-count.ms-2 = likes
         - else
           p.card-voice = voice
 
-        - relate_url = card.relate_data_url
-        - if relate_url && !relate_url.to_s.empty?
-          a href=relate_url target="_blank" = relate_url
+        - relate_urls = Array(card.relate_data_url).compact
+        - if relate_urls.any?
+          ul.list-unstyled
+            - relate_urls.each do |relate_url|
+              - next if relate_url.to_s.strip.empty?
+              li
+                a href=relate_url target="_blank"= relate_url
       .modal-footer
         button.btn.btn-secondary type="button" data-bs-dismiss="modal" 關閉
