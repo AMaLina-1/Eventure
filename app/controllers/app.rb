@@ -35,19 +35,21 @@ module Eventure
       routing.on 'activities' do
         # GET /activities
         routing.is do
-          if routing.params['filter_tag'] || routing.params['filter_city']
-            session[:filters] = {
-              tag: Array(routing.params['filter_tag'] || routing.params['filter_tag[]']).map(&:to_s).reject(&:empty?),
-              city: routing.params['filter_city']&.to_s
-            }.compact
+          if routing.params['filter_tag'] || routing.params['filter_city'] || routing.params['filter_district']
+            session[:filters] ||= {}
+            session[:filters][:tag]       =
+              Array(routing.params['filter_tag'] || routing.params['filter_tag[]']).map(&:to_s).reject(&:empty?)
+            session[:filters][:city]      = routing.params['filter_city']&.to_s
+            session[:filters][:districts] =
+              Array(routing.params['filter_district'] || routing.params['filter_district[]']).map(&:to_s).reject(&:empty?)
           else
-            session.delete(:filters)
+            session[:filters] = {}
           end
 
           show_activities(100)
-        rescue StandardError => e
-          flash[:error] = "Error loading activities: #{e.message}"
-          routing.redirect '/'
+          # rescue StandardError => e
+          #   flash[:error] = "Error loading activities: #{e.message}"
+          #   routing.redirect '/'
         end
 
         # update likes
@@ -101,24 +103,34 @@ module Eventure
       if filters[:tag] && !filters[:tag].empty?
         tag_set = Array(filters[:tag]).map(&:to_s)
         filtered = filtered.select do |a|
-          Array(a.tags).map { |t| t.tag.to_s }.intersect?(tag_set)
+          (Array(a.tags).map { |t| t.respond_to?(:tag) ? t.tag.to_s : t.to_s } & tag_set).any?
         end
       end
 
-      if filters[:city] && !filters[:city].to_s.empty?
+      if filters[:city] && !filters[:city].empty?
         city = filters[:city].to_s
-        filtered = filtered.select do |a|
-          # attempt to read city from activity.location if available
-          a.respond_to?(:location) && a.location && a.location.city && a.location.city.to_s == city
-        end
+
+        filtered = filtered.select { |a| a.city.to_s == city }
+
+        dists = Array(filters[:districts]).map(&:to_s)
+        filtered = filtered.select { |a| dists.include?(a.district.to_s) } if dists.any? && !dists.include?('全區')
       end
 
       liked = Array(session[:user_likes]).map(&:to_i)
       @filtered_activities = filtered
-      @tags = all.flat_map { |activity| extract_tags(activity) }.uniq
+      @tags = all.flat_map { |a| extract_tags(a) }.uniq
+      @cities = all.map { |a| a.city.to_s }.compact.uniq
       @current_filters = filters
 
-      view 'home', locals: view_locals.merge(liked_sernos: liked)
+      grouped = all.group_by { |a| a.city.to_s }
+      @districts_by_city = grouped.transform_values do |arr|
+        dists = arr.map { |a| a.district.to_s }.compact.uniq
+        ['全區'] + dists
+      end
+
+      view 'home',
+           locals: view_locals.merge(liked_sernos: liked, cities: @cities,
+                                     tags: @tags, current_filters: @current_filters, districts: @districts_by_city)
     end
 
     def extract_tags(activity)
