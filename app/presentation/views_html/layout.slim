@@ -85,18 +85,26 @@ html
             button.btn.btn-secondary type="button" data-bs-dismiss="modal" 取消
             button.btn.btn-primary type="submit" form="filtersForm" Save
 
-    / 時間分類 modal（placeholder）
+    / 時間分類 modal（start_date / end_date）
     .modal.fade id="timeModal" tabindex="-1" aria-labelledby="timeModalLabel" aria-hidden="true"
       .modal-dialog
         .modal-content
           .modal-header
             h5.modal-title id="timeModalLabel" 時間分類
             button.btn-close type="button" data-bs-dismiss="modal" aria-label="Close"
-          .modal-body
-            p 小說明：這個 modal 尚未實作時間篩選細節。
-          .modal-footer
-            button.btn.btn-secondary type="button" data-bs-dismiss="modal" 取消
-            button.btn.btn-primary type="button" data-bs-dismiss="modal" 好的
+          form#timeForm method="get" action="/activities"
+            .modal-body
+              - start_val = (@current_filters && @current_filters[:start_date]) || ''
+              - end_val = (@current_filters && @current_filters[:end_date]) || ''
+              .mb-3
+                label.form-label for="filter_start_date" 起始時間
+                input.form-control type="date" id="filter_start_date" name="filter_start_date" value="#{start_val}"
+              .mb-3
+                label.form-label for="filter_end_date" 結束時間
+                input.form-control type="date" id="filter_end_date" name="filter_end_date" value="#{end_val}"
+            .modal-footer
+              button.btn.btn-secondary type="button" data-bs-dismiss="modal" 取消
+              button.btn.btn-primary type="submit" form="timeForm" 套用
 
     / 地區分類 modal（左：縣市，右：區域 checkbox）
     .modal.fade id="regionModal" tabindex="-1" aria-labelledby="regionModalLabel" aria-hidden="true"
@@ -130,7 +138,7 @@ html
                           label.form-check-label for="dist-#{dist}"= dist
             .modal-footer
               button.btn.btn-secondary type="button" data-bs-dismiss="modal" 取消
-              button.btn.btn-primary type="submit" form="regionForm" 套用
+              button.btn.btn-primary type="submit" form="regionForm" Save
 
     / 把 districts 的資料放在頁面上，供前端使用（JSON）
     - districts_json = @districts_by_city || {}

@@ -4,16 +4,30 @@ require 'dry/monads'
 
 module Eventure
   module Services
-    class ToggleLike
+    class ToggleLike # rubocop:disable Style/Documentation
       include Dry::Monads[:result]
 
       def call(session:, serno:)
         session[:user_likes] ||= []
 
-        activity = Eventure::Repository::Activities.find_serno(serno)
-        return Failure('Activity not found') unless activity
+        activity = find_activity(serno)
+        return Failure('Activity not found') if activity.nil?
 
-        # toggle like/unlike
+        toggle_like!(session, activity, serno)
+        persist_likes(activity)
+
+        Success(activity.likes_count || 0)
+      rescue StandardError => e
+        Failure(e.message)
+      end
+
+      private
+
+      def find_activity(serno)
+        Eventure::Repository::Activities.find_serno(serno)
+      end
+
+      def toggle_like!(session, activity, serno)
         if session[:user_likes].include?(serno)
           activity.remove_likes
           session[:user_likes].delete(serno)
@@ -21,13 +35,10 @@ module Eventure
           activity.add_likes
           session[:user_likes] << serno
         end
+      end
 
-        # persist to DB
+      def persist_likes(activity)
         Eventure::Repository::Activities.update_likes(activity)
-
-        Success(activity.likes_count || 0)
-      rescue StandardError => e
-        Failure(e.message)
       end
     end
   end
