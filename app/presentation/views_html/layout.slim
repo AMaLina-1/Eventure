@@ -19,15 +19,24 @@ html
         #navbarSupportedContent.collapse.navbar-collapse
           ul.navbar-nav.me-auto.mb-2.mb-lg-0
             li.nav-item
-              a.nav-link.active aria-current="page" href="/" 
+              a.nav-link.active aria-current="page" href="/"
                 i.bi.bi-house-door-fill.me-1 aria-hidden="true"
                 | Home
             li.nav-item
-              // Filtering 按鈕會觸發 modal
+              // 活動分類 按鈕會觸發 modal
               a.nav-link href="#" data-bs-toggle="modal" data-bs-target="#filterModal"
                 i.bi.bi-funnel-fill.me-1 aria-hidden="true"
-                | Filtering
-            // single Filtering trigger above opens the modal
+                | 活動分類
+            li.nav-item
+              // 時間分類（暫為占位，稍後可實作更細節）
+              a.nav-link href="#" data-bs-toggle="modal" data-bs-target="#timeModal"
+                i.bi.bi-calendar3.me-1 aria-hidden="true"
+                | 時間分類
+            li.nav-item
+              // 地區分類（左側縣市，右側區域）
+              a.nav-link href="#" data-bs-toggle="modal" data-bs-target="#regionModal"
+                i.bi.bi-geo-alt.me-1 aria-hidden="true"
+                | 地區分類
             li.nav-item
               a.nav-link.active aria-current="page" href="/like"
                 i.bi.bi-suit-heart-fill.me-1.text-danger aria-hidden="true"
@@ -36,7 +45,6 @@ html
             input.form-control.me-2 type="search" placeholder="Search" aria-label="Search"
             button.btn.btn-outline-success type="submit" Search
 
-    
     .container#html_body.mt-4
       header.mb-4
         h1
@@ -51,47 +59,118 @@ html
           .alert.alert-danger.alert-dismissible.fade.show role="alert"
             = flash[:error]
             button.btn-close type="button" data-bs-dismiss="alert" aria-label="Close"
-            
+
         == yield
 
-    // Filtering modal (兩層篩選：左側城市、右側活動標籤)
+    / 活動分類 modal（左：縣市，右：活動標籤）
     .modal.fade id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true"
       .modal-dialog.modal-lg
         .modal-content
           .modal-header
-            h5.modal-title id="filterModalLabel" 兩層篩選
+            h5.modal-title id="filterModalLabel" 活動分類
             button.btn-close type="button" data-bs-dismiss="modal" aria-label="Close"
           .modal-body
-            .row
-              // 左側：城市清單
-
-              .col-md-5
-                h6 城市
-                ul.list-group#cityList
-                  - Array(@cities || []).each do |c|
-                    li.list-group-item
-                      label.form-check
-                        input.form-check-input type="radio" name="filter_city" value="#{$c}" id= "city-#{c}"
-                        span.form-check-label= c
-
-              // 右側：活動標籤清單（複選）
-              .col-md-4
-                h6 活動標籤
-                form#filtersForm method="get" action="/activities"
+            form#filtersForm method="get" action="/activities"
+              .row
+                  h6 活動標籤
                   #tagList
-                    - Array(@tags).each do |t|
-                      .form-check.mb-2
-                        input.form-check-input type="checkbox" name="filter_tag[]" value="#{t}" id="tag-#{t}"
-                        label.form-check-label for="tag-#{t}"= t
+                    .row
+                      - selected_tags = Array((@current_filters || {})[:tag]).map(&:to_s)
+                      - Array(@tags || []).each do |t|
+                        .col-6.mb-2
+                          .form-check.mb-2
+                            input.form-check-input type="checkbox" name="filter_tag[]" value="#{t}" id="tag-#{t}" checked=(selected_tags.include?(t.to_s))
+                            label.form-check-label for="tag-#{t}"= t
           .modal-footer
             button.btn.btn-secondary type="button" data-bs-dismiss="modal" 取消
             button.btn.btn-primary type="submit" form="filtersForm" Save
 
-    // 留空：目前不加自訂 JS，僅靠 Bootstrap 的 data-bs-* 屬性開啟 modal
+    / 時間分類 modal（placeholder）
+    .modal.fade id="timeModal" tabindex="-1" aria-labelledby="timeModalLabel" aria-hidden="true"
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h5.modal-title id="timeModalLabel" 時間分類
+            button.btn-close type="button" data-bs-dismiss="modal" aria-label="Close"
+          .modal-body
+            p 小說明：這個 modal 尚未實作時間篩選細節。
+          .modal-footer
+            button.btn.btn-secondary type="button" data-bs-dismiss="modal" 取消
+            button.btn.btn-primary type="button" data-bs-dismiss="modal" 好的
 
-      footer.mt-4.text-muted
-        | Eventure is made for demonstration purposes. We cannot warrant full correctness of all content.
+    / 地區分類 modal（左：縣市，右：區域 checkbox）
+    .modal.fade id="regionModal" tabindex="-1" aria-labelledby="regionModalLabel" aria-hidden="true"
+      .modal-dialog.modal-lg
+        .modal-content
+          .modal-header
+            h5.modal-title id="regionModalLabel" 地區篩選
+            button.btn-close type="button" data-bs-dismiss="modal" aria-label="Close"
+          form#regionForm method="get" action="/activities"
+            .modal-body
+              .row
+                .col-md-4
+                  h6 縣市
+                  ul.list-group#regionCityList
+                    - Array(@cities || []).each do |c|
+                      li.list-group-item
+                        label.form-check
+                          - checked_city = ((@current_filters || {})[:city]&.to_s == c.to_s)
+                          input.form-check-input.city-radio type="radio" name="filter_city" value="#{c}" data-city="#{c}" id="region-city-#{c}" checked=(checked_city)
+                          span.form-check-label= c
+                .col-md-6
+                  h6 區域
+                  #districtMenu
+                    - dmap = @districts_by_city || {}
+                    - selected_dists = Array((@current_filters || {})[:districts]).map(&:to_s)
+                    - if dmap && dmap.is_a?(Hash) && dmap.any?
+                      - first_city = (Array(@cities).first)
+                      - (dmap[first_city] || []).each do |dist|
+                        .form-check
+                          input.form-check-input type="checkbox" name="filter_district[]" value="#{dist}" id="dist-#{dist}" checked=(selected_dists.include?(dist.to_s))
+                          label.form-check-label for="dist-#{dist}"= dist
+            .modal-footer
+              button.btn.btn-secondary type="button" data-bs-dismiss="modal" 取消
+              button.btn.btn-primary type="submit" form="regionForm" 套用
+
+    / 把 districts 的資料放在頁面上，供前端使用（JSON）
+    - districts_json = @districts_by_city || {}
+    script type="application/json" id="districts-data"
+      = districts_json.to_json
+
+    script
+      | document.addEventListener('DOMContentLoaded', function () {
+      |   try {
+      |     var dataEl = document.getElementById('districts-data');
+      |     if (!dataEl) return;
+      |     var districtsByCity = JSON.parse(dataEl.textContent || '{}');
+      |     function renderDistrictsFor(city) {
+      |       var menu = document.getElementById('districtMenu');
+      |       if (!menu) return;
+      |       menu.innerHTML = '';
+      |       var dists = districtsByCity[city] || [];
+      |       dists.forEach(function(dist){
+      |         var id = 'dist-' + dist;
+      |         var checked = (Array.from(document.querySelectorAll('input[name="filter_district[]"]')).some(function(i){ return i.value === dist && i.checked; }));
+      |         var html = '<div class="form-check">' +
+      |                    '<input class="form-check-input" type="checkbox" name="filter_district[]" value="' + dist + '" id="' + id + '"' + (checked ? ' checked' : '') + '>' +
+      |                    '<label class="form-check-label" for="' + id + '">' + dist + '</label>' +
+      |                    '</div>';
+      |         menu.insertAdjacentHTML('beforeend', html);
+      |       });
+      |     }
+      |     var cityRadios = document.querySelectorAll('.city-radio');
+      |     cityRadios.forEach(function(r){
+      |       r.addEventListener('change', function(){ renderDistrictsFor(r.dataset.city); });
+      |     });
+      |     var sel = Array.from(cityRadios).find(function(r){ return r.checked; });
+      |     if (sel) renderDistrictsFor(sel.dataset.city);
+      |   } catch (e) { console.error(e); }
+      | });
+
+    footer.mt-4.text-muted.text-center
+      | Eventure is made for demonstration purposes. We cannot warrant full correctness of all content.
 
     / Scripts at end of body
     script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"
     script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"
+
