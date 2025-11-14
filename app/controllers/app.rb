@@ -24,7 +24,7 @@ module Eventure
       # ================== Likes page ==================
       routing.get 'like' do
         liked_sernos = Array(session[:user_likes]).map(&:to_i)
-        liked_activities = liked_sernos.map { |s| Eventure::Repository::Activities.find_serno(s) }.compact
+        liked_activities = liked_sernos.map { |serno| Eventure::Repository::Activities.find_serno(serno) }.compact
 
         view 'like',
              locals: view_locals.merge(
@@ -86,13 +86,13 @@ module Eventure
       liked = Array(session[:user_likes]).map(&:to_i)
 
       @filtered_activities = filtered
-      @tags = all.flat_map { |a| extract_tags(a) }.uniq
-      @cities = all.map { |a| a.city.to_s }.uniq
+      @tags = all.flat_map { |activity| extract_tags(activity) }.uniq
+      @cities = all.map { |activity| activity.city.to_s }.uniq
       @current_filters = filters
 
-      grouped = all.group_by { |a| a.city.to_s }
+      grouped = all.group_by { |activity| activity.city.to_s }
       @districts_by_city = grouped.transform_values do |arr|
-        dists = arr.map { |a| a.district.to_s }.uniq
+        dists = arr.map { |activity| activity.district.to_s }.uniq
         ['全區'] + dists
       end
 
@@ -108,19 +108,14 @@ module Eventure
 
     # 把 params 換成乾淨 hash
     def extract_filters(routing)
-      if routing.params['filter_tag'] ||
-         routing.params['filter_city'] ||
-         routing.params['filter_district']
-
-        {
-          tag: Array(routing.params['filter_tag'] || routing.params['filter_tag[]']).map(&:to_s).reject(&:empty?),
-          city: routing.params['filter_city']&.to_s,
-          districts: Array(routing.params['filter_district'] || routing.params['filter_district[]'])
-            .map(&:to_s).reject(&:empty?)
-        }
-      else
-        {}
-      end
+      {
+        tag: Array(routing.params['filter_tag'] || routing.params['filter_tag[]']).map(&:to_s).reject(&:empty?),
+        city: routing.params['filter_city']&.to_s,
+        districts: Array(routing.params['filter_district'] || routing.params['filter_district[]'])
+          .map(&:to_s).reject(&:empty?),
+        start_date: routing.params['filter_start_date']&.to_s,
+        end_date: routing.params['filter_end_date']&.to_s
+      }
     end
 
     # 把 Tag entity 轉成字串
