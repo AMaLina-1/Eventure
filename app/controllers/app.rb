@@ -21,7 +21,7 @@ module Eventure
 
       routing.root { routing.redirect '/activities' }
 
-      # ========== Likes Page ==========
+      # ================== Likes page ==================
       routing.get 'like' do
         liked_sernos = Array(session[:user_likes]).map(&:to_i)
         liked_activities = liked_sernos.map { |s| Eventure::Repository::Activities.find_serno(s) }.compact
@@ -33,16 +33,13 @@ module Eventure
              )
       end
 
-      # ========== Activities ==========
+      # ================== Activities ==================
       routing.on 'activities' do
-        # GET /activities
         routing.is do
           session[:filters] = extract_filters(routing)
-
           show_activities
         end
 
-        # POST /activities/like
         routing.post 'like' do
           serno = routing.params['serno'] || routing.params['serno[]']
           routing.halt 400, { error: 'Missing activity ID' }.to_json unless serno
@@ -72,7 +69,7 @@ module Eventure
       end
     end
 
-    # ========== Show Activities ==========
+    # ================== Show Activities ==================
     def show_activities
       all = activities
       if all.nil? || all.empty?
@@ -87,12 +84,12 @@ module Eventure
         filters: filters
       )
 
-      unless result[:success]
-        flash[:error] = result[:error]
+      if result.failure?
+        flash[:error] = result.failure
         return
       end
 
-      filtered = result[:activities]
+      filtered = result.value!
 
       liked = Array(session[:user_likes]).map(&:to_i)
 
@@ -117,7 +114,7 @@ module Eventure
            )
     end
 
-    # ========== Helpers ==========
+    # 把 params 換成乾淨 hash
     def extract_filters(routing)
       if routing.params['filter_tag'] ||
          routing.params['filter_city'] ||
@@ -134,6 +131,7 @@ module Eventure
       end
     end
 
+    # 把 Tag entity 轉成字串
     def extract_tags(activity)
       Array(activity.tags).map { |tag| tag.tag.to_s }
     end
