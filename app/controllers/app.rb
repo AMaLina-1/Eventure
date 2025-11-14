@@ -44,36 +44,27 @@ module Eventure
 
           response['Content-Type'] = 'application/json'
 
-          begin
-            # try to update likes
-            update_likes(serno.to_i)
-          rescue StandardError => e
-            flash[:error] = "Error updating likes: #{e.message}"
-            response.status = 500
-            { error: 'Internal server error' }.to_json
+          service = Eventure::Services::UpdateLikes.new
+          result = service.call(serno: serno.to_i, session: session)
+
+          case result
+          when Dry::Monads::Result::Success
+            { likes_count: result_value![:likes_count] }.to_json
+          when Dry::Monads::Result::Failure
+            case result.failure
+            when :activity_not_found
+              response.status = 404
+              { error: 'Activity not found' }.to_json
+            when :db_error
+              response.statue = 500
+              { error: 'Database update failed' }.to_json
+            else
+              response.status = 500
+              { error: 'Unknown error' }.to_json
+            end
           end
         end
       end
-    end
-
-    # update likes for an activity
-    def update_likes(serno)
-      # puts temp_user.user_likes
-      session[:user_likes] ||= []
-      # fetch avtivity from repo
-      activity = Eventure::Repository::Activities.find_serno(serno)
-      unless activity
-        flash[:error] = 'Activity not found'
-        halt 404, { error: 'Activity not found' }.to_json
-      end
-      # toggle like/unlike
-      toggle_like(activity, serno.to_i)
-      # save updated likes to db
-      Eventure::Repository::Activities.update_likes(activity)
-      { likes_count: activity.likes_count || 0 }.to_json
-    rescue StandardError => e
-      flash[:error] = "Database failed to update: #{e.message}"
-      halt 500, { error: 'Database update failed' }.to_json
     end
 
     # show activites page
@@ -109,19 +100,6 @@ module Eventure
 
     def service
       @service ||= Eventure::Services::ActivityService.new
-    end
-
-    private
-
-    def toggle_like(activity, serno)
-      user_likes = session[:user_likes]
-      if user_likes.include?(serno)
-        activity.remove_likes
-        user_likes.delete(serno)
-      else
-        activity.add_likes
-        user_likes << serno
-      end
     end
   end
 end
