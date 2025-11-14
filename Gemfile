@@ -38,6 +38,7 @@ gem 'dry-struct', '~> 1.0'
 gem 'dry-types', '~> 1.0'
 
 # Web Application
+gem 'dry-validation'
 gem 'logger', '~> 1.0'
 gem 'puma', '~> 6.4'
 gem 'rack-session', '~> 0'
