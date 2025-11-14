@@ -1,15 +1,19 @@
-# app/services/toggle_like.rb
+# frozen_string_literal: true
+
+require 'dry/monads'
 
 module Eventure
   module Services
     class ToggleLike
+      include Dry::Monads[:result]
+
       def call(session:, serno:)
         session[:user_likes] ||= []
 
         activity = Eventure::Repository::Activities.find_serno(serno)
-        return { success: false, error: 'Activity not found' } unless activity
+        return Failure('Activity not found') unless activity
 
-        # toggle
+        # toggle like/unlike
         if session[:user_likes].include?(serno)
           activity.remove_likes
           session[:user_likes].delete(serno)
@@ -18,12 +22,12 @@ module Eventure
           session[:user_likes] << serno
         end
 
-        # persist like count
+        # persist to DB
         Eventure::Repository::Activities.update_likes(activity)
 
-        { success: true, likes_count: activity.likes_count || 0 }
+        Success(activity.likes_count || 0)
       rescue StandardError => e
-        { success: false, error: e.message }
+        Failure(e.message)
       end
     end
   end

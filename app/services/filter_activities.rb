@@ -1,16 +1,22 @@
-# app/services/filter_activities.rb
+# frozen_string_literal: true
+
+require 'dry/monads'
 
 module Eventure
   module Services
     class FilterActivities
+      include Dry::Monads[:result]
+
       def call(activities:, filters:)
         filtered = activities.dup
 
         # 1) Tag filtering
         if filters[:tag] && !filters[:tag].empty?
           tag_set = Array(filters[:tag]).map(&:to_s)
+
           filtered = filtered.select do |a|
-            Array(a.tags).map { |t| t.respond_to?(:tag) ? t.tag.to_s : t.to_s }.intersect?(tag_set)
+            tags = Array(a.tags).map { |t| t.respond_to?(:tag) ? t.tag.to_s : t.to_s }
+            !(tags & tag_set).empty?
           end
         end
 
@@ -19,15 +25,14 @@ module Eventure
           city = filters[:city].to_s
           filtered = filtered.select { |a| a.city.to_s == city }
 
-          # 3) District filtering (if not 全區)
+          # 3) District filtering
           dists = Array(filters[:districts]).map(&:to_s)
           filtered = filtered.select { |a| dists.include?(a.district.to_s) } unless dists.empty? || dists.include?('全區')
         end
 
-        # Return simple Hash response
-        { success: true, activities: filtered }
+        Success(filtered)
       rescue StandardError => e
-        { success: false, error: e.message }
+        Failure(e.message)
       end
     end
   end
