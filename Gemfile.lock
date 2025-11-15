@@ -226,11 +226,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-<<<<<<< HEAD
   dry-monads (~> 1.0)
-=======
-  dry-monads
->>>>>>> ead0b67 (add: two gem)
   dry-struct (~> 1.0)
   dry-transaction
   dry-types (~> 1.0)

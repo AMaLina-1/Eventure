@@ -38,7 +38,7 @@ gem 'dry-struct', '~> 1.0'
 gem 'dry-types', '~> 1.0'
 
 # Web Application
-gem 'dry-monads'
+# gem 'dry-monads'
 gem 'dry-transaction'
 gem 'dry-validation'
 gem 'logger', '~> 1.0'
