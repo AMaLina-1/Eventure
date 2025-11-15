@@ -5,7 +5,8 @@ require 'slim'
 require 'slim/include'
 require_relative '../../presentation/view_objects/activity_list'
 require_relative '../services/filter_activities'
-require_relative '../services/update_likes'
+# require_relative '../services/update_likes'
+require_relative '../services/update_like_counts'
 
 module Eventure
   class App < Roda
@@ -41,30 +42,44 @@ module Eventure
         end
 
         routing.post 'like' do
-          serno = routing.params['serno'] || routing.params['serno[]']
-          routing.halt 400, { error: 'Missing activity ID' }.to_json unless serno
-
           response['Content-Type'] = 'application/json'
+          serno = routing.params['serno'] || routing.params['serno[]']
+          session[:user_likes] ||= []
 
-          service = Eventure::Services::UpdateLikes.new
-          result = service.call(serno: serno.to_i, session: session)
+          result = Service::UpdateLikeCounts.new.call(serno: serno.to_i, user_likes: session[:user_likes])
 
-          case result
-          when Dry::Monads::Result::Success
-            { likes_count: result_value![:likes_count] }.to_json
-          when Dry::Monads::Result::Failure
-            case result.failure
-            when :activity_not_found
-              response.status = 404
-              { error: 'Activity not found' }.to_json
-            when :db_error
-              response.statue = 500
-              { error: 'Database update failed' }.to_json
-            else
-              response.status = 500
-              { error: 'Unknown error' }.to_json
-            end
+          if result.failure?
+            flash[:error] = result.failure
+            # response.status = 500
+            # { error: 'Internal server error' }.to_json
+          else
+            result = result.value!
+            session[:user_likes] = result[:user_likes]
+            { serno: serno.to_i, likes_count: result[:like_counts] }.to_json
           end
+          # routing.halt 400, { error: 'Missing activity ID' }.to_json unless serno
+
+          # response['Content-Type'] = 'application/json'
+
+          # service = Eventure::Services::UpdateLikes.new
+          # result = service.call(serno: serno.to_i, session: session)
+
+          # case result
+          # when Dry::Monads::Result::Success
+          #   { likes_count: result_value![:likes_count] }.to_json
+          # when Dry::Monads::Result::Failure
+          #   case result.failure
+          #   when :activity_not_found
+          #     response.status = 404
+          #     { error: 'Activity not found' }.to_json
+          #   when :db_error
+          #     response.statue = 500
+          #     { error: 'Database update failed' }.to_json
+          #   else
+          #     response.status = 500
+          #     { error: 'Unknown error' }.to_json
+          #   end
+          # end
         end
       end
     end
