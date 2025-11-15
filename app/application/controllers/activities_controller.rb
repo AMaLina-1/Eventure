@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'date'
-require_relative '../domain/values/filter'
-require_relative '../domain/entities/user_temp'
+require_relative '../../domain/values/filter'
+require_relative '../../domain/entities/user_temp'
 
 module Eventure
   module Services

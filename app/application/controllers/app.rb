@@ -3,9 +3,9 @@
 require 'roda'
 require 'slim'
 require 'slim/include'
-require_relative '../presentation/view_objects/activity_list'
+require_relative '../../presentation/view_objects/activity_list'
 require_relative '../services/filter_activities'
-require_relative '../services/toggle_like'
+require_relative '../services/update_likes'
 
 module Eventure
   class App < Roda
