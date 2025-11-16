@@ -42,6 +42,7 @@ module Eventure
 
           if result.failure?
             flash[:error] = result.failure
+            routing.redirect '/activities'
           else
             result = result.value!
             @filtered_activities = result[:filtered_activities]

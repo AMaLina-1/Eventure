@@ -70,6 +70,8 @@ module Eventure
         end_dt   = parse_date(end_raw)
 
         if start_dt && end_dt
+          return Failure('Start date cannot be later than end date') if start_dt > end_dt
+
           input[:filtered_activities] = input[:filtered_activities].select do |ac_date|
             ad = ac_date.activity_date
             ad&.start_time&.between?(start_dt, end_dt)

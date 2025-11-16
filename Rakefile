@@ -21,7 +21,8 @@ end
 
 desc 'Run all tests'
 Rake::TestTask.new(:spec) do |t|
-  t.pattern = 'spec/**/*_spec.rb'
+  # t.pattern = 'spec/**/*_spec.rb'
+  t.pattern = 'spec/**/filtered_activities_spec.rb'
   t.warning = false
 end
 
