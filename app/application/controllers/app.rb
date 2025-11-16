@@ -4,7 +4,7 @@ require 'roda'
 require 'slim'
 require 'slim/include'
 require_relative '../../presentation/view_objects/activity_list'
-require_relative '../services/filter_activities'
+require_relative '../services/filtered_activities'
 # require_relative '../services/update_likes'
 require_relative '../services/update_like_counts'
 
@@ -38,7 +38,15 @@ module Eventure
       routing.on 'activities' do
         routing.is do
           session[:filters] = extract_filters(routing)
-          show_activities
+          result = Eventure::Service::FilteredActivities.new.call(filters: session[:filters])
+
+          if result.failure?
+            flash[:error] = result.failure
+          else
+            result = result.value!
+            @filtered_activities = result[:filtered_activities]
+            show_activities(result[:all_activities])
+          end
         end
 
         routing.post 'like' do
@@ -85,47 +93,24 @@ module Eventure
     end
 
     # ================== Show Activities ==================
-    def show_activities
-      all = activities
-      if all.nil? || all.empty?
-        flash[:notice] = 'No activities available'
-        return
-      end
-
-      filters = session[:filters] || {}
-
-      result = Eventure::Services::FilterActivities.new.call(
-        activities: all,
-        filters: filters
-      )
-
-      if result.failure?
-        flash[:error] = result.failure
-        return
-      end
-
-      filtered = result.value!
-
-      liked = Array(session[:user_likes]).map(&:to_i)
-
-      @filtered_activities = filtered
-      @tags = all.flat_map { |activity| extract_tags(activity) }.uniq
-      @cities = all.map { |activity| activity.city.to_s }.uniq
-      @current_filters = filters
-
-      grouped = all.group_by { |activity| activity.city.to_s }
-      @districts_by_city = grouped.transform_values do |arr|
-        dists = arr.map { |activity| activity.district.to_s }.uniq
+    def show_activities(all)
+      grouped = all.group_by(&:city)
+      districts_by_city = grouped.transform_values do |arr|
+        dists = arr.map(&:district).uniq
         ['全區'] + dists
       end
 
+      @tags = all.flat_map { |activity| extract_tags(activity) }.uniq
+      @cities = all.map { |activity| activity.city.to_s }.uniq
+      @current_filters = session[:filters]
+      @districts_by_city = districts_by_city
       view 'home',
            locals: view_locals.merge(
-             liked_sernos: liked,
-             cities: @cities,
-             tags: @tags,
-             current_filters: @current_filters,
-             districts: @districts_by_city
+             liked_sernos: Array(session[:user_likes]).map(&:to_i)
+             #  cities: all.map { |activity| activity.city.to_s }.uniq,
+             #  tags: all.flat_map { |activity| extract_tags(activity) }.uniq,
+             #  current_filters: session[:filters],
+             #  districts: districts_by_city
            )
     end
 
