@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../helpers/spec_helper'
-require_relative '../../helpers/vcr_helper'
-require_relative '../../helpers/database_helper'
-
-# require_relative '../../../app/domain/entities/user'
-# require_relative '../../../app/application/services/update_likes'
+require_relative '../../../helpers/spec_helper'
+require_relative '../../../helpers/vcr_helper'
+require_relative '../../../helpers/database_helper'
 
 describe 'FilteredActivities Service Integration Test' do
   VCR.configure do |c|
@@ -23,7 +20,7 @@ describe 'FilteredActivities Service Integration Test' do
     VCR.eject_cassette
   end
 
-  describe 'Retrieve and store project' do
+  describe 'Do filter transaction' do
     before do
       DatabaseHelper.wipe_database
       activities = Eventure::Hccg::ActivityMapper.new(Eventure::Hccg::Api).find(TOP)

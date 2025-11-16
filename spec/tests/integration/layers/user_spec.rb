@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative '../../helpers/spec_helper'
-require_relative '../../helpers/vcr_helper'
-require_relative '../../helpers/database_helper'
-require_relative '../../../app/domain/entities/user'
-require_relative '../../../app/domain/values/saved'
-require_relative '../../../app/domain/values/filter'
+require_relative '../../../helpers/spec_helper'
+require_relative '../../../helpers/vcr_helper'
+require_relative '../../../helpers/database_helper'
+require_relative '../../../../app/domain/entities/user'
+require_relative '../../../../app/domain/values/saved'
+require_relative '../../../../app/domain/values/filter'
 
 describe 'User entity domain logic tests' do
   VcrHelper.setup_vcr

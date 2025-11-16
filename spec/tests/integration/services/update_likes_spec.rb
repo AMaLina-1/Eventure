@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative '../../helpers/spec_helper'
-require_relative '../../helpers/vcr_helper'
-require_relative '../../helpers/database_helper'
-require_relative '../../../app/domain/entities/user'
-require_relative '../../../app/application/services/update_likes'
+require_relative '../../../helpers/spec_helper'
+require_relative '../../../helpers/vcr_helper'
+require_relative '../../../helpers/database_helper'
+require_relative '../../../../app/domain/entities/user'
+require_relative '../../../../app/application/services/update_likes'
 
 describe 'UpdateLikes Service' do
   VcrHelper.setup_vcr
