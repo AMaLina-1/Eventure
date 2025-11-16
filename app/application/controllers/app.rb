@@ -12,15 +12,17 @@ module Eventure
   class App < Roda
     plugin :flash
     plugin :render, engine: 'slim', views: 'app/presentation/views_html'
-    plugin :assets, css: 'style.css', path: 'app/presentation/assets'
+    plugin :static, ['/assets'], root: 'app/presentation'
     plugin :common_logger, $stdout
     plugin :halt
 
     route do |routing|
-      routing.assets
       response['Content-Type'] = 'text/html; charset=utf-8'
 
       routing.root { routing.redirect '/activities' }
+      routing.get 'intro_where' do
+        view 'intro_where'
+      end
 
       # ================== Likes page ==================
       routing.get 'like' do
