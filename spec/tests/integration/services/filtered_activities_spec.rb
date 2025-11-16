@@ -26,7 +26,7 @@ describe 'FilteredActivities Service Integration Test' do
   describe 'Retrieve and store project' do
     before do
       DatabaseHelper.wipe_database
-      activities = Eventure::Hccg::ActivityMapper.new(Eventure::Hccg::Api).find(100)
+      activities = Eventure::Hccg::ActivityMapper.new(Eventure::Hccg::Api).find(TOP)
       Eventure::Repository::Activities.create(activities)
     end
 
