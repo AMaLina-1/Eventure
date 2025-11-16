@@ -94,16 +94,18 @@ module Eventure
 
     # ================== Show Activities ==================
     def show_activities(all)
-      grouped = all.group_by(&:city)
-      districts_by_city = grouped.transform_values do |arr|
-        dists = arr.map(&:district).uniq
-        ['全區'] + dists
-      end
+      # grouped = all.group_by(&:city)
+      # districts_by_city = grouped.transform_values do |arr|
+      #   dists = arr.map(&:district).uniq
+      #   ['全區'] + dists
+      # end
 
-      @tags = all.flat_map { |activity| extract_tags(activity) }.uniq
-      @cities = all.map { |activity| activity.city.to_s }.uniq
-      @current_filters = session[:filters]
-      @districts_by_city = districts_by_city
+      # @tags = all.flat_map { |activity| extract_tags(activity) }.uniq
+      # @cities = all.map { |activity| activity.city.to_s }.uniq
+      # @current_filters = session[:filters]
+      # @districts_by_city = districts_by_city
+      @current_filters = Views::Filter.new(session[:filters])
+      @filter_options = Views::FilterOption.new(result[:all_activities])
       view 'home',
            locals: view_locals.merge(
              liked_sernos: Array(session[:user_likes]).map(&:to_i)
@@ -127,9 +129,9 @@ module Eventure
     end
 
     # 把 Tag entity 轉成字串
-    def extract_tags(activity)
-      Array(activity.tags).map { |tag| tag.tag.to_s }
-    end
+    # def extract_tags(activity)
+    #   Array(activity.tags).map { |tag| tag.tag.to_s }
+    # end
 
     def view_locals
       {
