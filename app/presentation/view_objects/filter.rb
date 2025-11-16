@@ -5,28 +5,28 @@ require_relative 'activity'
 module Views
   # View for selected filter parameters
   class Filter
-    def initialize(filter)
-      @filter = filter
+    def initialize(filter_hash)
+      @filter = filter_hash || {}
     end
 
     def tags
-      @filter.tag.uniq
+      Array(@filter[:tag]).map(&:to_s).uniq
     end
 
     def city
-      @filter.city
+      @filter[:city].to_s
     end
 
     def districts
-      @filter.districts.uniq
+      Array(@filter[:districts]).map(&:to_s).uniq
     end
 
     def start_date
-      @filter.start_date
+      @filter[:start_date].to_s
     end
 
     def end_date
-      @filter.end_date
+      @filter[:end_date].to_s
     end
   end
 end
