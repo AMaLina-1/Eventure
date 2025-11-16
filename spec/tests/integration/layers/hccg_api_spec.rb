@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'helpers/spec_helper'
-require_relative '../app/infrastructure/hccg/gateways/hccg_api'
+require_relative '../../../helpers/spec_helper'
+require_relative '../../../../app/infrastructure/hccg/gateways/hccg_api'
 
 describe 'Tests hccg activity API library' do
   VCR.configure do |c|

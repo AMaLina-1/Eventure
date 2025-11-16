@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 ruby File.read('.ruby-version').strip
 
+gem 'base64'
 gem 'yaml'
 
 # Networking
@@ -38,6 +39,9 @@ gem 'dry-struct', '~> 1.0'
 gem 'dry-types', '~> 1.0'
 
 # Web Application
+# gem 'dry-monads'
+gem 'dry-transaction'
+gem 'dry-validation'
 gem 'logger', '~> 1.0'
 gem 'puma', '~> 6.4'
 gem 'rack-session', '~> 0'
@@ -55,3 +59,6 @@ end
 group :production do
   gem 'pg'
 end
+
+# Controllers and services
+gem 'dry-monads', '~> 1.0'

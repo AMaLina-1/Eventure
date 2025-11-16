@@ -23,6 +23,14 @@ module Views
       "#{@activity.city}#{@activity.district}#{@activity.building}"
     end
 
+    def city
+      @activity.city
+    end
+
+    def district
+      @activity.district
+    end
+
     def voice
       @activity.voice
     end

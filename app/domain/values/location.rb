@@ -17,10 +17,12 @@ module Eventure
 
       def city
         '新竹市'
+        # use to_s at the end
       end
 
       def district
         '東區'
+        # use to_s at the end
       end
     end
   end
