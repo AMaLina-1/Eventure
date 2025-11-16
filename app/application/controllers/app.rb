@@ -129,10 +129,18 @@ module Eventure
 
     def view_locals
       {
-        cards: Views::ActivityList.new(@filtered_activities),
+        cards: Views::ActivityList.new(@filtered_activities || activities),
         total_pages: 1,
         current_page: 1
       }
+    end
+
+    def activities
+      @activities ||= Eventure::Repository::Activities.all
+    end
+
+    def service
+      @service ||= Eventure::Services::ActivityService.new
     end
   end
 end
