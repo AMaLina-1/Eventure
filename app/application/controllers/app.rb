@@ -4,6 +4,8 @@ require 'roda'
 require 'slim'
 require 'slim/include'
 require_relative '../../presentation/view_objects/activity_list'
+require_relative '../../presentation/view_objects/filter'
+require_relative '../../presentation/view_objects/filter_option'
 require_relative '../services/filtered_activities'
 # require_relative '../services/update_likes'
 require_relative '../services/update_like_counts'
@@ -19,9 +21,43 @@ module Eventure
     route do |routing|
       response['Content-Type'] = 'text/html; charset=utf-8'
 
-      routing.root { routing.redirect '/activities' }
+      routing.root do
+        if session[:seen_intro_where]
+          routing.redirect '/activities'
+        else
+          session[:seen_intro_where] = true
+          view 'intro_where'
+        end
+      end
+
       routing.get 'intro_where' do
         view 'intro_where'
+      end
+
+      routing.get 'intro_tag' do
+        # 先把這次帶進來的條件轉成乾淨 hash（包含 filter_city）
+        filters = extract_filters(routing) # => { tag: [...], city: '新竹市', ... }
+
+        # 目前只需要這次送來的條件就好
+        session[:filters] = filters
+
+        all_activities = Eventure::Repository::Activities.all
+
+        # 若有指定 city，只拿該 city 的活動來產生 tag 選單
+        activities_for_options =
+          if filters[:city] && !filters[:city].empty?
+            all_activities.select { |a| a.city.to_s == filters[:city].to_s }
+          else
+            all_activities
+          end
+
+        @current_filters = Views::Filter.new(filters || {})
+        @filter_options  = Views::FilterOption.new(activities_for_options)
+
+        view 'intro_tag',
+             locals: view_locals.merge(
+               liked_sernos: Array(session[:user_likes]).map(&:to_i)
+             )
       end
 
       # ================== Likes page ==================
@@ -108,7 +144,7 @@ module Eventure
       # @current_filters = session[:filters]
       # @districts_by_city = districts_by_city
       @current_filters = Views::Filter.new(session[:filters])
-      @filter_options = Views::FilterOption.new(result[:all_activities])
+      @filter_options = Views::FilterOption.new(all)
       view 'home',
            locals: view_locals.merge(
              liked_sernos: Array(session[:user_likes]).map(&:to_i)

@@ -72,15 +72,15 @@ html
           .modal-body
             form#filtersForm method="get" action="/activities"
               .row
-                  h6 活動標籤
-                  #tagList
-                    .row
-                      - selected_tags = Array((@current_filters || {})[:tag]).map(&:to_s)
-                      - Array(@tags || []).each do |t|
-                        .col-6.mb-2
-                          .form-check.mb-2
-                            input.form-check-input type="checkbox" name="filter_tag[]" value="#{t}" id="tag-#{t}" checked=(selected_tags.include?(t.to_s))
-                            label.form-check-label for="tag-#{t}"= t
+                h6 活動標籤
+                #tagList
+                  .row
+                    - selected_tags = Array(@current_filters&.tags).map(&:to_s)
+                    - Array(@filter_options&.tags || []).each do |t|
+                      .col-6.mb-2
+                        .form-check.mb-2
+                          input.form-check-input type="checkbox" name="filter_tag[]" value="#{t}" id="tag-#{t}" checked=(selected_tags.include?(t.to_s))
+                          label.form-check-label for="tag-#{t}"= t
           .modal-footer
             button.btn.btn-secondary type="button" data-bs-dismiss="modal" 取消
             button.btn.btn-primary type="submit" form="filtersForm" Save
@@ -94,8 +94,8 @@ html
             button.btn-close type="button" data-bs-dismiss="modal" aria-label="Close"
           form#timeForm method="get" action="/activities"
             .modal-body
-              - start_val = (@current_filters && @current_filters[:start_date]) || ''
-              - end_val = (@current_filters && @current_filters[:end_date]) || ''
+              - start_val = @current_filters&.start_date.to_s
+              - end_val   = @current_filters&.end_date.to_s
               .mb-3
                 label.form-label for="filter_start_date" 起始時間
                 input.form-control type="date" id="filter_start_date" name="filter_start_date" value="#{start_val}"
@@ -119,19 +119,19 @@ html
                 .col-md-4
                   h6 縣市
                   ul.list-group#regionCityList
-                    - Array(@cities || []).each do |c|
+                    - Array(@filter_options&.cities || []).each do |c|
                       li.list-group-item
                         label.form-check
-                          - checked_city = ((@current_filters || {})[:city]&.to_s == c.to_s)
+                          - checked_city = (@current_filters&.city.to_s == c.to_s)
                           input.form-check-input.city-radio type="radio" name="filter_city" value="#{c}" data-city="#{c}" id="region-city-#{c}" checked=(checked_city)
                           span.form-check-label= c
                 .col-md-6
                   h6 區域
                   #districtMenu
-                    - dmap = @districts_by_city || {}
-                    - selected_dists = Array((@current_filters || {})[:districts]).map(&:to_s)
+                    - dmap = @filter_options&.districts || {}
+                    - selected_dists = Array(@current_filters&.districts).map(&:to_s)
                     - if dmap && dmap.is_a?(Hash) && dmap.any?
-                      - first_city = (Array(@cities).first)
+                      - first_city = Array(@filter_options&.cities).first
                       - (dmap[first_city] || []).each do |dist|
                         .form-check
                           input.form-check-input type="checkbox" name="filter_district[]" value="#{dist}" id="dist-#{dist}" checked=(selected_dists.include?(dist.to_s))
@@ -140,8 +140,9 @@ html
               button.btn.btn-secondary type="button" data-bs-dismiss="modal" 取消
               button.btn.btn-primary type="submit" form="regionForm" Save
 
+
     / 把 districts 的資料放在頁面上，供前端使用（JSON）
-    - districts_json = @districts_by_city || {}
+    - districts_json = @filter_options&.districts || {}
     script type="application/json" id="districts-data"
       = districts_json.to_json
 
